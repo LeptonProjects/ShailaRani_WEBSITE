@@ -23,10 +23,10 @@ class CostechDujoLogoWidget extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                SizedBox(
+                const SizedBox(
                     height: 80,
                     width: 60,
-                    child: Image.asset('assets/images/leptonlogo.png')),
+              ),
                 Column(
                   children: [
                     Row(

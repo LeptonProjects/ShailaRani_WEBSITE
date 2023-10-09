@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/home/side_menuBar/is_desktop.dart';
 import 'package:shaila_rani_website/view/home/side_menuBar/widget/costecDujologo.dart';
+import 'package:shaila_rani_website/view/pages/staff_management/staff_screen.dart';
 import 'package:sidebar_drawer/sidebar_drawer.dart';
 
 // ignore: must_be_immutable
@@ -21,6 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Column(
           children: [
             AppBar(
+              backgroundColor: cWhite,
               leading: const DrawerIcon(),
             ),
             pages[selectedIndex]
@@ -43,11 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 List<Widget> pages = [
-  Container(
-    child: Center(
-      child: Text(sideMenu[0]),
-    ),
-  ),
+ const StaffHomeScreen(),
   Container(
     child: Center(
       child: Text(sideMenu[1]),
@@ -63,44 +62,6 @@ List<Widget> pages = [
       child: Text(sideMenu[3]),
     ),
   ),
-  Container(
-    child: Center(
-      child: Text(sideMenu[4]),
-    ),
-  ),
-  Container(
-    child: Center(
-      child: Text(sideMenu[5]),
-    ),
-  ),
-  Container(
-    child: Center(
-      child: Text(sideMenu[6]),
-    ),
-  ),
-  Container(
-    child: Center(
-      child: Text(sideMenu[7]),
-    ),
-  ),
-  Container(
-    child: Center(
-      child: Text(sideMenu[8]),
-    ),
-  ),
-  Container(
-    child: Center(
-      child: Text(sideMenu[9]),
-    ),
-  ),
-  Container(
-    child: Center(
-      child: Text(sideMenu[10]),
-    ),
-  ),
-  Container(
-    child: Center(
-      child: Text(sideMenu[11]),
-    ),
-  ),
+
+
 ];
