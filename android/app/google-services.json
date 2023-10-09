@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1058911056096",
+    "project_id": "shailarani-associates",
+    "storage_bucket": "shailarani-associates.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058911056096:android:5b3dc89a5e284c5e3d6085",
+        "android_client_info": {
+          "package_name": "com.example.shaila_rani_website"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1058911056096-nu200cd13d7g8v307m4ps867pq0qsa3r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdEUK3sVyCBwq93OTSwLxX3bZFF_w90HM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1058911056096-nu200cd13d7g8v307m4ps867pq0qsa3r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
