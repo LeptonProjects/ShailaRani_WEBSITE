@@ -24,21 +24,21 @@ class CostechDujoLogoWidget extends StatelessWidget {
             child: Row(
               children: [
                 const SizedBox(
-                    height: 80,
-                    width: 60,
-              ),
+                  height: 80,
+                  width: 60,
+                ),
                 Column(
                   children: [
                     Row(
                       children: [
                         GooglePoppinsWidgets(
-                          text: "COSTECH",
+                          text: "Shaila Rani",
                           fontsize: 15,
                           color: cWhite,
                           fontWeight: FontWeight.w600,
                         ),
                         GooglePoppinsWidgets(
-                          text: " D U J O",
+                          text: " Associates",
                           fontsize: 15,
                           color: cRed,
                           fontWeight: FontWeight.w600,
@@ -46,7 +46,7 @@ class CostechDujoLogoWidget extends StatelessWidget {
                       ],
                     ),
                     GooglePoppinsWidgets(
-                      text: "Hostel Management",
+                      text: "Advocates",
                       fontsize: 10,
                       color: cWhite.withOpacity(0.5),
                     ),
@@ -63,7 +63,7 @@ class CostechDujoLogoWidget extends StatelessWidget {
             height: 48,
             child: Center(
               child: GooglePoppinsWidgets(
-                text: "MTHSS Mens Hostel",
+                text: "Admin Panel",
                 fontsize: 11,
                 color: const Color.fromARGB(255, 117, 200, 236),
               ),
