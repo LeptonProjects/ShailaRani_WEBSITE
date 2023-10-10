@@ -10,27 +10,24 @@ class BackButtonContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 20, left: 20),
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return const HomeScreen();
-          },));
-        },
-        child: Container(
-          height: 30,
-          width: 80,
-          decoration: const BoxDecoration(
-            color: themeColorBlue,
-          ),
-          child: Center(
-            child: GooglePoppinsWidgets(
-                text: 'BACK',
-                color: cWhite,
-                fontsize: 12,
-                fontWeight: FontWeight.bold),
-          ),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return const HomeScreen();
+        },));
+      },
+      child: Container(
+        height: 30,
+        width: 80,
+        decoration: const BoxDecoration(
+          color: themeColorBlue,
+        ),
+        child: Center(
+          child: GooglePoppinsWidgets(
+              text: 'BACK',
+              color: cWhite,
+              fontsize: 12,
+              fontWeight: FontWeight.bold),
         ),
       ),
     );

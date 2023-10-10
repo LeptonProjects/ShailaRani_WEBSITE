@@ -49,6 +49,7 @@ dependencies:
   flutter_staggered_animations:
   popover:
   dropdown_search: 
+  get: 
   sidebar_drawer: ^0.0.1+2
 dev_dependencies:
   flutter_test:

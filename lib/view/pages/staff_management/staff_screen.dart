@@ -7,8 +7,6 @@ import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/create_employee/create_employee.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/employee_list_screen.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/widget/headerText_widget.dart';
-import 'package:shaila_rani_website/view/widgets/back_button_widget.dart';
-
 class StaffHomeScreen extends StatelessWidget {
   const StaffHomeScreen({super.key});
 
@@ -57,7 +55,7 @@ class StaffHomeScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                const BackButtonContainerWidget(),
+             
               ],
             ),
           ),
