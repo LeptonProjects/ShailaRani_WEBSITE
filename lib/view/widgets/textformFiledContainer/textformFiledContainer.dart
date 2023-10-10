@@ -10,7 +10,10 @@ class TextFormFiledContainerWidget extends StatelessWidget {
   final String title;
   final String hintText;
   final double width;
+  Function(String)? onChanged;
+  Iterable<String>?autofillHints;
   String? Function(String?)? validator;
+   Function()? onTap;
   TextInputType? keyboardType;
   TextFormFiledContainerWidget({
     required this.hintText,
@@ -18,6 +21,11 @@ class TextFormFiledContainerWidget extends StatelessWidget {
     required this.width,
     this.keyboardType,
     this.controller,
+    this.autofillHints,
+    this.onChanged,
+
+    this.onTap,
+  
     super.key,
   });
 
@@ -35,6 +43,9 @@ class TextFormFiledContainerWidget extends StatelessWidget {
             height: 35,
             width: width,
             child: TextFormField(
+              onChanged:onChanged ,
+              autofillHints:autofillHints ,
+              onTap: onTap,
               validator: validator,
               keyboardType: keyboardType,
               controller: controller,

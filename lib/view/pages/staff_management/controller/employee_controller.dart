@@ -5,6 +5,11 @@ import 'package:shaila_rani_website/view/constant/const.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/model/create_employee_model.dart';
 
 class StaffManagementController extends GetxController {
+
+  // For Selected Date
+  RxString dobSelectedDate =''.obs;
+   RxString joiningSelectedDate =''.obs;
+
   final firebase = FirebaseFirestore.instance
       .collection('StaffManagement')
       .doc('StaffManagement');
