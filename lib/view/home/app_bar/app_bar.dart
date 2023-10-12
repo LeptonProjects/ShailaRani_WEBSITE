@@ -1,6 +1,9 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
+import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/home/login_button/login_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -12,10 +15,10 @@ const String _description = "Any schools from Kerala can register on\n"
     "with student login,  parent login, teacher login";
 
 final Uri _faceBookUrl =
-    Uri.parse('https://www.facebook.com/profile.php?id=100091062978371');
+    Uri.parse('https://facebook.com/AdvocateShailaRani/');
 final Uri _twitterUrl = Uri.parse('https://twitter.com/LeptonDujo');
-final Uri _instaUrl = Uri.parse('https://www.instagram.com/leptondujo/');
-final Uri _utubeUrl = Uri.parse('https://www.youtube.com/@LEPTONDUJO/featured');
+final Uri _instaUrl = Uri.parse('https://www.instagram.com/adv.shailarani/?hl=en');
+final Uri _utubeUrl = Uri.parse('https://www.youtube.com/c/AdvShailaRani');
 final Uri _leptonUrl = Uri.parse('http://www.leptoncommunications.com');
 
 Future<void> _launchFacebookUrl() async {
@@ -56,6 +59,8 @@ class ResponsiveMobileAppBar extends StatelessWidget {
     double maxWidthValue;
     return LayoutBuilder(builder: (context, constrain) {
       maxWidthValue = constrain.maxWidth;
+       double screenHeight = MediaQuery.of(context).size.height;
+       double screenWidth = MediaQuery.of(context).size.width;
       return Container(
         color: cBlack,
         height: 100,
@@ -63,33 +68,40 @@ class ResponsiveMobileAppBar extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
           child: Row(
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Row(
                 children: [
-                  SizedBox(
-                    height: 75,
-                    width: 75,
-                    // color: Colors.white70,
-                    child: Column(
-                      children: [
-                        // GooglePoppinsWidgets(
-                        //   text: "Shaila Rani Association",
-                        //   fontsize: 14,
-                        //   color: cWhite,
-                        //   fontWeight: FontWeight.w600,
-                        // ),
-                        Image.asset(
-                          'assests/images/advo_logo_new.png',
+                  Column(children: [
+                  // GooglePoppinsWidgets(
+                  //   text: "Shaila Rani Association",
+                  //   fontsize: 14,
+                  //   color: cWhite,
+                  //   fontWeight: FontWeight.w600,
+                  // ),
+                  Image.asset(
+                    'assests/images/advo_logo_new.png',
 
-                          fit: BoxFit.contain,
-                          // color: themeColorBlue,
-                          color: Colors.white,
-
-                          //Color(0xFF17BDB5),
-                        ),
-                      ],
-                    ),
+                    fit: BoxFit.contain,
+                    // color: themeColorBlue,
+                    color: Colors.white,
+                    height: screenHeight/10,
+                    width: screenWidth/10,
+                    //Color(0xFF17BDB5),
+                  ),],),
+                  Column(children: [
+                    Spacer(),
+                  GooglePoppinsWidgets(
+                    text: "Shaila Rani Association",
+                    fontsize: screenWidth/90,
+                    color: cWhite,
+                    fontWeight: FontWeight.w600,
                   ),
+                  GooglePoppinsWidgets(
+                    text: "Lawyers, Mediators & Family Counsellors",
+                    fontsize: screenWidth/100,
+                    color: cWhite,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  ],),
                 ],
               ),
               const Spacer(),
@@ -291,6 +303,9 @@ class MobNumber01 extends StatelessWidget {
   }
 }
 
+
+
+
 //  byh Rajesh Thanu
 class SocailMediaModel {
   SocailMediaModel({
@@ -348,6 +363,7 @@ List<SocailMediaModel> socailMediaList = <SocailMediaModel>[
       )),
       imageString: 'assests/images/twitt.png',
       tilteFunExecution: _launchInstaUrl),
+      
   SocailMediaModel(
       // title: StringConst.Youtube,
       assetImage: (Image.asset(

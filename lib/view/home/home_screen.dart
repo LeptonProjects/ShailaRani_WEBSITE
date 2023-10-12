@@ -62,6 +62,68 @@ class HomeScreen extends StatelessWidget {
                         ),
                       );
                     }),
+                    PopupMenuButton<String>(
+                      itemBuilder: (BuildContext context) {
+                        return <PopupMenuEntry<String>>[
+                           PopupMenuItem<String>(
+                            value: 'service1',
+                            child: GooglePoppinsWidgets(
+                              text: 'Service 1',
+                              fontsize: 12,
+                              fontWeight: FontWeight.bold,),
+                          ),
+                           PopupMenuItem<String>(
+                            value: 'service2',
+                            child:  GooglePoppinsWidgets(
+                              text: 'Service 2',
+                              fontsize: 12,
+                              fontWeight: FontWeight.bold,),
+                          ),
+                           PopupMenuItem<String>(
+                            value: 'service3',
+                            child:  GooglePoppinsWidgets(
+                              text: 'Service 3',
+                              fontsize: 12,
+                              fontWeight: FontWeight.bold,),
+                          ),
+                        ];
+                      },
+                      child: OnHoverTextForHeader(builder: (isHovered) {
+                        final colorr = isHovered
+                            ? const Color.fromARGB(255, 192, 145, 128)
+                            : cWhite;
+                        return SizedBox(
+                          height: 40,
+                          width: 90,
+                          child: Center(
+                            child: Row(
+                              children: [
+                                GooglePoppinsWidgets(
+                                  text: "Service ▽",
+                                  fontsize: 12,
+                                  color: colorr,
+                                ),
+                                const Icon(Icons.arrow_drop_down)
+                              ],
+                            ),
+                          ),
+                        );
+                      }),
+                    ),
+                    OnHoverTextForHeader(builder: (isHoverd) {
+                      final colorr = isHoverd
+                          ? const Color.fromARGB(255, 192, 145, 128)
+                          : cWhite;
+                      return SizedBox(
+                        height: 40,
+                        width: 80,
+                        child: Center(
+                          
+                          child: GooglePoppinsWidgets(
+                              text: "Videos", fontsize: 12, color: colorr),
+                        ),
+                      );
+                    }),
                     OnHoverTextForHeader(builder: (isHoverd) {
                       final colorr = isHoverd
                           ? const Color.fromARGB(255, 192, 145, 128)
@@ -71,7 +133,7 @@ class HomeScreen extends StatelessWidget {
                         width: 80,
                         child: Center(
                           child: GooglePoppinsWidgets(
-                              text: "Services", fontsize: 12, color: colorr),
+                              text: "Contact", fontsize: 12, color: colorr),
                         ),
                       );
                     }),
