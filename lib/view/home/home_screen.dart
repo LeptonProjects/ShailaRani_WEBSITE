@@ -9,7 +9,8 @@ import 'package:shaila_rani_website/view/home/widgets/hover_mouse/hover_text.dar
 import 'package:shaila_rani_website/view/widgets/responsive/responsive.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final ScrollController sscrollcontroller = ScrollController();
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -62,54 +63,54 @@ class HomeScreen extends StatelessWidget {
                         ),
                       );
                     }),
-                    PopupMenuButton<String>(
-                      itemBuilder: (BuildContext context) {
-                        return <PopupMenuEntry<String>>[
-                           PopupMenuItem<String>(
-                            value: 'service1',
-                            child: GooglePoppinsWidgets(
-                              text: 'Service 1',
-                              fontsize: 12,
-                              fontWeight: FontWeight.bold,),
-                          ),
-                           PopupMenuItem<String>(
-                            value: 'service2',
-                            child:  GooglePoppinsWidgets(
-                              text: 'Service 2',
-                              fontsize: 12,
-                              fontWeight: FontWeight.bold,),
-                          ),
-                           PopupMenuItem<String>(
-                            value: 'service3',
-                            child:  GooglePoppinsWidgets(
-                              text: 'Service 3',
-                              fontsize: 12,
-                              fontWeight: FontWeight.bold,),
-                          ),
-                        ];
-                      },
-                      child: OnHoverTextForHeader(builder: (isHovered) {
-                        final colorr = isHovered
-                            ? const Color.fromARGB(255, 192, 145, 128)
-                            : cWhite;
-                        return SizedBox(
-                          height: 40,
-                          width: 90,
-                          child: Center(
-                            child: Row(
-                              children: [
-                                GooglePoppinsWidgets(
-                                  text: "Service ▽",
-                                  fontsize: 12,
-                                  color: colorr,
-                                ),
-                                const Icon(Icons.arrow_drop_down)
-                              ],
-                            ),
-                          ),
-                        );
-                      }),
-                    ),
+                    // PopupMenuButton<String>(
+                    //   itemBuilder: (BuildContext context) {
+                    //     return <PopupMenuEntry<String>>[
+                    //        PopupMenuItem<String>(
+                    //         value: 'service1',
+                    //         child: GooglePoppinsWidgets(
+                    //           text: 'Service 1',
+                    //           fontsize: 12,
+                    //           fontWeight: FontWeight.bold,),
+                    //       ),
+                    //        PopupMenuItem<String>(
+                    //         value: 'service2',
+                    //         child:  GooglePoppinsWidgets(
+                    //           text: 'Service 2',
+                    //           fontsize: 12,
+                    //           fontWeight: FontWeight.bold,),
+                    //       ),
+                    //        PopupMenuItem<String>(
+                    //         value: 'service3',
+                    //         child:  GooglePoppinsWidgets(
+                    //           text: 'Service 3',
+                    //           fontsize: 12,
+                    //           fontWeight: FontWeight.bold,),
+                    //       ),
+                    //     ];
+                    //   },
+                    //   child: OnHoverTextForHeader(builder: (isHovered) {
+                    //     final colorr = isHovered
+                    //         ? const Color.fromARGB(255, 192, 145, 128)
+                    //         : cWhite;
+                    //     return SizedBox(
+                    //       height: 40,
+                    //       width: 90,
+                    //       child: Center(
+                    //         child: Row(
+                    //           children: [
+                    //             GooglePoppinsWidgets(
+                    //               text: "Service ▽",
+                    //               fontsize: 12,
+                    //               color: colorr,
+                    //             ),
+                    //             const Icon(Icons.arrow_drop_down)
+                    //           ],
+                    //         ),
+                    //       ),
+                    //     );
+                    //   }),
+                    // ),
                     OnHoverTextForHeader(builder: (isHoverd) {
                       final colorr = isHoverd
                           ? const Color.fromARGB(255, 192, 145, 128)
@@ -118,7 +119,6 @@ class HomeScreen extends StatelessWidget {
                         height: 40,
                         width: 80,
                         child: Center(
-                          
                           child: GooglePoppinsWidgets(
                               text: "Videos", fontsize: 12, color: colorr),
                         ),
@@ -230,10 +230,7 @@ class HomeScreen extends StatelessWidget {
               ),
               ResponsiveWebSite.isDesktop(context)
                   ? Padding(
-                      padding: const EdgeInsets.only(
-                        left: 180,
-                        bottom: 100
-                      ),
+                      padding: const EdgeInsets.only(left: 180, bottom: 100),
                       child: SizedBox(
                         height: 200,
                         // color: Colors.amber,
@@ -242,7 +239,8 @@ class HomeScreen extends StatelessWidget {
                             Text(
                               "Defending  Your  Rights,\n   Upholding  Your  trust",
                               style: GoogleFonts.castoroTitling(
-                                  color: const Color(0xFFCE8F2E), fontSize:screenSize.width / 36),
+                                  color: const Color(0xFFCE8F2E),
+                                  fontSize: screenSize.width / 36),
                             ),
                           ],
                         ),
@@ -295,24 +293,34 @@ class HomeScreen extends StatelessWidget {
           ),
           Container(
             color: const Color.fromARGB(255, 19, 19, 19),
-            height: ResponsiveWebSite.isMobile(context) ? 180 : 160,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+            height: ResponsiveWebSite.isMobile(context) ? 180 : 300,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
-                  height: 80,
-                  child: GooglePoppinsWidgets(
-                      text:
-                          '''Shaila Rani & Associates is a prestigious multinational law firm specializing in family and divorce law.\nFounded and led by Advocate Shaila Rani.''',
-                      fontsize: ResponsiveWebSite.isMobile(context) ? 14 : 18,
-                      color: cWhite),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 100,
+                    top: 20,
+                    bottom: 20,
+                  ),
+                  child: SizedBox(
+                    height: 300,
+                    width: 200,
+                    child: Image.asset(
+                      'assests/images/shai_solo.png',
+                      fit: BoxFit.fitWidth,
+                    ),
+                  ),
                 ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        top: ResponsiveWebSite.isDesktop(context) ? 0 : 15),
-                    child: Container(
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    GooglePoppinsWidgets(
+                        text:
+                            '''Shaila Rani & Associates is a prestigious multinational law firm specializing in family and divorce law.\n  Founded and led by Advocate Shaila Rani.''',
+                        fontsize: ResponsiveWebSite.isMobile(context) ? 14 : 14,
+                        color: cWhite),
+                    Container(
                       height: 35,
                       width: 150,
                       decoration: BoxDecoration(
@@ -323,9 +331,20 @@ class HomeScreen extends StatelessWidget {
                         fontsize: 12,
                         color: cWhite,
                       )),
-                    ),
-                  ),
-                )
+                    )
+                  ],
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.only(right: 100, top: 20, bottom: 20),
+                  child: SizedBox(
+                      height: 300,
+                      width: 200,
+                      child: Image.asset(
+                        'assests/images/shila_dau--photo.jpeg',
+                        fit: BoxFit.fitHeight,
+                      )),
+                ),
               ],
             ),
           ),
@@ -686,6 +705,75 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(
+            //................................. OUR TEAM
+            height: 400,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SizedBox(
+                      height: 400,
+                      width: 600,
+                      child: Center(
+                        child: GooglePoppinsWidgets(
+                          text: "OUR TEAM",
+                          fontsize: 50,
+                          color: cWhite,
+                        ),
+                      )),
+                  Container(
+                    color: Colors.amber,
+                    height: 300,
+                    width: 01,
+                  ),
+                  SizedBox(
+                      height: 400,
+                      width: 600,
+                      child: Image.asset(
+                        'assests/images/group_photo.jpeg',
+                        fit: BoxFit.fill,
+                      )),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(
+            // color: Colors.black,
+            height: 500,
+            // width: 600,
+            child: ListView.separated(
+                physics: const AlwaysScrollableScrollPhysics(),
+                // shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                controller: sscrollcontroller,
+                itemBuilder: (context, index) {
+                  return SizedBox(
+                    height: 400,
+                    width: 400,
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          persionPhotos[index],
+                          fit: BoxFit.cover,
+                        ),
+                        GooglePoppinsWidgets(
+                          text: "",
+                          fontsize: 15,
+                          fontWeight: FontWeight.bold,
+                        )
+                      ],
+                    ),
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return const SizedBox(
+                    width: 20,
+                  );
+                },
+                itemCount: persionPhotos.length),
+          ),
           const Divider(
             height: 01,
             // thickness: 01,
@@ -703,6 +791,15 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+List<String> persionPhotos = [
+  'assests/images/persion_4.jpeg',
+  'assests/images/persion_2.jpeg',
+  'assests/images/persion_1.jpeg',
+  'assests/images/persion_3.jpeg',
+  
+];
+List<String> persion_text = [''];
 
 List<String> headerText = [
   'Home',

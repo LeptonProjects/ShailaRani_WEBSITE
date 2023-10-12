@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/home/login_button/login_button.dart';
+import 'package:shaila_rani_website/view/widgets/responsive/responsive.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 const String _imageUrl =
@@ -14,10 +15,10 @@ const String _description = "Any schools from Kerala can register on\n"
     "COSTECH DuJo. COSTECH Dujo is a mobile application\n"
     "with student login,  parent login, teacher login";
 
-final Uri _faceBookUrl =
-    Uri.parse('https://facebook.com/AdvocateShailaRani/');
+final Uri _faceBookUrl = Uri.parse('https://facebook.com/AdvocateShailaRani/');
 final Uri _twitterUrl = Uri.parse('https://twitter.com/LeptonDujo');
-final Uri _instaUrl = Uri.parse('https://www.instagram.com/adv.shailarani/?hl=en');
+final Uri _instaUrl =
+    Uri.parse('https://www.instagram.com/adv.shailarani/?hl=en');
 final Uri _utubeUrl = Uri.parse('https://www.youtube.com/c/AdvShailaRani');
 final Uri _leptonUrl = Uri.parse('http://www.leptoncommunications.com');
 
@@ -59,8 +60,7 @@ class ResponsiveMobileAppBar extends StatelessWidget {
     double maxWidthValue;
     return LayoutBuilder(builder: (context, constrain) {
       maxWidthValue = constrain.maxWidth;
-       double screenHeight = MediaQuery.of(context).size.height;
-       double screenWidth = MediaQuery.of(context).size.width;
+
       return Container(
         color: cBlack,
         height: 100,
@@ -70,38 +70,36 @@ class ResponsiveMobileAppBar extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Column(children: [
-                  // GooglePoppinsWidgets(
-                  //   text: "Shaila Rani Association",
-                  //   fontsize: 14,
-                  //   color: cWhite,
-                  //   fontWeight: FontWeight.w600,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assests/images/advo_logo_new.png',
+                        fit: BoxFit.contain,
+                        color: Colors.white,
+                        height: ResponsiveWebSite.isMobile(context)?70: 90,
+                        width: 120,
+                      ),
+                    ],
+                  ),
+                  // Column(
+                  //   children: [
+             
+                  //     GooglePoppinsWidgets(
+                  //       text: "Shaila Rani Association",
+                  //       fontsize: screenWidth / 90,
+                  //       color: cWhite,
+                  //       fontWeight: FontWeight.w600,
+                  //     ),
+                  //     GooglePoppinsWidgets(
+                  //       text: "Lawyers, Mediators & Family Counsellors",
+                  //       fontsize: screenWidth / 100,
+                  //       color: cWhite,
+                  //       fontWeight: FontWeight.w600,
+                  //     ),
+                  //   ],
                   // ),
-                  Image.asset(
-                    'assests/images/advo_logo_new.png',
-
-                    fit: BoxFit.contain,
-                    // color: themeColorBlue,
-                    color: Colors.white,
-                    height: screenHeight/10,
-                    width: screenWidth/10,
-                    //Color(0xFF17BDB5),
-                  ),],),
-                  Column(children: [
-                    Spacer(),
-                  GooglePoppinsWidgets(
-                    text: "Shaila Rani Association",
-                    fontsize: screenWidth/90,
-                    color: cWhite,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  GooglePoppinsWidgets(
-                    text: "Lawyers, Mediators & Family Counsellors",
-                    fontsize: screenWidth/100,
-                    color: cWhite,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  ],),
                 ],
               ),
               const Spacer(),
@@ -279,7 +277,7 @@ class MobNumber02 extends StatelessWidget {
       style: GoogleFonts.poppins(
           // themeColorBlue,
           color: cWhite,
-          fontSize: 12,
+          fontSize:ResponsiveWebSite.isMobile(context)?09: 12,
           fontWeight: FontWeight.w400),
     );
   }
@@ -302,9 +300,6 @@ class MobNumber01 extends StatelessWidget {
     );
   }
 }
-
-
-
 
 //  byh Rajesh Thanu
 class SocailMediaModel {
@@ -363,7 +358,6 @@ List<SocailMediaModel> socailMediaList = <SocailMediaModel>[
       )),
       imageString: 'assests/images/twitt.png',
       tilteFunExecution: _launchInstaUrl),
-      
   SocailMediaModel(
       // title: StringConst.Youtube,
       assetImage: (Image.asset(
