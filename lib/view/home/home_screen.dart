@@ -169,8 +169,8 @@ class HomeScreen extends StatelessWidget {
               ResponsiveWebSite.isDesktop(context)
                   ? Padding(
                       padding: const EdgeInsets.only(
-                        left: 200,
-                        top: 0,
+                        left: 180,
+                        bottom: 100
                       ),
                       child: SizedBox(
                         height: 200,
@@ -180,7 +180,7 @@ class HomeScreen extends StatelessWidget {
                             Text(
                               "Defending  Your  Rights,\n   Upholding  Your  trust",
                               style: GoogleFonts.castoroTitling(
-                                  color: cWhite, fontSize: 50),
+                                  color: const Color(0xFFCE8F2E), fontSize:screenSize.width / 36),
                             ),
                           ],
                         ),
@@ -194,7 +194,7 @@ class HomeScreen extends StatelessWidget {
                           Text(
                             "Defending  Your  Rights,\n   Upholding  Your  trust",
                             style: GoogleFonts.castoroTitling(
-                                color: cWhite,
+                                color: const Color(0xFFCE8F2E),
                                 fontSize: ResponsiveWebSite.isMobile(context)
                                     ? 20
                                     : 30),
