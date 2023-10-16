@@ -5,7 +5,9 @@ import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/home/app_bar/app_bar.dart';
 import 'package:shaila_rani_website/view/home/footer/footer.dart';
 import 'package:shaila_rani_website/view/home/footer/widgets/copyright_widget.dart';
+import 'package:shaila_rani_website/view/home/widgets/HomeMainImage_widget/homeImage_section_widget.dart';
 import 'package:shaila_rani_website/view/home/widgets/hover_mouse/hover_text.dart';
+import 'package:shaila_rani_website/view/home/widgets/shaila_rani_ReadMore_widger/shaila_rani_ReadMore.dart';
 import 'package:shaila_rani_website/view/widgets/responsive/responsive.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -23,757 +25,434 @@ class HomeScreen extends StatelessWidget {
           child: ResponsiveMobileAppBar()),
       body: ListView(
         children: [
-          Container(
-            height: ResponsiveWebSite.isMobile(context) ? 600 : 1000,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assests/images/home_image_new.jpg'),
-                  fit: BoxFit.cover),
-            ),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: Row(
-                  children: [
-                    const Spacer(),
-                    OnHoverTextForHeader(builder: (isHoverd) {
-                      final colorr = isHoverd
-                          ? const Color.fromARGB(255, 192, 145, 128)
-                          : cWhite;
-                      return SizedBox(
-                        height: 40,
-                        width: 80,
-                        child: Center(
-                          child: GooglePoppinsWidgets(
-                              text: "Home", fontsize: 12, color: colorr),
-                        ),
-                      );
-                    }),
-                    OnHoverTextForHeader(builder: (isHoverd) {
-                      final colorr = isHoverd
-                          ? const Color.fromARGB(255, 192, 145, 128)
-                          : cWhite;
-                      return SizedBox(
-                        height: 40,
-                        width: 80,
-                        child: Center(
-                          child: GooglePoppinsWidgets(
-                              text: "About", fontsize: 12, color: colorr),
-                        ),
-                      );
-                    }),
-                    // PopupMenuButton<String>(
-                    //   itemBuilder: (BuildContext context) {
-                    //     return <PopupMenuEntry<String>>[
-                    //        PopupMenuItem<String>(
-                    //         value: 'service1',
-                    //         child: GooglePoppinsWidgets(
-                    //           text: 'Service 1',
-                    //           fontsize: 12,
-                    //           fontWeight: FontWeight.bold,),
-                    //       ),
-                    //        PopupMenuItem<String>(
-                    //         value: 'service2',
-                    //         child:  GooglePoppinsWidgets(
-                    //           text: 'Service 2',
-                    //           fontsize: 12,
-                    //           fontWeight: FontWeight.bold,),
-                    //       ),
-                    //        PopupMenuItem<String>(
-                    //         value: 'service3',
-                    //         child:  GooglePoppinsWidgets(
-                    //           text: 'Service 3',
-                    //           fontsize: 12,
-                    //           fontWeight: FontWeight.bold,),
-                    //       ),
-                    //     ];
-                    //   },
-                    //   child: OnHoverTextForHeader(builder: (isHovered) {
-                    //     final colorr = isHovered
-                    //         ? const Color.fromARGB(255, 192, 145, 128)
-                    //         : cWhite;
-                    //     return SizedBox(
-                    //       height: 40,
-                    //       width: 90,
-                    //       child: Center(
-                    //         child: Row(
-                    //           children: [
-                    //             GooglePoppinsWidgets(
-                    //               text: "Service ▽",
-                    //               fontsize: 12,
-                    //               color: colorr,
-                    //             ),
-                    //             const Icon(Icons.arrow_drop_down)
-                    //           ],
-                    //         ),
-                    //       ),
-                    //     );
-                    //   }),
-                    // ),
-                    OnHoverTextForHeader(builder: (isHoverd) {
-                      final colorr = isHoverd
-                          ? const Color.fromARGB(255, 192, 145, 128)
-                          : cWhite;
-                      return SizedBox(
-                        height: 40,
-                        width: 80,
-                        child: Center(
-                          child: GooglePoppinsWidgets(
-                              text: "Videos", fontsize: 12, color: colorr),
-                        ),
-                      );
-                    }),
-                    OnHoverTextForHeader(builder: (isHoverd) {
-                      final colorr = isHoverd
-                          ? const Color.fromARGB(255, 192, 145, 128)
-                          : cWhite;
-                      return SizedBox(
-                        height: 40,
-                        width: 80,
-                        child: Center(
-                          child: GooglePoppinsWidgets(
-                              text: "Contact", fontsize: 12, color: colorr),
-                        ),
-                      );
-                    }),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 02),
-                      child: ResponsiveWebSite.isMobile(context)
-                          ? const Text("")
-                          : OnHoverTextForHeader(builder: (isHoverd) {
-                              final colorr = isHoverd
-                                  ? const Color.fromARGB(255, 192, 145, 128)
-                                  : cWhite;
-                              return Container(
-                                height: 45,
-                                width: 150,
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: Colors.brown.shade400)),
-                                child: Center(
-                                  child: GooglePoppinsWidgets(
-                                    text: "Get Appoinment",
-                                    fontsize: 14,
-                                    color: colorr,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              );
-                            }),
-                    )
-                  ],
-                ),
-              ),
-              Padding(
-                padding: ResponsiveWebSite.isMobile(context)
-                    ? const EdgeInsets.only(bottom: 0, left: 0)
-                    : ResponsiveWebSite.isTablet(context)
-                        ? const EdgeInsets.only(bottom: 0, left: 0)
-                        : const EdgeInsets.only(bottom: 40, left: 200),
-                child: ResponsiveWebSite.isMobile(context)
-                    ? Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height:
-                                ResponsiveWebSite.isMobile(context) ? 300 : 500,
-                            width:
-                                ResponsiveWebSite.isMobile(context) ? 300 : 500,
-                            child: Center(
-                              child: Image.asset(
-                                'assests/images/advo_logo_new.png',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    : ResponsiveWebSite.isTablet(context)
-                        ? Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                height: ResponsiveWebSite.isTablet(context)
-                                    ? 300
-                                    : 500,
-                                width: ResponsiveWebSite.isTablet(context)
-                                    ? 300
-                                    : 500,
-                                child: Center(
-                                  child: Image.asset(
-                                    'assests/images/advo_logo_new.png',
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )
-                        : Padding(
-                            padding: const EdgeInsets.only(top: 70, left: 200),
-                            child: SizedBox(
-                              // color: Colors.red,
-                              height: ResponsiveWebSite.isMobile(context)
-                                  ? 200
-                                  : 260,
-                              width: ResponsiveWebSite.isMobile(context)
-                                  ? 200
-                                  : 300,
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 0),
-                                child: Image.asset(
-                                  'assests/images/advo_logo_new.png',
-                                ),
-                              ),
-                            ),
-                          ),
-              ),
-              ResponsiveWebSite.isDesktop(context)
-                  ? Padding(
-                      padding: const EdgeInsets.only(left: 180, bottom: 100),
-                      child: SizedBox(
-                        height: 200,
-                        // color: Colors.amber,
-                        child: Row(
-                          children: [
-                            Text(
-                              "Defending  Your  Rights,\n   Upholding  Your  trust",
-                              style: GoogleFonts.castoroTitling(
-                                  color: const Color(0xFFCE8F2E),
-                                  fontSize: screenSize.width / 36),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
-                  : Padding(
-                      padding: const EdgeInsets.only(top: 10, bottom: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Defending  Your  Rights,\n   Upholding  Your  trust",
-                            style: GoogleFonts.castoroTitling(
-                                color: const Color(0xFFCE8F2E),
-                                fontSize: ResponsiveWebSite.isMobile(context)
-                                    ? 20
-                                    : 30),
-                          ),
-                        ],
-                      ),
-                    ),
-              ResponsiveWebSite.isMobile(context)
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        OnHoverTextForHeader(builder: (isHoverd) {
-                          final colorr = isHoverd
-                              ? const Color.fromARGB(255, 192, 145, 128)
-                              : cWhite;
-                          return Container(
-                            height: 45,
-                            width: 150,
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: Colors.brown.shade400)),
-                            child: Center(
-                              child: GooglePoppinsWidgets(
-                                text: "Get Appoinment",
-                                fontsize: 14,
-                                color: colorr,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          );
-                        })
-                      ],
-                    )
-                  : const Text(""),
-            ]),
-          ),
-          Container(
-            color: const Color.fromARGB(255, 19, 19, 19),
-            height: ResponsiveWebSite.isMobile(context) ? 180 : 300,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 100,
-                    top: 20,
-                    bottom: 20,
-                  ),
-                  child: SizedBox(
-                    height: 300,
-                    width: 200,
-                    child: Image.asset(
-                      'assests/images/shai_solo.png',
-                      fit: BoxFit.fitWidth,
-                    ),
-                  ),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    GooglePoppinsWidgets(
-                        text:
-                            '''Shaila Rani & Associates is a prestigious multinational law firm specializing in family and divorce law.\n  Founded and led by Advocate Shaila Rani.''',
-                        fontsize: ResponsiveWebSite.isMobile(context) ? 14 : 14,
-                        color: cWhite),
-                    Container(
-                      height: 35,
-                      width: 150,
-                      decoration: BoxDecoration(
-                          border: Border.all(width: 2, color: Colors.yellow)),
-                      child: Center(
-                          child: GooglePoppinsWidgets(
-                        text: 'Read More...',
-                        fontsize: 12,
-                        color: cWhite,
-                      )),
-                    )
-                  ],
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(right: 100, top: 20, bottom: 20),
-                  child: SizedBox(
-                      height: 300,
-                      width: 200,
-                      child: Image.asset(
-                        'assests/images/shila_dau--photo.jpeg',
-                        fit: BoxFit.fitHeight,
-                      )),
-                ),
-              ],
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Container(
-                height: screenSize.width / 4,
-                width: screenSize.width / 4,
-                decoration: const BoxDecoration(
-                  color: Colors.transparent,
-                  //border: Border.all(width: 1,color: Colors.white,)
-                ),
-                child: Center(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Center(
-                        child: Column(
-                          children: [
-                            Text(
-                              "Don't Hesitate to Ask ",
-                              style: TextStyle(
-                                  fontSize: screenSize.width / 60,
-                                  color: cWhite),
-                            ),
-                            SizedBox(
-                              height: screenSize.width / 50,
-                            ),
-                            Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        width: 1,
-                                        color: const Color(0xFFCE8F2E))),
-                                padding: EdgeInsets.only(
-                                    left: screenSize.width / 100,
-                                    top: 5,
-                                    bottom: 5,
-                                    right: screenSize.width / 100),
-                                child: Text(
-                                  "Fix Appointment",
-                                  style: TextStyle(
-                                      color: cWhite,
-                                      fontSize: screenSize.width / 110),
-                                )),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Container(
-                height: screenSize.width / 6,
-                alignment: Alignment.center,
-                child: const VerticalDivider(
-                  color: Color(0xFFCE8F2E),
-                  thickness: 1,
-                ),
-              ),
-              Container(
-                height: screenSize.width / 4,
-                width: screenSize.width / 4,
-                decoration: const BoxDecoration(
-                  color: Colors.transparent,
-                  //border: Border.all(width: 1,color: Colors.white,)
-                ),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Center(
-                        child: Text(
-                          "Emergency contacts",
-                          style: TextStyle(
-                              fontSize: screenSize.width / 60, color: cWhite),
-                        ),
-                      ),
-                      SizedBox(
-                        height: screenSize.width / 200,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.phone,
-                            size: screenSize.width / 75,
-                            color: Colors.blueGrey,
-                          ),
-                          const Text(
-                            "+91-123456789",
-                            style: TextStyle(color: cWhite),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.email,
-                            size: screenSize.width / 75,
-                            color: Colors.blueGrey,
-                          ),
-                          const Text(
-                            "info@shailaraniassociates.com",
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Column(
-                            children: [
-                              Image.asset(
-                                "assests/images/whatsApp_image-removebg-preview.png",
-                                height: screenSize.width / 15,
-                                width: screenSize.width / 10,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Container(
-                height: screenSize.width / 6,
-                alignment: Alignment.center,
-                child: const VerticalDivider(
-                  color: Color(0xFFCE8F2E),
-                  thickness: 1,
-                ),
-              ),
-              Container(
-                width: 400,
-                height: 300,
-                color: Colors.transparent,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GooglePoppinsWidgets(
-                      text: 'Our Office Address',
-                      fontsize: 15,
-                      color: cWhite,
-                      fontWeight: FontWeight.w700,
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          height: 100,
-                          width: 200,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              GooglePoppinsWidgets(
-                                text: 'TRIVANDRUM OFFICE',
-                                fontsize: 12,
-                                color: cWhite,
-                                fontWeight: FontWeight.w500,
-                              ),
-                              GooglePoppinsWidgets(
-                                text:
-                                    '5th Floor, Karimpanal Statue Avenue,Near\nSecretariat Trivandrum-01\n Call +91 9562377604',
-                                fontsize: 11,
-                                color: cWhite,
-                                // fontWeight: FontWeight.w500,
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 100,
-                          width: 200,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              GooglePoppinsWidgets(
-                                text: 'ERNAKULAM OFFICE',
-                                fontsize: 12,
-                                color: cWhite,
-                                fontWeight: FontWeight.w500,
-                              ),
-                              GooglePoppinsWidgets(
-                                text:
-                                    'Balaji Building,Room \nNo:GE Road,\nNear MG Metro,Ernakulam',
-                                fontsize: 11,
-                                color: cWhite,
-                                // fontWeight: FontWeight.w500,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          height: 100,
-                          width: 200,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              GooglePoppinsWidgets(
-                                text: 'BANGALORE OFFICE',
-                                fontsize: 12,
-                                color: cWhite,
-                                fontWeight: FontWeight.w500,
-                              ),
-                              GooglePoppinsWidgets(
-                                text:
-                                    'No: 326, 2nd Floor,\n 2nd B Cross, Banaswadi\nBanglore',
-                                fontsize: 11,
-                                color: cWhite,
-                                // fontWeight: FontWeight.w500,
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 100,
-                          width: 200,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              GooglePoppinsWidgets(
-                                text: 'CHENNAI OFFICE',
-                                fontsize: 12,
-                                color: cWhite,
-                                fontWeight: FontWeight.w500,
-                              ),
-                              GooglePoppinsWidgets(
-                                text:
-                                    'T.Shanmu Pillai(Advocate),\n No:25 Law Chamber Madras High Court,\nChennai-104',
-                                fontsize: 11,
-                                color: cWhite,
-                                // fontWeight: FontWeight.w500,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-          Center(
-            child: SizedBox(
-              height: 80,
-              width: 200,
-              child: Center(
-                child: GooglePoppinsWidgets(
-                  text: 'OUR PRACTICES',
-                  fontsize: 25,
-                  fontWeight: FontWeight.w800,
-                  color: cWhite,
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              top: screenSize.width / 25,
-              bottom: screenSize.width / 25,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SquareContainer(
-                  squareContainerHeading: "Domestic Violence",
-                  squareContainerbody:
-                      "Domestic violence makes no distinctions. It affects people of all sexes, ages, and socioeconomic backgrounds. The home should be a place of safety, not dread and violence. Don't suffer in silence.",
-                  imageUrl: 'assests/images/dom_violance.jpg',
-                ),
-                SizedBox(
-                  width: screenSize.width / 20,
-                ),
-                const SquareContainer(
-                  squareContainerHeading: "Contested Divorce",
-                  squareContainerbody:
-                      "Contested divorce is about more than simply defending your rights; it's also about building a brighter future for you. Keep your eyes on that goal and remain focused.",
-                  imageUrl: 'assests/images/divorce.jpg',
-                ),
-                SizedBox(
-                  width: screenSize.width / 20,
-                ),
-                const SquareContainer(
-                  squareContainerHeading: "Child Custody",
-                  squareContainerbody:
-                      "Child custody is much more than just legal rights; it's about providing your child with a secure and supportive environment. Maintain your focus to get the finest results, and remember that you are not alone.",
-                  imageUrl: 'assests/images/child_custody.jpg',
-                ),
-                SizedBox(
-                  width: screenSize.width / 20,
-                ),
-                const SquareContainer(
-                  squareContainerHeading: "Marriage",
-                  squareContainerbody:
-                      "We help couples from start to finish in their quest for court marriage-from preparing notice of marriage to file for an order for police protection.",
-                  imageUrl: 'assests/images/marrage_pic.jpg',
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              top: screenSize.width / 25,
-              bottom: screenSize.width / 25,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SquareContainer(
-                  squareContainerHeading: "Family Court",
-                  squareContainerbody:
-                      "The appeal from family courts lies directly to the High Court within 30 days of passing the order or the judgement. Such The appeal can be on both question of law and question of fact. No appeal lies against an order which is passed with the consent of the parties",
-                  imageUrl: 'assests/images/family_court.jpeg',
-                ),
-                SizedBox(
-                  width: screenSize.width / 20,
-                ),
-                const SquareContainer(
-                  squareContainerHeading: "Mediation",
-                  squareContainerbody:
-                      "Mediation is an excellent choice for matrimonial disputes, especially those involving child custody, support, and other issues. Section 914 of the Family Courts Act allows the Family Court to make fair efforts to settle matrimonial disputes, and Counselors' assist the Family Court in this effort.",
-                  imageUrl: 'assests/images/mediation.jpg',
-                ),
-                SizedBox(
-                  width: screenSize.width / 20,
-                ),
-                const SquareContainer(
-                  squareContainerHeading: "Maintanance",
-                  squareContainerbody:
-                      "The couple must decide by the agreement whether maintenance will be paid to or received by any spouse in case of a divorce by mutual consent. In these situations, the husband may give alimony or maintenance to the wife or vice versa, depending on the agreement. By the couple's contract, the court grants a divorce.",
-                  imageUrl: 'assests/images/maintanance.jpg',
-                ),
-                SizedBox(
-                  width: screenSize.width / 20,
-                ),
-                const SquareContainer(
-                  squareContainerHeading: "Family Councelling",
-                  squareContainerbody:
-                      "Family counselling is a type of social work that helps families address and resolve issues. It can be useful for couples who are struggling, or for families with children who are experiencing behavioural or emotional problems. Family counselling can also help to improve communication within the family unit.",
-                  imageUrl: 'assests/images/family_counceling.jpg',
-                )
-              ],
-            ),
-          ),
-          SizedBox(
-            //................................. OUR TEAM
-            height: 400,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SizedBox(
-                      height: 400,
-                      width: 600,
-                      child: Center(
-                        child: GooglePoppinsWidgets(
-                          text: "OUR TEAM",
-                          fontsize: 50,
-                          color: cWhite,
-                        ),
-                      )),
-                  Container(
-                    color: Colors.amber,
-                    height: 300,
-                    width: 01,
-                  ),
-                  SizedBox(
-                      height: 400,
-                      width: 600,
-                      child: Image.asset(
-                        'assests/images/group_photo.jpeg',
-                        fit: BoxFit.fill,
-                      )),
-                ],
-              ),
-            ),
-          ),
-          SizedBox(
-            // color: Colors.black,
-            height: 500,
-            // width: 600,
-            child: ListView.separated(
-                physics: const AlwaysScrollableScrollPhysics(),
-                // shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                controller: sscrollcontroller,
-                itemBuilder: (context, index) {
-                  return SizedBox(
-                    height: 400,
-                    width: 400,
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          persionPhotos[index],
-                          fit: BoxFit.cover,
-                        ),
-                        GooglePoppinsWidgets(
-                          text: "",
-                          fontsize: 15,
-                          fontWeight: FontWeight.bold,
-                        )
-                      ],
-                    ),
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return const SizedBox(
-                    width: 20,
-                  );
-                },
-                itemCount: persionPhotos.length),
-          ),
+          HomeMainImageScreenWidget(screenSize: screenSize), /// Main Image Screen Section >>>>>>>>>>>>>>>
+          const ShailaRaniReadMoreContainerWidget(), // Read More Section >>>>>>>>>
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //   children: [
+          //     Container(
+          //       height: screenSize.width / 4,
+          //       width: screenSize.width / 4,
+          //       decoration: const BoxDecoration(
+          //         color: Colors.transparent,
+          //         //border: Border.all(width: 1,color: Colors.white,)
+          //       ),
+          //       child: Center(
+          //         child: Column(
+          //           crossAxisAlignment: CrossAxisAlignment.center,
+          //           mainAxisAlignment: MainAxisAlignment.center,
+          //           children: [
+          //             Center(
+          //               child: Column(
+          //                 children: [
+          //                   Text(
+          //                     "Don't Hesitate to Ask ",
+          //                     style: TextStyle(
+          //                         fontSize: screenSize.width / 60,
+          //                         color: cWhite),
+          //                   ),
+          //                   SizedBox(
+          //                     height: screenSize.width / 50,
+          //                   ),
+          //                   Container(
+          //                       decoration: BoxDecoration(
+          //                           border: Border.all(
+          //                               width: 1,
+          //                               color: const Color(0xFFCE8F2E))),
+          //                       padding: EdgeInsets.only(
+          //                           left: screenSize.width / 100,
+          //                           top: 5,
+          //                           bottom: 5,
+          //                           right: screenSize.width / 100),
+          //                       child: Text(
+          //                         "Fix Appointment",
+          //                         style: TextStyle(
+          //                             color: cWhite,
+          //                             fontSize: screenSize.width / 110),
+          //                       )),
+          //                 ],
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ),
+          //     Container(
+          //       height: screenSize.width / 6,
+          //       alignment: Alignment.center,
+          //       child: const VerticalDivider(
+          //         color: Color(0xFFCE8F2E),
+          //         thickness: 1,
+          //       ),
+          //     ),
+          //     Container(
+          //       height: screenSize.width / 4,
+          //       width: screenSize.width / 4,
+          //       decoration: const BoxDecoration(
+          //         color: Colors.transparent,
+          //         //border: Border.all(width: 1,color: Colors.white,)
+          //       ),
+          //       child: Center(
+          //         child: Column(
+          //           mainAxisAlignment: MainAxisAlignment.center,
+          //           crossAxisAlignment: CrossAxisAlignment.center,
+          //           children: [
+          //             Center(
+          //               child: Text(
+          //                 "Emergency contacts",
+          //                 style: TextStyle(
+          //                     fontSize: screenSize.width / 60, color: cWhite),
+          //               ),
+          //             ),
+          //             SizedBox(
+          //               height: screenSize.width / 200,
+          //             ),
+          //             Row(
+          //               mainAxisAlignment: MainAxisAlignment.center,
+          //               children: [
+          //                 Icon(
+          //                   Icons.phone,
+          //                   size: screenSize.width / 75,
+          //                   color: Colors.blueGrey,
+          //                 ),
+          //                 const Text(
+          //                   "+91-123456789",
+          //                   style: TextStyle(color: cWhite),
+          //                 ),
+          //               ],
+          //             ),
+          //             Row(
+          //               mainAxisAlignment: MainAxisAlignment.center,
+          //               children: [
+          //                 Icon(
+          //                   Icons.email,
+          //                   size: screenSize.width / 75,
+          //                   color: Colors.blueGrey,
+          //                 ),
+          //                 const Text(
+          //                   "info@shailaraniassociates.com",
+          //                   style: TextStyle(
+          //                     fontSize: 13,
+          //                     color: Colors.white,
+          //                   ),
+          //                 ),
+          //               ],
+          //             ),
+          //             Column(
+          //               children: [
+          //                 Column(
+          //                   children: [
+          //                     Image.asset(
+          //                       "assests/images/whatsApp_image-removebg-preview.png",
+          //                       height: screenSize.width / 15,
+          //                       width: screenSize.width / 10,
+          //                     ),
+          //                   ],
+          //                 ),
+          //               ],
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ),
+          //     Container(
+          //       height: screenSize.width / 6,
+          //       alignment: Alignment.center,
+          //       child: const VerticalDivider(
+          //         color: Color(0xFFCE8F2E),
+          //         thickness: 1,
+          //       ),
+          //     ),
+          //     Container(
+          //       width: 400,
+          //       height: 300,
+          //       color: Colors.transparent,
+          //       child: Column(
+          //         crossAxisAlignment: CrossAxisAlignment.start,
+          //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //         children: [
+          //           GooglePoppinsWidgets(
+          //             text: 'Our Office Address',
+          //             fontsize: 15,
+          //             color: cWhite,
+          //             fontWeight: FontWeight.w700,
+          //           ),
+          //           Row(
+          //             children: [
+          //               SizedBox(
+          //                 height: 100,
+          //                 width: 200,
+          //                 child: Column(
+          //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //                   crossAxisAlignment: CrossAxisAlignment.start,
+          //                   children: [
+          //                     GooglePoppinsWidgets(
+          //                       text: 'TRIVANDRUM OFFICE',
+          //                       fontsize: 12,
+          //                       color: cWhite,
+          //                       fontWeight: FontWeight.w500,
+          //                     ),
+          //                     GooglePoppinsWidgets(
+          //                       text:
+          //                           '5th Floor, Karimpanal Statue Avenue,Near\nSecretariat Trivandrum-01\n Call +91 9562377604',
+          //                       fontsize: 11,
+          //                       color: cWhite,
+          //                       // fontWeight: FontWeight.w500,
+          //                     ),
+          //                   ],
+          //                 ),
+          //               ),
+          //               SizedBox(
+          //                 height: 100,
+          //                 width: 200,
+          //                 child: Column(
+          //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //                   crossAxisAlignment: CrossAxisAlignment.start,
+          //                   children: [
+          //                     GooglePoppinsWidgets(
+          //                       text: 'ERNAKULAM OFFICE',
+          //                       fontsize: 12,
+          //                       color: cWhite,
+          //                       fontWeight: FontWeight.w500,
+          //                     ),
+          //                     GooglePoppinsWidgets(
+          //                       text:
+          //                           'Balaji Building,Room \nNo:GE Road,\nNear MG Metro,Ernakulam',
+          //                       fontsize: 11,
+          //                       color: cWhite,
+          //                       // fontWeight: FontWeight.w500,
+          //                     ),
+          //                   ],
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //           Row(
+          //             children: [
+          //               SizedBox(
+          //                 height: 100,
+          //                 width: 200,
+          //                 child: Column(
+          //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //                   crossAxisAlignment: CrossAxisAlignment.start,
+          //                   children: [
+          //                     GooglePoppinsWidgets(
+          //                       text: 'BANGALORE OFFICE',
+          //                       fontsize: 12,
+          //                       color: cWhite,
+          //                       fontWeight: FontWeight.w500,
+          //                     ),
+          //                     GooglePoppinsWidgets(
+          //                       text:
+          //                           'No: 326, 2nd Floor,\n 2nd B Cross, Banaswadi\nBanglore',
+          //                       fontsize: 11,
+          //                       color: cWhite,
+          //                       // fontWeight: FontWeight.w500,
+          //                     ),
+          //                   ],
+          //                 ),
+          //               ),
+          //               SizedBox(
+          //                 height: 100,
+          //                 width: 200,
+          //                 child: Column(
+          //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //                   crossAxisAlignment: CrossAxisAlignment.start,
+          //                   children: [
+          //                     GooglePoppinsWidgets(
+          //                       text: 'CHENNAI OFFICE',
+          //                       fontsize: 12,
+          //                       color: cWhite,
+          //                       fontWeight: FontWeight.w500,
+          //                     ),
+          //                     GooglePoppinsWidgets(
+          //                       text:
+          //                           'T.Shanmu Pillai(Advocate),\n No:25 Law Chamber Madras High Court,\nChennai-104',
+          //                       fontsize: 11,
+          //                       color: cWhite,
+          //                       // fontWeight: FontWeight.w500,
+          //                     ),
+          //                   ],
+          //                 ),
+          //               ),
+          //             ],
+          //           )
+          //         ],
+          //       ),
+          //     )
+          //   ],
+          // ),
+          // Center(
+          //   child: SizedBox(
+          //     height: 80,
+          //     width: 200,
+          //     child: Center(
+          //       child: GooglePoppinsWidgets(
+          //         text: 'OUR PRACTICES',
+          //         fontsize: 25,
+          //         fontWeight: FontWeight.w800,
+          //         color: cWhite,
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          // Padding(
+          //   padding: EdgeInsets.only(
+          //     top: screenSize.width / 25,
+          //     bottom: screenSize.width / 25,
+          //   ),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.center,
+          //     children: [
+          //       const SquareContainer(
+          //         squareContainerHeading: "Domestic Violence",
+          //         squareContainerbody:
+          //             "Domestic violence makes no distinctions. It affects people of all sexes, ages, and socioeconomic backgrounds. The home should be a place of safety, not dread and violence. Don't suffer in silence.",
+          //         imageUrl: 'assests/images/dom_violance.jpg',
+          //       ),
+          //       SizedBox(
+          //         width: screenSize.width / 20,
+          //       ),
+          //       const SquareContainer(
+          //         squareContainerHeading: "Contested Divorce",
+          //         squareContainerbody:
+          //             "Contested divorce is about more than simply defending your rights; it's also about building a brighter future for you. Keep your eyes on that goal and remain focused.",
+          //         imageUrl: 'assests/images/divorce.jpg',
+          //       ),
+          //       SizedBox(
+          //         width: screenSize.width / 20,
+          //       ),
+          //       const SquareContainer(
+          //         squareContainerHeading: "Child Custody",
+          //         squareContainerbody:
+          //             "Child custody is much more than just legal rights; it's about providing your child with a secure and supportive environment. Maintain your focus to get the finest results, and remember that you are not alone.",
+          //         imageUrl: 'assests/images/child_custody.jpg',
+          //       ),
+          //       SizedBox(
+          //         width: screenSize.width / 20,
+          //       ),
+          //       const SquareContainer(
+          //         squareContainerHeading: "Marriage",
+          //         squareContainerbody:
+          //             "We help couples from start to finish in their quest for court marriage-from preparing notice of marriage to file for an order for police protection.",
+          //         imageUrl: 'assests/images/marrage_pic.jpg',
+          //       )
+          //     ],
+          //   ),
+          // ),
+          // Padding(
+          //   padding: EdgeInsets.only(
+          //     top: screenSize.width / 25,
+          //     bottom: screenSize.width / 25,
+          //   ),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.center,
+          //     children: [
+          //       const SquareContainer(
+          //         squareContainerHeading: "Family Court",
+          //         squareContainerbody:
+          //             "The appeal from family courts lies directly to the High Court within 30 days of passing the order or the judgement. Such The appeal can be on both question of law and question of fact. No appeal lies against an order which is passed with the consent of the parties",
+          //         imageUrl: 'assests/images/family_court.jpeg',
+          //       ),
+          //       SizedBox(
+          //         width: screenSize.width / 20,
+          //       ),
+          //       const SquareContainer(
+          //         squareContainerHeading: "Mediation",
+          //         squareContainerbody:
+          //             "Mediation is an excellent choice for matrimonial disputes, especially those involving child custody, support, and other issues. Section 914 of the Family Courts Act allows the Family Court to make fair efforts to settle matrimonial disputes, and Counselors' assist the Family Court in this effort.",
+          //         imageUrl: 'assests/images/mediation.jpg',
+          //       ),
+          //       SizedBox(
+          //         width: screenSize.width / 20,
+          //       ),
+          //       const SquareContainer(
+          //         squareContainerHeading: "Maintanance",
+          //         squareContainerbody:
+          //             "The couple must decide by the agreement whether maintenance will be paid to or received by any spouse in case of a divorce by mutual consent. In these situations, the husband may give alimony or maintenance to the wife or vice versa, depending on the agreement. By the couple's contract, the court grants a divorce.",
+          //         imageUrl: 'assests/images/maintanance.jpg',
+          //       ),
+          //       SizedBox(
+          //         width: screenSize.width / 20,
+          //       ),
+          //       const SquareContainer(
+          //         squareContainerHeading: "Family Councelling",
+          //         squareContainerbody:
+          //             "Family counselling is a type of social work that helps families address and resolve issues. It can be useful for couples who are struggling, or for families with children who are experiencing behavioural or emotional problems. Family counselling can also help to improve communication within the family unit.",
+          //         imageUrl: 'assests/images/family_counceling.jpg',
+          //       )
+          //     ],
+          //   ),
+          // ),
+          // SizedBox(
+          //   //................................. OUR TEAM
+          //   height: 400,
+          //   child: Padding(
+          //     padding: const EdgeInsets.only(bottom: 20),
+          //     child: Row(
+          //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //       children: [
+          //         SizedBox(
+          //             height: 400,
+          //             width: 600,
+          //             child: Center(
+          //               child: GooglePoppinsWidgets(
+          //                 text: "OUR TEAM",
+          //                 fontsize: 50,
+          //                 color: cWhite,
+          //               ),
+          //             )),
+          //         Container(
+          //           color: Colors.amber,
+          //           height: 300,
+          //           width: 01,
+          //         ),
+          //         SizedBox(
+          //             height: 400,
+          //             width: 600,
+          //             child: Image.asset(
+          //               'assests/images/group_photo.jpeg',
+          //               fit: BoxFit.fill,
+          //             )),
+          //       ],
+          //     ),
+          //   ),
+          // ),
+          // SizedBox(
+          //   // color: Colors.black,
+          //   height: 500,
+          //   // width: 600,
+          //   child: ListView.separated(
+          //       physics: const AlwaysScrollableScrollPhysics(),
+          //       // shrinkWrap: true,
+          //       scrollDirection: Axis.horizontal,
+          //       controller: sscrollcontroller,
+          //       itemBuilder: (context, index) {
+          //         return SizedBox(
+          //           height: 400,
+          //           width: 400,
+          //           child: Column(
+          //             children: [
+          //               Image.asset(
+          //                 persionPhotos[index],
+          //                 fit: BoxFit.cover,
+          //               ),
+          //               GooglePoppinsWidgets(
+          //                 text: "",
+          //                 fontsize: 15,
+          //                 fontWeight: FontWeight.bold,
+          //               )
+          //             ],
+          //           ),
+          //         );
+          //       },
+          //       separatorBuilder: (context, index) {
+          //         return const SizedBox(
+          //           width: 20,
+          //         );
+          //       },
+          //       itemCount: persionPhotos.length),
+          // ),
           const Divider(
             height: 01,
             // thickness: 01,
@@ -792,12 +471,15 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+
+
+
+
 List<String> persionPhotos = [
   'assests/images/persion_4.jpeg',
   'assests/images/persion_2.jpeg',
   'assests/images/persion_1.jpeg',
   'assests/images/persion_3.jpeg',
-  
 ];
 List<String> persion_text = [''];
 

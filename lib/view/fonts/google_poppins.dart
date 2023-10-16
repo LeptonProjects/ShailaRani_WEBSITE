@@ -8,11 +8,13 @@ class GooglePoppinsWidgets extends StatelessWidget {
   double fontsize;
   FontWeight? fontWeight;
   Color? color;
+  double?textScaleFactor;
   GooglePoppinsWidgets({
     required this.text,
     required this.fontsize,
     this.fontWeight,
     this.color,
+    this.textScaleFactor,
     super.key,
   });
 
@@ -25,7 +27,9 @@ class GooglePoppinsWidgets extends StatelessWidget {
         fontSize: fontsize,
         fontWeight: fontWeight,
         color: color,
+      
       ),
+        textScaleFactor: textScaleFactor,
     );
   }
 }
