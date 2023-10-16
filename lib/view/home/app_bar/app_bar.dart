@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
-import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/home/login_button/login_button.dart';
 import 'package:shaila_rani_website/view/widgets/responsive/responsive.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -78,14 +77,14 @@ class ResponsiveMobileAppBar extends StatelessWidget {
                         'assests/images/advo_logo_new.png',
                         fit: BoxFit.contain,
                         color: Colors.white,
-                        height: ResponsiveWebSite.isMobile(context)?70: 90,
+                        height: ResponsiveWebSite.isMobile(context) ? 70 : 90,
                         width: 120,
                       ),
                     ],
                   ),
                   // Column(
                   //   children: [
-             
+
                   //     GooglePoppinsWidgets(
                   //       text: "Shaila Rani Association",
                   //       fontsize: screenWidth / 90,
@@ -277,7 +276,7 @@ class MobNumber02 extends StatelessWidget {
       style: GoogleFonts.poppins(
           // themeColorBlue,
           color: cWhite,
-          fontSize:ResponsiveWebSite.isMobile(context)?09: 12,
+          fontSize: ResponsiveWebSite.isMobile(context) ? 09 : 12,
           fontWeight: FontWeight.w400),
     );
   }
