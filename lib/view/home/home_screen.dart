@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/home/app_bar/app_bar.dart';
 import 'package:shaila_rani_website/view/home/footer/footer.dart';
 import 'package:shaila_rani_website/view/home/footer/widgets/copyright_widget.dart';
 import 'package:shaila_rani_website/view/home/widgets/HomeMainImage_widget/homeImage_section_widget.dart';
-import 'package:shaila_rani_website/view/home/widgets/hover_mouse/hover_text.dart';
 import 'package:shaila_rani_website/view/home/widgets/shaila_rani_ReadMore_widger/shaila_rani_ReadMore.dart';
-import 'package:shaila_rani_website/view/widgets/responsive/responsive.dart';
 
 class HomeScreen extends StatelessWidget {
   final ScrollController sscrollcontroller = ScrollController();
