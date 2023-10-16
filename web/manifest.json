@@ -1,11 +1,11 @@
 {
-    "name": "shaila_rani_website",
-    "short_name": "shaila_rani_website",
+    "name": "Adv Shaila Rani Associates",
+    "short_name": "Adv Shaila Rani Associates",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Shila Rani & Associates is a prestigious multinational law firm specializing in family and divorce law",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
