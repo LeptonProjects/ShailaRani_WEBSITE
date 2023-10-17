@@ -18,8 +18,8 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
-                height: screenSize.width / 4,
-                width: screenSize.width / 4,
+                 width:screenSize.width/3,
+                height: 300,
                 decoration: const BoxDecoration(
                   color: Colors.transparent,
                   //border: Border.all(width: 1,color: Colors.white,)
@@ -73,8 +73,8 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                 ),
               ),
               Container(
-                height: screenSize.width / 4,
-                width: screenSize.width / 4,
+                width:screenSize.width/3,
+                height: 300,
                 decoration: const BoxDecoration(
                   color: Colors.transparent,
                   //border: Border.all(width: 1,color: Colors.white,)
@@ -150,123 +150,130 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                   thickness: 1,
                 ),
               ),
-              Container(
-                width: 400,
-                height: 300,
-                color: Colors.transparent,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GooglePoppinsWidgets(
-                        text: 'Our Office Address',
-                        fontsize: 15,
-                        color: cWhite,
-                        fontWeight: FontWeight.w700,
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            height: 100,
-                            width: 200,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                GooglePoppinsWidgets(
-                                  text: 'TRIVANDRUM OFFICE',
-                                  fontsize: 12,
-                                  color: cWhite,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                                GooglePoppinsWidgets(
-                                  text:
-                                      '5th Floor, Karimpanal Statue Avenue,Near\nSecretariat Trivandrum-01\n Call +91 9562377604',
-                                  fontsize: 11,
-                                  color: cWhite,
-                                  // fontWeight: FontWeight.w500,
-                                ),
-                              ],
-                            ),
+              Expanded(
+                child: Container(
+                  width: screenSize.width/3,
+                  height: 300,
+                  color: Colors.transparent,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 50),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20,left: 80),
+                          child: GooglePoppinsWidgets(
+                            text: 'Our Office Address',
+                            fontsize: 15,
+                            color: cWhite,
+                            fontWeight: FontWeight.w700,
                           ),
-                          SizedBox(
-                            height: 100,
-                            width: 200,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                GooglePoppinsWidgets(
-                                  text: 'ERNAKULAM OFFICE',
-                                  fontsize: 12,
-                                  color: cWhite,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                                GooglePoppinsWidgets(
-                                  text:
-                                      'Balaji Building,Room \nNo:GE Road,\nNear MG Metro,Ernakulam',
-                                  fontsize: 11,
-                                  color: cWhite,
-                                  // fontWeight: FontWeight.w500,
-                                ),
-                              ],
+                        ),
+                        ///
+                        Row(
+                          children: [
+                            SizedBox(
+                              height: 100,
+                              width: 200,
+                              child: Column(
+                                 mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  GooglePoppinsWidgets(
+                                    text: 'TRIVANDRUM OFFICE',
+                                    fontsize: 12,
+                                    color: cWhite,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                  GooglePoppinsWidgets(
+                                    text:
+                                        '5th Floor, Karimpanal Statue Avenue,Near\nSecretariat Trivandrum-01\n Call +91 9562377604',
+                                    fontsize: 11,
+                                    color: cWhite,
+                                    // fontWeight: FontWeight.w500,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            height: 100,
-                            width: 200,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                GooglePoppinsWidgets(
-                                  text: 'BANGALORE OFFICE',
-                                  fontsize: 12,
-                                  color: cWhite,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                                GooglePoppinsWidgets(
-                                  text:
-                                      'No: 326, 2nd Floor,\n 2nd B Cross, Banaswadi\nBanglore',
-                                  fontsize: 11,
-                                  color: cWhite,
-                                  // fontWeight: FontWeight.w500,
-                                ),
-                              ],
+                            SizedBox(
+                              height: 100,
+                              width: 200,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  GooglePoppinsWidgets(
+                                    text: 'ERNAKULAM OFFICE',
+                                    fontsize: 12,
+                                    color: cWhite,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                  GooglePoppinsWidgets(
+                                    text:
+                                        'Balaji Building,Room \nNo:GE Road,\nNear MG Metro,Ernakulam',
+                                    fontsize: 11,
+                                    color: cWhite,
+                                    // fontWeight: FontWeight.w500,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 100,
-                            width: 200,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                GooglePoppinsWidgets(
-                                  text: 'CHENNAI OFFICE',
-                                  fontsize: 12,
-                                  color: cWhite,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                                GooglePoppinsWidgets(
-                                  text:
-                                      'T.Shanmu Pillai(Advocate),\n No:25 Law Chamber Madras High Court,\nChennai-104',
-                                  fontsize: 11,
-                                  color: cWhite,
-                                  // fontWeight: FontWeight.w500,
-                                ),
-                              ],
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            SizedBox(
+                              height: 100,
+                              width: 200,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  GooglePoppinsWidgets(
+                                    text: 'BANGALORE OFFICE',
+                                    fontsize: 12,
+                                    color: cWhite,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                  GooglePoppinsWidgets(
+                                    text:
+                                        'No: 326, 2nd Floor,\n 2nd B Cross, Banaswadi\nBanglore',
+                                    fontsize: 11,
+                                    color: cWhite,
+                                    // fontWeight: FontWeight.w500,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      )
-                    ],
+                            SizedBox(
+                              height: 100,
+                              width: 200,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  GooglePoppinsWidgets(
+                                    text: 'CHENNAI OFFICE',
+                                    fontsize: 12,
+                                    color: cWhite,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                  GooglePoppinsWidgets(
+                                    text:
+                                        'No:25 Law Chamber \nMadras High Court,\nChennai-104',
+                                    fontsize: 11,
+                                    color: cWhite,
+                                    // fontWeight: FontWeight.w500,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               )
@@ -302,7 +309,7 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                                 Text(
                                   "Don't Hesitate to Ask ",
                                   style: TextStyle(
-                                      fontSize: screenSize.width / 50,
+                                      fontSize:ResponsiveWebSite.isMobile(context)?screenSize.width/40: screenSize.width / 50,
                                       color: cWhite),
                                 ),
                                 SizedBox(
@@ -314,15 +321,15 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                                             width: 1,
                                             color: const Color(0xFFCE8F2E))),
                                     padding: EdgeInsets.only(
-                                        left: screenSize.width / 100,
+                                        left: ResponsiveWebSite.isMobile(context)?screenSize.width/70: screenSize.width / 100,
                                         top: 5,
                                         bottom: 5,
-                                        right: screenSize.width / 100),
+                                        right: ResponsiveWebSite.isMobile(context)?screenSize.width/70: screenSize.width / 100),
                                     child: Text(
                                       "Fix Appointment",
                                       style: TextStyle(
                                           color: cWhite,
-                                          fontSize: screenSize.width / 100),
+                                          fontSize:ResponsiveWebSite.isMobile(context)?screenSize.width/70: screenSize.width / 100),
                                     )),
                               ],
                             ),
@@ -422,7 +429,7 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                             child: Text(
                               "Emergency contacts",
                               style: TextStyle(
-                                  fontSize: screenSize.width / 50,
+                                  fontSize:ResponsiveWebSite.isMobile(context)?screenSize.width/40: screenSize.width / 50,
                                   color: cWhite),
                             ),
                           ),
@@ -441,7 +448,7 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                                 "+91-123456789",
                                 style: TextStyle(
                                   color: cWhite,
-                                  fontSize: screenSize.width/75),
+                                  fontSize:ResponsiveWebSite.isMobile(context)?9: screenSize.width/75),
                               ),
                             ],
                           ),
@@ -456,7 +463,7 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                                Text(
                                 "info@shailaraniassociates.com",
                                 style: TextStyle(
-                                  fontSize: screenSize.width/75,
+                                  fontSize: ResponsiveWebSite.isMobile(context)?9:screenSize.width/75,
                                   color: Colors.white,
                                 ),
                               ),
@@ -468,8 +475,8 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                                 children: [
                                   Image.asset(
                                     "assests/images/whatsApp_image-removebg-preview.png",
-                                    height: screenSize.width / 15,
-                                    width: screenSize.width / 10,
+                                    height:ResponsiveWebSite.isMobile(context)?screenSize.width/13: screenSize.width / 15,
+                                    width: ResponsiveWebSite.isMobile(context)?screenSize.width/8:screenSize.width / 10,
                                   ),
                                 ],
                               ),
@@ -503,16 +510,17 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                         Center(
                           child: GooglePoppinsWidgets(
                             text: 'Our Office Address',
-                            fontsize: 15,
+                            fontsize: ResponsiveWebSite.isMobile(context) ? 12: 15,
                             color: cWhite,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
-                        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             SizedBox(
-                              height: 100,
-                              width: 200,
+                              height: screenSize.height/8,
+                              width: screenSize.width/4,
                               child: Column(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -520,14 +528,14 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                                 children: [
                                   GooglePoppinsWidgets(
                                     text: 'TRIVANDRUM OFFICE',
-                                    fontsize: 12,
+                                    fontsize:ResponsiveWebSite.isMobile(context)?10 : 12,
                                     color: cWhite,
                                     fontWeight: FontWeight.w500,
                                   ),
                                   GooglePoppinsWidgets(
                                     text:
                                         '5th Floor, Karimpanal Statue Avenue,Near\nSecretariat Trivandrum-01\n Call +91 9562377604',
-                                    fontsize: 11,
+                                    fontsize:ResponsiveWebSite.isMobile(context) ? 7: 11,
                                     color: cWhite,
                                     // fontWeight: FontWeight.w500,
                                   ),
@@ -535,8 +543,8 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              height: 100,
-                              width: 200,
+                              height: screenSize.height/8,
+                              width: screenSize.width/4,
                               child: Column(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -544,14 +552,14 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                                 children: [
                                   GooglePoppinsWidgets(
                                     text: 'ERNAKULAM OFFICE',
-                                    fontsize: 12,
+                                    fontsize: ResponsiveWebSite.isMobile(context)?10 : 12,
                                     color: cWhite,
                                     fontWeight: FontWeight.w500,
                                   ),
                                   GooglePoppinsWidgets(
                                     text:
                                         'Balaji Building,Room \nNo:GE Road,\nNear MG Metro,Ernakulam',
-                                    fontsize: 11,
+                                    fontsize: ResponsiveWebSite.isMobile(context) ? 7: 11,
                                     color: cWhite,
                                     // fontWeight: FontWeight.w500,
                                   ),
@@ -563,8 +571,8 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                         Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             SizedBox(
-                              height: 100,
-                              width: 200,
+                               height: screenSize.height/8,
+                              width: screenSize.width/4,
                               child: Column(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -572,14 +580,14 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                                 children: [
                                   GooglePoppinsWidgets(
                                     text: 'BANGALORE OFFICE',
-                                    fontsize: 12,
+                                    fontsize: ResponsiveWebSite.isMobile(context)?10 : 12,
                                     color: cWhite,
                                     fontWeight: FontWeight.w500,
                                   ),
                                   GooglePoppinsWidgets(
                                     text:
                                         'No: 326, 2nd Floor,\n 2nd B Cross, Banaswadi\nBanglore',
-                                    fontsize: 11,
+                                    fontsize: ResponsiveWebSite.isMobile(context) ? 7: 11,
                                     color: cWhite,
                                     // fontWeight: FontWeight.w500,
                                   ),
@@ -587,8 +595,8 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              height: 100,
-                              width: 200,
+                              height: screenSize.height/8,
+                              width: screenSize.width/4,
                               child: Column(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -596,14 +604,14 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                                 children: [
                                   GooglePoppinsWidgets(
                                     text: 'CHENNAI OFFICE',
-                                    fontsize: 12,
+                                    fontsize: ResponsiveWebSite.isMobile(context)?10 : 12,
                                     color: cWhite,
                                     fontWeight: FontWeight.w500,
                                   ),
                                   GooglePoppinsWidgets(
                                     text:
-                                        'T.Shanmu Pillai(Advocate),\n No:25 Law Chamber Madras High Court,\nChennai-104',
-                                    fontsize: 11,
+                                        'No:25 Law Chamber \nMadras High Court,\nChennai-104',
+                                    fontsize: ResponsiveWebSite.isMobile(context) ? 7: 11,
                                     color: cWhite,
                                     // fontWeight: FontWeight.w500,
                                   ),
