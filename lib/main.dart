@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shaila_rani_website/view/home/main_screen.dart';
 import 'firebase_options.dart';
-
+import 'dart:html' as html; // Import the 'html' package
 Future<void> main() async{
+   html.document.title = 'Adv. Shaila Rani';
   WidgetsFlutterBinding.ensureInitialized();
 await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
