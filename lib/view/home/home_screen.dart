@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
           HomeMainImageScreenWidget(screenSize: screenSize),  /// Main Image Screen Section >>>>>>>>>>>>>>>
 
           const ShailaRaniReadMoreContainerWidget(), // Read More Section >>>>>>>>>
-          // ContactAndDeatilsContainerWidget(screenSize: screenSize),
+          ContactAndDeatilsContainerWidget(screenSize: screenSize),
           const OurPracticesContainerWidget(),
           OurTeamContainerWidget(sscrollcontroller: sscrollcontroller),
 
