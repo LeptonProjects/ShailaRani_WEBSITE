@@ -21,7 +21,7 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                  width:screenSize.width/3,
                 height: 300,
                 decoration: const BoxDecoration(
-                  color: Colors.transparent,
+             
                   //border: Border.all(width: 1,color: Colors.white,)
                 ),
                 child: Center(
@@ -226,7 +226,7 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                           children: [
                             SizedBox(
                               height: 100,
-                              width: 200,
+                              width: 180,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -249,7 +249,7 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                             ),
                             SizedBox(
                               height: 100,
-                              width: 200,
+                              width: 180,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,

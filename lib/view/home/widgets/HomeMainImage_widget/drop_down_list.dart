@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:joy_dropdowns/joy_dropdowns.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
+import 'package:shaila_rani_website/view/home/widgets/hover_mouse/hover_text.dart';
 import 'package:shaila_rani_website/view/widgets/responsive/responsive.dart';
 
 class ServicesDropDownList extends StatelessWidget {
@@ -38,12 +39,19 @@ class ServicesDropDownList extends StatelessWidget {
           ),
         ),
       ),
-      child: Center(
-        child: GooglePoppinsWidgets(
-          text: "Services",
-          fontsize: 12,
-          color: cWhite,
-        ),
+      child: OnHoverTextForHeader(
+        builder: (isHoverd) {
+                   final colorr = isHoverd
+                    ? const Color.fromARGB(255, 192, 145, 128)
+                    : cWhite;
+          return Center(
+            child: GooglePoppinsWidgets(
+              text: "Services",
+              fontsize: 12,
+              color: colorr,
+            ),
+          );
+        }
       ),
     );
   }
