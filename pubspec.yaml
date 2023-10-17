@@ -51,6 +51,7 @@ dependencies:
   popover:
   dropdown_search: 
   get: 
+  joy_dropdowns:
   url_launcher:
   sidebar_drawer: ^0.0.1+2
 dev_dependencies:
