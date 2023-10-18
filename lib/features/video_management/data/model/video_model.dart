@@ -2,12 +2,14 @@ import 'package:equatable/equatable.dart';
 import 'package:shaila_rani_website/features/video_management/domain/entity/video_entity.dart';
 
 class VideoModel extends Equatable {
+  final String? id;
   final String? url;
   final String? title;
   final String? subtitle;
   final String? description;
-  final String? uploadedDate;
+  final int? uploadedDate;
   final String? thumbnailurl;
+  final int? createdAt;
 
   const VideoModel({
     required this.url,
@@ -16,6 +18,8 @@ class VideoModel extends Equatable {
     required this.description,
     required this.uploadedDate,
     required this.thumbnailurl,
+    required this.createdAt,
+    required this.id,
   });
   @override
   List<Object?> get props => [
@@ -25,17 +29,20 @@ class VideoModel extends Equatable {
         description,
         uploadedDate,
         thumbnailurl,
+        createdAt,
+        id,
       ];
 
   factory VideoModel.fromJson(Map<String, dynamic> json) {
     return VideoModel(
-      url: json["url"] ?? "",
-      title: json["title"] ?? "",
-      subtitle: json["subtitle"] ?? "",
-      description: json["description"] ?? "",
-      uploadedDate: json["uploadedDate"] ?? "",
-      thumbnailurl: json["thumbnailurl"] ?? "",
-    );
+        url: json["url"] ?? "",
+        title: json["title"] ?? "",
+        subtitle: json["subtitle"] ?? "",
+        description: json["description"] ?? "",
+        uploadedDate: json["uploadedDate"] ?? -1,
+        thumbnailurl: json["thumbnailurl"] ?? "",
+        createdAt: json["createdAt"] ?? -1,
+        id: json["id"] ?? "");
   }
 
   Map<String, dynamic> toJson() {
@@ -46,6 +53,8 @@ class VideoModel extends Equatable {
       "description": description,
       "uploadedDate": uploadedDate,
       "thumbnailurl": thumbnailurl,
+      "createdAt": createdAt,
+      "id": id,
     };
   }
 
@@ -55,8 +64,10 @@ class VideoModel extends Equatable {
       title: title ?? "",
       subtitle: subtitle ?? "",
       description: description ?? "",
-      uploadedDate: uploadedDate ?? "",
+      uploadedDate: uploadedDate ?? -1,
       thumbnailurl: thumbnailurl ?? "",
+      createdAt: createdAt ?? -1,
+      id: id ?? "",
     );
   }
 
@@ -68,6 +79,30 @@ class VideoModel extends Equatable {
       description: video.description,
       uploadedDate: video.uploadedDate,
       thumbnailurl: video.thumbnailurl,
+      createdAt: video.createdAt,
+      id: video.id,
+    );
+  }
+
+  VideoModel copyWith({
+    String? id,
+    String? url,
+    String? title,
+    String? subtitle,
+    String? description,
+    int? uploadedDate,
+    String? thumbnailurl,
+    int? createdAt,
+  }) {
+    return VideoModel(
+      id: id ?? this.id,
+      url: url ?? this.url,
+      title: title ?? this.title,
+      subtitle: subtitle ?? this.subtitle,
+      description: description ?? this.description,
+      uploadedDate: uploadedDate ?? this.uploadedDate,
+      thumbnailurl: thumbnailurl ?? this.thumbnailurl,
+      createdAt: createdAt ?? this.createdAt,
     );
   }
 }

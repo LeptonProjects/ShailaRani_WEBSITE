@@ -23,4 +23,4 @@ final class VideoManagerError extends VideoManagerState {
   const VideoManagerError({required this.failure});
 }
 
-final class VideoManagerCreatedSuccess extends VideoManagerState {}
+

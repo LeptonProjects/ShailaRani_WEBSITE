@@ -1,8 +1,4 @@
-// ignore_for_file: must_be_immutable
-
-import 'package:flutter/material.dart';
-import 'package:shaila_rani_website/view/colors/colors.dart';
-import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
+import 'widgets/video_widgets.dart';
 
 class VideoManageMentHomeScreen extends StatelessWidget {
   const VideoManageMentHomeScreen({super.key});
@@ -33,6 +29,10 @@ class VideoManageMentHomeScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 20, top: 10),
                       child: GestureDetector(
+                        onTap: () => createVideoDialogue(
+                          context: context,
+                          video: VideoEntity.empty(),
+                        ),
                         child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
@@ -62,7 +62,7 @@ class VideoManageMentHomeScreen extends StatelessWidget {
                 child: const Column(
                   children: [
                     VideoListHeaderWidget(), // DropDown --- Active List / In Active
-                    ListOFVideoScreen()
+                    ListOfVideoWidget()
                   ],
                 ),
               ),
@@ -74,117 +74,10 @@ class VideoManageMentHomeScreen extends StatelessWidget {
   }
 }
 
-class VideoListHeaderWidget extends StatelessWidget {
-  const VideoListHeaderWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: 45,
-          decoration: BoxDecoration(
-              color: Colors.blue.withOpacity(0.1),
-              border: Border.all(color: cGrey)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              HeaderRowTextWidgetVideo(
-                title: 'No',
-              ),
-              HeaderRowTextWidgetVideo(
-                title: clientSecTe[0],
-              ),
-              HeaderRowTextWidgetVideo(
-                title: clientSecTe[1],
-              ),
-              HeaderRowTextWidgetVideo(
-                title: clientSecTe[2],
-              ),
-              HeaderRowTextWidgetVideo(
-                title: clientSecTe[3],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: HeaderRowTextWidgetVideo(
-                  title: clientSecTe[4],
-                ),
-              )
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-List<String> clientSecTe = [
-  'Thumbnail',
-  'Title',
-  'Subtitle',
-  'Description',
-  'Uploaded Date',
-];
-
-class ListOFVideoScreen extends StatelessWidget {
-  const ListOFVideoScreen({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.separated(
-          itemBuilder: (context, index) {
-            return SizedBox(
-              height: 50,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ListDataContainerWidgetVideo(
-                    text: '1',
-                    height: 40,
-                  ),
-                  ListDataContainerWidgetVideo(
-                    text: '952627',
-                    height: 40,
-                  ),
-                  ListDataContainerWidgetVideo(
-                    text: 'Abinjohn',
-                    height: 40,
-                  ),
-                  ListDataContainerWidgetVideo(
-                    text: 'Manger post',
-                    height: 40,
-                  ),
-                  ListDataContainerWidgetVideo(
-                    text: '+91 8089262564',
-                    height: 40,
-                  ),
-                  ListDataContainerWidgetVideo(
-                    text: '23-05-2000',
-                    height: 40,
-                  ),
-                ],
-              ),
-            );
-          },
-          separatorBuilder: (context, index) {
-            return const SizedBox(
-              height: 05,
-            );
-          },
-          itemCount: 10),
-    );
-  }
-}
-
 class ListDataContainerWidgetVideo extends StatelessWidget {
-  String text;
-  double height;
-  ListDataContainerWidgetVideo({
+  final String text;
+  final double height;
+  const ListDataContainerWidgetVideo({
     required this.text,
     required this.height,
     super.key,
@@ -202,30 +95,6 @@ class ListDataContainerWidgetVideo extends StatelessWidget {
           fontsize: 12,
         ),
       ),
-    );
-  }
-}
-
-class HeaderRowTextWidgetVideo extends StatelessWidget {
-  String title;
-
-  HeaderRowTextWidgetVideo({
-    required this.title,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 40,
-      width: 200,
-      child: Center(
-          child: GooglePoppinsWidgets(
-        text: title,
-        textAlign: TextAlign.center,
-        fontsize: 12,
-        fontWeight: FontWeight.w600,
-      )),
     );
   }
 }

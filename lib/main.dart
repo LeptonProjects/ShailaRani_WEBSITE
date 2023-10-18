@@ -1,7 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shaila_rani_website/features/video_management/presentation/bloc/video_creator/video_creator_bloc.dart';
+import 'package:shaila_rani_website/features/video_management/presentation/bloc/video_manager/video_manager_bloc.dart';
 import 'package:shaila_rani_website/injection_container.dart';
 import 'package:shaila_rani_website/view/home/main_screen.dart';
+
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -19,10 +23,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Adv Shaila Rani Associates',
-      debugShowCheckedModeBanner: false,
-      home: MainScreen(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<VideoManagerBloc>(
+            create: (context) =>
+                sl<VideoManagerBloc>()..add(VideoManagerFetchEvent())),
+        BlocProvider<VideoCreatorBloc>(
+            create: (context) => sl<VideoCreatorBloc>()),
+      ],
+      child: const MaterialApp(
+        title: 'Adv Shaila Rani Associates',
+        debugShowCheckedModeBanner: false,
+        home: MainScreen(),
+      ),
     );
   }
 }

@@ -1,12 +1,14 @@
 import 'package:equatable/equatable.dart';
 
 class VideoEntity extends Equatable {
+  final String id;
   final String url;
   final String title;
   final String subtitle;
   final String description;
-  final String uploadedDate;
+  final int uploadedDate;
   final String thumbnailurl;
+  final int createdAt;
 
   const VideoEntity({
     required this.url,
@@ -15,7 +17,21 @@ class VideoEntity extends Equatable {
     required this.description,
     required this.uploadedDate,
     required this.thumbnailurl,
+    required this.createdAt,
+    required this.id,
   });
+
+  factory VideoEntity.empty() {
+    return const VideoEntity(
+        url: "",
+        title: "",
+        subtitle: "",
+        description: "",
+        uploadedDate: -1,
+        thumbnailurl: "",
+        createdAt: -1,
+        id: "");
+  }
   @override
   List<Object?> get props => [
         url,
@@ -24,5 +40,7 @@ class VideoEntity extends Equatable {
         description,
         uploadedDate,
         thumbnailurl,
+        createdAt,
+        id,
       ];
 }
