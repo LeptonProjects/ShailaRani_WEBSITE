@@ -1,3 +1,4 @@
+import 'package:shaila_rani_website/core/utils/utils.dart';
 import 'package:shaila_rani_website/features/video_management/presentation/bloc/video_creator/video_creator_bloc.dart';
 
 import 'video_widgets.dart';
@@ -12,6 +13,7 @@ Future<void> createVideoDialogue({
   TextEditingController videoDescriptionController = TextEditingController();
   TextEditingController videoDateController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  int? timeStamp;
 
   videoUrlController.text = video.url;
   videoTitleController.text = video.title;
@@ -131,7 +133,15 @@ Future<void> createVideoDialogue({
                             controller: videoDateController,
                             hintText: "Uploaded Date",
                             title: "Uploaded Date",
-                            validator: FormFieldValidation.validateInput,
+                            validator: FormFieldValidation.isDateValid,
+                            onTap: () async {
+                              timeStamp = await AppUtils.selectDate(context);
+                              final String date =
+                                  AppUtils.timeStampToDateString(
+                                      timeStamp: timeStamp ?? -1);
+                              videoDateController.text = date;
+                            },
+                            readOnly: true,
                           ),
                           const SizedBox(
                             height: 10,
@@ -164,9 +174,7 @@ Future<void> createVideoDialogue({
                                   title: videoTitleController.text,
                                   subtitle: videoSubTitleController.text,
                                   description: videoDescriptionController.text,
-                                  uploadedDate:
-                                      int.tryParse(videoDateController.text) ??
-                                          -1,
+                                  uploadedDate: timeStamp ?? -1,
                                   thumbnailurl: imageUrl,
                                   createdAt: -1,
                                   id: "",

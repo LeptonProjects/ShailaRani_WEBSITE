@@ -40,6 +40,7 @@ class VideoFirebaseDataSourceImpl implements VideoFirebaseDataSource {
   @override
   Future<Unit> createVideo(VideoModel videoModel) async {
     final String uid = uuid.v1();
+    videoModel.copyWith(id: uid);
     try {
       videoModel.copyWith(id: uid);
       await firestore

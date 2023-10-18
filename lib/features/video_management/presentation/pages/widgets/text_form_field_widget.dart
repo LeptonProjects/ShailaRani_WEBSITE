@@ -1,5 +1,3 @@
-
-
 import 'video_widgets.dart';
 
 class TextFormFieldVideoWidget extends StatelessWidget {
@@ -10,6 +8,7 @@ class TextFormFieldVideoWidget extends StatelessWidget {
   final String? Function(String?)? validator;
   final Function()? onTap;
   final TextInputType? keyboardType;
+  final bool readOnly;
   const TextFormFieldVideoWidget({
     required this.hintText,
     required this.title,
@@ -18,6 +17,7 @@ class TextFormFieldVideoWidget extends StatelessWidget {
     this.onChanged,
     this.validator,
     this.onTap,
+    this.readOnly = false,
     super.key,
   });
 
@@ -25,6 +25,7 @@ class TextFormFieldVideoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: TextFormField(
+        readOnly: readOnly,
         onChanged: onChanged,
         onTap: onTap,
         validator: validator,
