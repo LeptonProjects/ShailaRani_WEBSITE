@@ -1,14 +1,21 @@
 // ignore_for_file: must_be_immutable
 
+import 'dart:developer';
+
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
+import 'package:shaila_rani_website/view/Login_dashBoard/login_dashBoard.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
+import 'package:shaila_rani_website/view/constant/const.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
-import 'package:shaila_rani_website/view/pages/staff_management/create_employee/create_employee.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/employee_list_screen.dart';
+import 'package:shaila_rani_website/view/pages/staff_management/functions/arrange_priority/arrange_priority.dart';
+import 'package:shaila_rani_website/view/pages/staff_management/functions/create_employee/create_employee.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/widget/headerText_widget.dart';
+
 class StaffHomeScreen extends StatelessWidget {
-  const StaffHomeScreen({super.key});
+
+   const StaffHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +62,28 @@ class StaffHomeScreen extends StatelessWidget {
                     )
                   ],
                 ),
-             
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: GestureDetector(
+                    onTap: (){
+                      arrangeStaffPriority(context);
+                    },
+                    child: Container(
+                      height: 30,
+                      width: 150,
+                      decoration: const BoxDecoration(
+                        color: themeColorBlue,
+                      ),
+                      child: Center(
+                        child: GooglePoppinsWidgets(
+                            text: 'Arrange Priority',
+                            color: cWhite,
+                            fontsize: 12,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -99,8 +127,17 @@ class EmployeeListHeaderWidget extends StatelessWidget {
                     height: 40,
                     width: 200,
                     child: DropdownSearch(
-                      selectedItem: 'Active',
-                      items: const ['Active', 'In Active/Checked-out'],
+                      onChanged: (value) async {
+                        DropdownListActive.activeValue = value ?? 'Active';
+                        log(DropdownListActive.activeValue);
+                        Navigator.pushReplacement(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const LoginDashBoard();
+                          },
+                        ));
+                      },
+                      selectedItem: DropdownListActive.activeValue,
+                      items: const ['Active', 'InActive'],
                     )),
               ),
             ],

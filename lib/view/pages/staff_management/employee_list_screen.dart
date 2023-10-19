@@ -1,4 +1,9 @@
-import 'package:flutter/widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:shaila_rani_website/view/colors/colors.dart';
+import 'package:shaila_rani_website/view/constant/const.dart';
+import 'package:shaila_rani_website/view/pages/staff_management/functions/clickOnStaffContainer/click_OnStaffContainer.dart';
+import 'package:shaila_rani_website/view/pages/staff_management/model/create_employee_model.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/widget/list_dataContainer.dart';
 
 class ListOFStaffScreen extends StatelessWidget {
@@ -8,54 +13,98 @@ class ListOFStaffScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.only(
-            left: 10, right: 10, top: 10, bottom: 10),
-        child: ListView.separated(
-            itemBuilder: (context, index) {
-              return SizedBox(
-                height: 50,
-                child: Row(
-                  mainAxisAlignment:
-                      MainAxisAlignment.spaceBetween,
-                  children: [
-                    ListDataContainerWidget(
-                        text: '1', height: 40, width: 50),
-                    ListDataContainerWidget(
-                        text: '952627', height: 40, width: 200),
-                    ListDataContainerWidget(
-                        text: 'Abinjohn',
-                        height: 40,
-                        width: 200),
-                    ListDataContainerWidget(
-                      text: 'Manger post',
-                      height: 40,
-                      width: 100,
-                    ),
-                    ListDataContainerWidget(
-                        text: '+91 8089262564',
-                        height: 40,
-                        width: 200),
-                    ListDataContainerWidget(
-                        text: 'abinjohn8089@gmail.com',
-                        height: 40,
-                        width: 200),
-                    ListDataContainerWidget(
-                        text: '23-05-2000',
-                        height: 40,
-                        width: 100),
-                  ],
+    return StreamBuilder(
+        stream: FirebaseFirestore.instance
+            .collection('StaffManagement')
+            .doc('StaffManagement')
+            .collection(DropdownListActive.activeValue)
+            .orderBy('employeeName', descending: false)
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            if (snapshot.data!.docs.isEmpty) {
+              return const Padding(
+                padding: EdgeInsets.only(top: 100),
+                child: Center(
+                  child: Text("No Employess found"),
                 ),
               );
-            },
-            separatorBuilder: (context, index) {
-              return const SizedBox(
-                height: 05,
-              );
-            },
-            itemCount: 10),
-      ),
-    );
+            }
+            return Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    left: 10, right: 10, top: 10, bottom: 10),
+                child: ListView.separated(
+                    itemBuilder: (context, index) {
+                      final data = CreateEmployeeClassModel.fromMap(
+                          snapshot.data!.docs[index].data());
+                      return GestureDetector(
+                        onTap: () => detailsShowingFunction(
+                            context: context,
+                            employeeName: data.employeeName,
+                            employeeID: data.employeeID,
+                            mobileNo: data.mobileNo,
+                            whatsAppNo: data.whatsAppNo ?? '',
+                            emailID: data.emailID,
+                            gender: data.gender,
+                            dob: data.dob,
+                            joiningDate: data.joiningDate,
+                            assignRole: data.assignRole,
+                            alMobileNo: data.alMobileNo ?? '',
+                            address: data.address,
+                            city: data.city,
+                            district: data.district,
+                            state: data.state),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: themeColorBlue.withOpacity(0.2),
+                                  width: 0.9)),
+                          height: 50,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              ListDataContainerWidget(
+                                  text: '${index + 1}', height: 40, width: 50),
+                              ListDataContainerWidget(
+                                  text: data.employeeID,
+                                  height: 40,
+                                  width: 200),
+                              ListDataContainerWidget(
+                                  text: data.employeeName,
+                                  height: 40,
+                                  width: 200),
+                              ListDataContainerWidget(
+                                text: data.assignRole,
+                                height: 40,
+                                width: 100,
+                              ),
+                              ListDataContainerWidget(
+                                  text: data.mobileNo, height: 40, width: 200),
+                              ListDataContainerWidget(
+                                  text: data.emailID, height: 40, width: 200),
+                              ListDataContainerWidget(
+                                  text: data.joiningDate,
+                                  height: 40,
+                                  width: 100),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return const SizedBox(
+                        height: 05,
+                      );
+                    },
+                    itemCount: snapshot.data!.docs.length),
+              ),
+            );
+          } else {
+            return const Center(
+              child: CircularProgressIndicator.adaptive(),
+            );
+          }
+        });
   }
 }

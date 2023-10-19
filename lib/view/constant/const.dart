@@ -15,3 +15,6 @@ void showToast({required String msg}) {
     fontSize: 16.0,
   );
 }
+class DropdownListActive{
+  static  String activeValue = 'Active';
+}

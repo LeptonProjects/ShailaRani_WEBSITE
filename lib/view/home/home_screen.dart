@@ -24,7 +24,9 @@ class HomeScreen extends StatelessWidget {
           child: ResponsiveMobileAppBar()),
       body: ListView(
         children: [
-          HomeMainImageScreenWidget(screenSize: screenSize),  /// Main Image Screen Section >>>>>>>>>>>>>>>
+          HomeMainImageScreenWidget(screenSize: screenSize),
+
+          /// Main Image Screen Section >>>>>>>>>>>>>>>
 
           const ShailaRaniReadMoreContainerWidget(), // Read More Section >>>>>>>>>
           const ContactAndDeatilsWidget(),

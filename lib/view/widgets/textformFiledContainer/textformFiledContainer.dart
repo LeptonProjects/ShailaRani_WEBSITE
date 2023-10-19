@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 
 import '../../colors/colors.dart';
@@ -11,9 +12,9 @@ class TextFormFiledContainerWidget extends StatelessWidget {
   final String hintText;
   final double width;
   Function(String)? onChanged;
-  Iterable<String>?autofillHints;
+  Iterable<String>? autofillHints;
   String? Function(String?)? validator;
-   Function()? onTap;
+  Function()? onTap;
   TextInputType? keyboardType;
   TextFormFiledContainerWidget({
     required this.hintText,
@@ -23,9 +24,8 @@ class TextFormFiledContainerWidget extends StatelessWidget {
     this.controller,
     this.autofillHints,
     this.onChanged,
-
+    this.validator,
     this.onTap,
-  
     super.key,
   });
 
@@ -43,13 +43,29 @@ class TextFormFiledContainerWidget extends StatelessWidget {
             height: 35,
             width: width,
             child: TextFormField(
-              onChanged:onChanged ,
-              autofillHints:autofillHints ,
+              style: GoogleFonts.poppins(fontSize: 12),
+              onChanged: onChanged,
+              autofillHints: autofillHints,
               onTap: onTap,
               validator: validator,
               keyboardType: keyboardType,
               controller: controller,
               decoration: InputDecoration(
+                errorBorder: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(4)),
+                    borderSide: BorderSide(
+                      width: 1,
+                      style: BorderStyle.none,
+                      color: Colors.red,
+                    )),
+                focusedErrorBorder: const OutlineInputBorder(
+                  // borderRadius: BorderRadius.all(Radius.circular(4)),
+                  borderSide: BorderSide(
+                    width: 1,
+                    style: BorderStyle.none,
+                    color: Colors.red,
+                  ),
+                ),
                 contentPadding: const EdgeInsets.all(8.0),
                 enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(width: 0.4)),

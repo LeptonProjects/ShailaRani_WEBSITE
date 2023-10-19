@@ -46,7 +46,7 @@ class _DashBoardHomeScreenState extends State<DashBoardHomeScreen> {
 }
 
 List<Widget> pages = [
- const StaffHomeScreen(),
+  StaffHomeScreen(),
   Container(
     child: Center(
       child: Text(sideMenu[1]),
