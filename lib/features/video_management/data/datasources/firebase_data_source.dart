@@ -12,6 +12,7 @@ abstract class VideoFirebaseDataSource {
   Future<List<VideoModel>> getVideos();
   Future<Unit> createVideo(VideoModel videoModel);
   Future<String> uploadImage(Uint8List image);
+  Future<Unit> deleteVideo(String id);
 }
 
 class VideoFirebaseDataSourceImpl implements VideoFirebaseDataSource {
@@ -40,13 +41,16 @@ class VideoFirebaseDataSourceImpl implements VideoFirebaseDataSource {
   @override
   Future<Unit> createVideo(VideoModel videoModel) async {
     final String uid = uuid.v1();
-    videoModel.copyWith(id: uid);
+    final int date = DateTime.now().millisecondsSinceEpoch;
     try {
-      videoModel.copyWith(id: uid);
+      final video = videoModel.copyWith(
+        id: uid,
+        createdAt: date,
+      );
       await firestore
           .collection("VideoManagement")
           .doc(uid)
-          .set(videoModel.toJson());
+          .set(video.toJson());
       return unit;
     } catch (e) {
       log(e.toString(), name: "$clsName createVideo");
@@ -68,8 +72,19 @@ class VideoFirebaseDataSourceImpl implements VideoFirebaseDataSource {
       final String imageUrl = await imageData.ref.getDownloadURL();
       return imageUrl;
     } catch (e) {
-      log(e.toString());
+      log(e.toString(), name: "$clsName uploadImage");
       throw ImageException();
+    }
+  }
+
+  @override
+  Future<Unit> deleteVideo(String id) async {
+    try {
+      await firestore.collection("VideoManagement").doc(id).delete();
+      return unit;
+    } catch (e) {
+      log(e.toString(), name: "$clsName deleteVideo");
+      throw ServerException();
     }
   }
 }

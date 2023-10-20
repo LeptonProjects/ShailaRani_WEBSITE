@@ -33,7 +33,7 @@ class VideoCreatorBloc extends Bloc<VideoCreatorEvent, VideoCreatorState> {
     });
     on<ImagePickerEvent>((event, emit) async {
       emit(VideoCreatorLoading());
-     
+
       final Either<Failure, Uint8List> image =
           await pickImageUseCase(NoParams());
       await image.fold(
@@ -47,6 +47,10 @@ class VideoCreatorBloc extends Bloc<VideoCreatorEvent, VideoCreatorState> {
       await image.fold(
           (failure) async => emit(ImageUploadedFailureState(failure: failure)),
           (image) async => emit(ImageUploadedSuccessState(imageUrl: image)));
+    });
+
+    on<InitialEvent>((event, emit) {
+      emit(VideoCreatorInitial());
     });
   }
 }

@@ -31,8 +31,9 @@ class VideoRepositoryImpl implements VideoRepository {
   @override
   Future<Either<Failure, Unit>> create(VideoEntity videoEntity) async {
     try {
-      await dataSource.createVideo(VideoModel.fromDomain(videoEntity));
-      return right(unit);
+      final Unit data =
+          await dataSource.createVideo(VideoModel.fromDomain(videoEntity));
+      return right(data);
     } on ServerException {
       return left(ServerFailure());
     }
@@ -55,6 +56,16 @@ class VideoRepositoryImpl implements VideoRepository {
       return right(imageUrl);
     } on ImageException {
       return left(ImageFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> deleteVideo(String id) async {
+    try {
+      final Unit data = await dataSource.deleteVideo(id);
+      return right(data);
+    } on ServerException {
+      return left(ServerFailure());
     }
   }
 }

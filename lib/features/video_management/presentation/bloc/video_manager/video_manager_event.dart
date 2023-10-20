@@ -9,3 +9,8 @@ sealed class VideoManagerEvent extends Equatable {
 
 class VideoManagerFetchEvent extends VideoManagerEvent {}
 
+class VideoManagerDeleteEvent extends VideoManagerEvent {
+  final String id;
+
+  const VideoManagerDeleteEvent({required this.id});
+}

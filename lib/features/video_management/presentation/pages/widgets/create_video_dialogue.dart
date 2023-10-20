@@ -97,7 +97,7 @@ Future<void> createVideoDialogue({
                             controller: videoUrlController,
                             hintText: "Enter Video Url",
                             title: "Url",
-                            validator: FormFieldValidation.validateInput,
+                            validator: FormFieldValidation.isValidUrl,
                           ),
                           const SizedBox(
                             height: 10,

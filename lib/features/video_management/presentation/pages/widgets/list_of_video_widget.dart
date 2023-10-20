@@ -1,3 +1,6 @@
+import 'package:shaila_rani_website/view/constant/const.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import '../../../../../core/utils/utils.dart';
 import 'video_widgets.dart';
 
@@ -9,7 +12,16 @@ class ListOfVideoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: BlocBuilder<VideoManagerBloc, VideoManagerState>(
+      child: BlocConsumer<VideoManagerBloc, VideoManagerState>(
+        listener: (context, state) {
+          if (state is VideoMangerDeleteSuccessState) {
+            context.read<VideoManagerBloc>().add(VideoManagerFetchEvent());
+            showToast(msg: "Successfully delted");
+          }
+          if (state is VideoManagerError) {
+            showToast(msg: "Something went wrong");
+          }
+        },
         builder: (context, state) {
           if (state is VideoManagerLoading) {
             return AppWidgets.loadinWidget;
@@ -22,39 +34,49 @@ class ListOfVideoWidget extends StatelessWidget {
             }
             return ListView.separated(
                 itemBuilder: (context, index) {
-                  return SizedBox(
-                    height: 50,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ListDataContainerWidgetVideo(
-                          text: (index + 1).toString(),
-                          height: 40,
-                        ),
-                        ThumbnailImageBox(
-                          imageUrl: state.videos[index].thumbnailurl,
-                        ),
-                        ListDataContainerWidgetVideo(
-                          text: state.videos[index].title,
-                          height: 40,
-                        ),
-                        ListDataContainerWidgetVideo(
-                          text: state.videos[index].subtitle,
-                          height: 40,
-                        ),
-                        ListDataContainerWidgetVideo(
-                          text: state.videos[index].description,
-                          height: 40,
-                        ),
-                        ListDataContainerWidgetVideo(
-                          
-                          text: AppUtils.timeStampToDateString(
-                            timeStamp: state.videos[index].uploadedDate,
+                  return GestureDetector(
+                    onTap: () => launchUrl(Uri.parse(state.videos[index].url)),
+                    onLongPress: () => AppWidgets.showDeleteConfirmationDialog(
+                      context,
+                      () {
+                        Navigator.pop(context);
+                        context.read<VideoManagerBloc>().add(
+                            VideoManagerDeleteEvent(
+                                id: state.videos[index].id));
+                      },
+                    ),
+                    child: SizedBox(
+                      height: 50,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ListDataContainerWidgetVideo(
+                            text: (index + 1).toString(),
+                            height: 40,
                           ),
-                          
-                          height: 40,
-                        ),
-                      ],
+                          ThumbnailImageBox(
+                            imageUrl: state.videos[index].thumbnailurl,
+                          ),
+                          ListDataContainerWidgetVideo(
+                            text: state.videos[index].title,
+                            height: 40,
+                          ),
+                          ListDataContainerWidgetVideo(
+                            text: state.videos[index].subtitle,
+                            height: 40,
+                          ),
+                          ListDataContainerWidgetVideo(
+                            text: state.videos[index].description,
+                            height: 40,
+                          ),
+                          ListDataContainerWidgetVideo(
+                            text: AppUtils.timeStampToDateString(
+                              timeStamp: state.videos[index].uploadedDate,
+                            ),
+                            height: 40,
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },

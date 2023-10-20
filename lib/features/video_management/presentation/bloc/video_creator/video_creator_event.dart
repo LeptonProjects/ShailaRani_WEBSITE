@@ -19,6 +19,6 @@ class ImageUploadEvent extends VideoCreatorEvent {
   const ImageUploadEvent({required this.image});
 }
 
-class ImagePickerEvent extends VideoCreatorEvent {
-  
-}
+class ImagePickerEvent extends VideoCreatorEvent {}
+
+class InitialEvent extends VideoCreatorEvent {}

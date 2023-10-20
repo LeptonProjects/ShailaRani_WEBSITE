@@ -1,3 +1,5 @@
+import 'package:shaila_rani_website/features/video_management/presentation/bloc/video_creator/video_creator_bloc.dart';
+
 import 'widgets/video_widgets.dart';
 
 class VideoManageMentHomeScreen extends StatelessWidget {
@@ -29,10 +31,13 @@ class VideoManageMentHomeScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 20, top: 10),
                       child: GestureDetector(
-                        onTap: () => createVideoDialogue(
-                          context: context,
-                          video: VideoEntity.empty(),
-                        ),
+                        onTap: () {
+                          context.read<VideoCreatorBloc>().add(InitialEvent());
+                          createVideoDialogue(
+                            context: context,
+                            video: VideoEntity.empty(),
+                          );
+                        },
                         child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),

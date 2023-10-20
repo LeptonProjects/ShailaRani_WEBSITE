@@ -13,6 +13,7 @@ import 'core/utils/image_picker.dart';
 import 'features/video_management/data/datasources/firebase_data_source.dart';
 import 'features/video_management/domain/repository/video_repository.dart';
 import 'features/video_management/domain/usecases/create_video_usecase.dart';
+import 'features/video_management/domain/usecases/delete_video_usecase.dart';
 import 'features/video_management/domain/usecases/get_video_usecase.dart';
 import 'features/video_management/presentation/pages/widgets/video_widgets.dart';
 
@@ -22,9 +23,7 @@ Future<void> initGetIt() async {
   //bloc
 
   sl.registerFactory<VideoManagerBloc>(
-    () => VideoManagerBloc(
-      getVideoUseCase: sl(),
-    ),
+    () => VideoManagerBloc(getVideoUseCase: sl(), deleteVideoUseCase: sl()),
   );
   sl.registerFactory<VideoCreatorBloc>(
     () => VideoCreatorBloc(
@@ -42,6 +41,8 @@ Future<void> initGetIt() async {
       () => PickImageUseCase(repo: sl()));
   sl.registerLazySingleton<ImageUploadUseCase>(
       () => ImageUploadUseCase(repo: sl()));
+  sl.registerLazySingleton<DeleteVideoUseCase>(
+      () => DeleteVideoUseCase(repo: sl()));
 
   //repository
 

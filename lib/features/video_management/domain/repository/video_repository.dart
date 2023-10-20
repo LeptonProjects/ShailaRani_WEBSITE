@@ -9,4 +9,5 @@ abstract class VideoRepository {
   Future<Either<Failure, Unit>> create(VideoEntity entity);
   Future<Either<Failure, Uint8List>> pickImageFromGallery();
   Future<Either<Failure, String>> imageRemoteUpload(Uint8List image);
+  Future<Either<Failure, Unit>> deleteVideo(String id);
 }

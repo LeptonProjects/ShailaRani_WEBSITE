@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 import 'package:shaila_rani_website/features/video_management/domain/entity/video_entity.dart';
 
@@ -105,4 +106,7 @@ class VideoModel extends Equatable {
       createdAt: createdAt ?? this.createdAt,
     );
   }
+
+  @override
+  bool get stringify => true;
 }
