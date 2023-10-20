@@ -11,6 +11,7 @@ class StaffManagementController extends GetxController {
   // For Selected Date
   RxString dobSelectedDate = ''.obs;
   RxString joiningSelectedDate = ''.obs;
+  Object imagePath =''.obs;
 
   final firebase = FirebaseFirestore.instance
       .collection('StaffManagement')

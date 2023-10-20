@@ -2,9 +2,11 @@ import 'dart:developer';
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 // import 'package:get/get.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
+import 'package:shaila_rani_website/view/pages/staff_management/controller/employee_controller.dart';
 // import 'package:shaila_rani_website/view/pages/staff_management/controller/employee_controller.dart';
 import 'package:shaila_rani_website/view/widgets/back_button/back_button_widget.dart';
 
@@ -79,7 +81,8 @@ uploadImageForStaff(BuildContext context) {
   );
 }
 
-void ppickImage() {
+Future<void> ppickImage() async {
+  StaffManagementController staffManagementController = Get.put(StaffManagementController());
   final FileUploadInputElement input = FileUploadInputElement();
   input.accept = 'image/*'; // Allow only image files
   input.click();
@@ -90,12 +93,15 @@ void ppickImage() {
       final file = files[0];
       final reader = FileReader();
       reader.onLoad.listen((e) {
-        final result = reader.result;
+        var result = reader.result;
         // Process the selected image. 'result' contains the image data.
+
         print('Selected image: $result');
+        result =  staffManagementController.imagePath;
+
+        log("Image path in obx ${staffManagementController.imagePath}");
       });
       reader.readAsArrayBuffer(file);
-      log('Selected image: ${file.name}');
     }
   });
 }
