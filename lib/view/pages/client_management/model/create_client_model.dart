@@ -21,6 +21,7 @@ class CreateClientClassModel {
   String enteredDate;
   String enterBy;
   String state;
+  int? index;
   CreateClientClassModel({
     required this.clientName,
     required this.mobileNo,
@@ -40,6 +41,7 @@ class CreateClientClassModel {
     required this.enteredDate,
     required this.enterBy,
     required this.state,
+    this.index,
   });
   
 
@@ -62,6 +64,7 @@ class CreateClientClassModel {
     String? enteredDate,
     String? enterBy,
     String? state,
+    int? index,
   }) {
     return CreateClientClassModel(
       clientName: clientName ?? this.clientName,
@@ -82,6 +85,7 @@ class CreateClientClassModel {
       enteredDate: enteredDate ?? this.enteredDate,
       enterBy: enterBy ?? this.enterBy,
       state: state ?? this.state,
+      index: index ?? this.index,
     );
   }
 
@@ -105,6 +109,7 @@ class CreateClientClassModel {
       'enteredDate': enteredDate,
       'enterBy': enterBy,
       'state': state,
+      'index': index,
     };
   }
 
@@ -128,6 +133,7 @@ class CreateClientClassModel {
       enteredDate: map['enteredDate'] as String,
       enterBy: map['enterBy'] as String,
       state: map['state'] as String,
+      index: map['index'] != null ? map['index'] as int : null,
     );
   }
 
@@ -137,7 +143,7 @@ class CreateClientClassModel {
 
   @override
   String toString() {
-    return 'CreateClientClassModel(clientName: $clientName, mobileNo: $mobileNo, whatsAppNo: $whatsAppNo, emailID: $emailID, gender: $gender, dob: $dob, marriageDate: $marriageDate, typeofcase: $typeofcase, clientoccupation: $clientoccupation, address: $address, casediscription: $casediscription, oppositeadvocate: $oppositeadvocate, typeofMarriage: $typeofMarriage, noofChildren: $noofChildren, seperationDate: $seperationDate, enteredDate: $enteredDate, enterBy: $enterBy, state: $state)';
+    return 'CreateClientClassModel(clientName: $clientName, mobileNo: $mobileNo, whatsAppNo: $whatsAppNo, emailID: $emailID, gender: $gender, dob: $dob, marriageDate: $marriageDate, typeofcase: $typeofcase, clientoccupation: $clientoccupation, address: $address, casediscription: $casediscription, oppositeadvocate: $oppositeadvocate, typeofMarriage: $typeofMarriage, noofChildren: $noofChildren, seperationDate: $seperationDate, enteredDate: $enteredDate, enterBy: $enterBy, state: $state, index: $index)';
   }
 
   @override
@@ -162,7 +168,8 @@ class CreateClientClassModel {
       other.seperationDate == seperationDate &&
       other.enteredDate == enteredDate &&
       other.enterBy == enterBy &&
-      other.state == state;
+      other.state == state &&
+      other.index == index;
   }
 
   @override
@@ -184,6 +191,7 @@ class CreateClientClassModel {
       seperationDate.hashCode ^
       enteredDate.hashCode ^
       enterBy.hashCode ^
-      state.hashCode;
+      state.hashCode ^
+      index.hashCode;
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/Login_dashBoard/side_menuBar/is_desktop.dart';
 import 'package:shaila_rani_website/view/Login_dashBoard/side_menuBar/widget/costecDujologo.dart';
+import 'package:shaila_rani_website/view/pages/client_management/client/client_page.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/staff_screen.dart';
 import 'package:sidebar_drawer/sidebar_drawer.dart';
 
@@ -20,14 +21,16 @@ class _DashBoardHomeScreenState extends State<DashBoardHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SidebarDrawer(
-        body: Column(
-          children: [
-            AppBar(
-              backgroundColor: cWhite,
-              leading: const DrawerIcon(),
-            ),
-            pages[selectedIndex]
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              AppBar(
+                backgroundColor: cWhite,
+                leading: const DrawerIcon(),
+              ),
+              pages[selectedIndex]
+            ],
+          ),
         ),
         drawer: ListView(children: [
           const CostechDujoLogoWidget(),

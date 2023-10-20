@@ -52,7 +52,7 @@ class ClientDetailsScreen extends StatelessWidget {
                           width: 140,
                           child: Center(
                             child: GooglePoppinsWidgets(
-                              text: 'Client Details',
+                              text: 'Client Creation',
                               fontsize: 12,
                               color: cWhite,
                             ),
@@ -106,8 +106,8 @@ class ClientsListHeaderWidget extends StatelessWidget {
                     height: 40,
                     width: 200,
                     child: DropdownSearch(
-                      selectedItem: 'Active',
-                      items: const ['Active', 'In Active/Checked-out'],
+                      selectedItem: 'Cases',
+                      items: const ['Cases', 'Closed Cases'],
                     )),
               ),
             ],
@@ -141,12 +141,12 @@ class ClientsListHeaderWidget extends StatelessWidget {
                 HeaderRowTextWidget(
                   title: clientSecTe[4],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: HeaderRowTextWidget(
-                    title: clientSecTe[5],
-                  ),
-                )
+                // Padding(
+                //   padding: const EdgeInsets.only(right: 10),
+                //   child: HeaderRowTextWidget(
+                //     title: clientSecTe[4],
+                //   ),
+                // )
               ],
             ),
           ),
@@ -163,6 +163,6 @@ List<String> clientSecTe = [
   'Mobile No',
   'Email Id',
   'Date of Marriage',
-  'Case No.'
+  // 'Case No.'
   // 'Em',
 ];

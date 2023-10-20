@@ -7,7 +7,7 @@ import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/widgets/back_button/back_button_widget.dart';
 
 
-clientDetailsShowingFunction(BuildContext context) {
+clientDetailsFunction(BuildContext context) {
   double screenSize = MediaQuery.of(context).size.height;
 
   return showDialog(
@@ -73,7 +73,7 @@ clientDetailsShowingFunction(BuildContext context) {
                   // LinerContainerWidget(),
                   RowOfDetailsWidget(text: "Address", title: "🏠 nhnmjm"),
                   // LinerContainerWidget(),
-                  RowOfDetailsWidget(text: "Discription", title: "📝knkj"),
+                  RowOfDetailsWidget(text: "Discription", title: "📝kasdfghjklqwertyuiopzxcvbnm,asdfghjkewdrfghjxcvbn ydtug jguyg kgui kigi7 iugtuiy hiouiou utfu6tg ityiy fyu hvghlvghcvgujb h.jkgyu; fyuvgt7u dt7vguvty cvc7utyghuvlgu  nkj"),
                   // LinerContainerWidget(),
                   RowOfDetailsWidget(text: "opposite Advocate", title: "🧑‍⚖️niuhi"),
                   // LinerContainerWidget(),

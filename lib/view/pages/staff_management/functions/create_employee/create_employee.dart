@@ -145,7 +145,8 @@ createEmployee(BuildContext context) {
 
                                         items: listofGender,
                                       ),
-                                    )),
+                                    )
+                                    ),
                               ],
                             ),
                           ),
