@@ -13,6 +13,7 @@ import 'package:shaila_rani_website/view/constant/const.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/controller/employee_controller.dart';
 import 'package:shaila_rani_website/view/widgets/back_button/back_button_widget.dart';
+import 'package:shaila_rani_website/view/widgets/blue_Container_widget/blue_Container_widget.dart';
 import 'package:shaila_rani_website/view/widgets/select_DateWidget/select_Date_widget.dart';
 import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textformFiledContainer.dart';
 
@@ -182,8 +183,33 @@ createEmployee(BuildContext context) {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    GooglePoppinsWidgets(
-                                        text: 'D O B', fontsize: 12),
+                                    Row(
+                                      children: [
+                                        GooglePoppinsWidgets(
+                                            text: 'D O B', fontsize: 12),
+                                        const Spacer(),
+                                        GestureDetector(
+                                          onTap: () {
+                                            staffController
+                                                .dobSelectedDate.value = '';
+                                          },
+                                          child: Container(
+                                            height: 20,
+                                            width: 100,
+                                            decoration: const BoxDecoration(
+                                              color: themeColorGreen,
+                                            ),
+                                            child: Center(
+                                              child: GooglePoppinsWidgets(
+                                                text: 'Change',
+                                                fontsize: 10,
+                                                color: cWhite,
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                     Container(
                                         decoration: BoxDecoration(
                                             border: Border.all(
@@ -243,8 +269,34 @@ createEmployee(BuildContext context) {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    GooglePoppinsWidgets(
-                                        text: 'Date of Joining', fontsize: 12),
+                                    Row(
+                                      children: [
+                                        GooglePoppinsWidgets(
+                                            text: 'Date of Joining',
+                                            fontsize: 12),
+                                            const Spacer(),
+                                        GestureDetector(
+                                          onTap: () {
+                                            staffController
+                                                .joiningSelectedDate.value = '';
+                                          },
+                                          child: Container(
+                                            height: 20,
+                                            width: 100,
+                                            decoration: const BoxDecoration(
+                                              color: themeColorGreen,
+                                            ),
+                                            child: Center(
+                                              child: GooglePoppinsWidgets(
+                                                text: 'Change',
+                                                fontsize: 10,
+                                                color: cWhite,
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                     Container(
                                         decoration: BoxDecoration(
                                             border: Border.all(

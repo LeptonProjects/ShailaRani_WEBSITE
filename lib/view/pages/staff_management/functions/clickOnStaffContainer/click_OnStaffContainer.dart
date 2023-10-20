@@ -9,23 +9,24 @@ import 'package:shaila_rani_website/view/pages/staff_management/functions/upload
 import 'package:shaila_rani_website/view/widgets/back_button/back_button_widget.dart';
 import 'package:shaila_rani_website/view/widgets/blue_Container_widget/blue_Container_widget.dart';
 
-detailsShowingFunction({
-  required BuildContext context,
-  required String employeeName,
-  required String employeeID,
-  required String mobileNo,
-  required String whatsAppNo,
-  required String emailID,
-  required String gender,
-  required String dob,
-  required String joiningDate,
-  required String assignRole,
-  required String alMobileNo,
-  required String address,
-  required String city,
-  required String district,
-  required String state,
-}) {
+detailsShowingFunction(
+    {required BuildContext context,
+    required String employeeName,
+    required String employeeID,
+    required String mobileNo,
+    required String whatsAppNo,
+    required String emailID,
+    required String gender,
+    required String dob,
+    required String joiningDate,
+    required String assignRole,
+    required String alMobileNo,
+    required String address,
+    required String city,
+    required String district,
+    required String imageUrl,
+    required String state,
+    required String collectionName}) {
   StaffManagementController staffManagementController =
       Get.put(StaffManagementController());
   return showDialog(
@@ -59,9 +60,9 @@ detailsShowingFunction({
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            const CircleAvatar(
-                              radius: 79,
-                             
+                            CircleAvatar(
+                              radius: 80,
+                              backgroundImage: NetworkImage(imageUrl),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 100),
@@ -213,54 +214,63 @@ detailsShowingFunction({
           vertical: 20,
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: Row(
-              children: [
-                const Spacer(),
-                GestureDetector(
-                  onTap: () => uploadImageForStaff(context),
-                  child: BlueContainerWidget(
-                    title: 'Add Photo',
-                    fontSize: 12,
-                    color: themeColorBlue,
-                    fontWeight: FontWeight.bold,
-                    width: 120,
+          collectionName == 'Active'
+              ? Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Row(
+                    children: [
+                      const Spacer(),
+                      GestureDetector(
+                        onTap: () => uploadImageForStaff(context, employeeID),
+                        child: BlueContainerWidget(
+                          title: 'Add Photo',
+                          fontSize: 12,
+                          color: themeColorBlue,
+                          fontWeight: FontWeight.bold,
+                          width: 120,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: GestureDetector(
+                          onTap: () {
+                            warningShowDilogueBox(
+                                context: context,
+                                title: "Alert",
+                                discripition:
+                                    "Do you want DeActivate this Person ?",
+                                onPressed: () => staffManagementController
+                                    .deActivateThisPerson(
+                                        staffImage: imageUrl,
+                                        alMobileNo: alMobileNo,
+                                        whatsAppNo: whatsAppNo,
+                                        employeeName: employeeName,
+                                        employeeID: employeeID,
+                                        mobileNo: mobileNo,
+                                        emailID: emailID,
+                                        gender: gender,
+                                        dob: dob,
+                                        joiningDate: joiningDate,
+                                        assignRole: assignRole,
+                                        address: address,
+                                        city: city,
+                                        district: district,
+                                        state: state,
+                                        context: context));
+                          },
+                          child: BlueContainerWidget(
+                            title: 'DeActivate',
+                            fontSize: 12,
+                            color: cred,
+                            fontWeight: FontWeight.bold,
+                            width: 120,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: GestureDetector(
-                    onTap: () {
-                      staffManagementController.deActivateThisPerson(
-                        alMobileNo: alMobileNo,
-                      whatsAppNo: whatsAppNo,
-                          employeeName: employeeName,
-                          employeeID: employeeID,
-                          mobileNo: mobileNo,
-                          emailID: emailID,
-                          gender: gender,
-                          dob: dob,
-                          joiningDate: joiningDate,
-                          assignRole: assignRole,
-                          address: address,
-                          city: city,
-                          district: district,
-                          state: state,
-                          context: context);
-                    },
-                    child: BlueContainerWidget(
-                      title: 'DeActivate',
-                      fontSize: 12,
-                      color: cred,
-                      fontWeight: FontWeight.bold,
-                      width: 120,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+                )
+              : const Text(''),
           const SizedBox(
             height: 15,
           ),

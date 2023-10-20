@@ -1,17 +1,23 @@
 import 'dart:developer';
+import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shaila_rani_website/view/constant/const.dart';
 
 import 'package:shaila_rani_website/view/pages/staff_management/model/create_employee_model.dart';
+import 'package:uuid/uuid.dart';
 
 class StaffManagementController extends GetxController {
+  final FirebaseStorage _storage = FirebaseStorage.instance;
+  String staffImageUrl = '';
+  var isUploading = false.obs;
   // For Selected Date
   RxString dobSelectedDate = ''.obs;
   RxString joiningSelectedDate = ''.obs;
-  Object imagePath =''.obs;
+  Rxn<Uint8List>  imagePath = Rxn();
 
   final firebase = FirebaseFirestore.instance
       .collection('StaffManagement')
@@ -86,8 +92,9 @@ class StaffManagementController extends GetxController {
     required String state,
     required String alMobileNo,
     required String whatsAppNo,
-
+      required String staffImage,
     required BuildContext context,
+
   }) async {
     try {
       CreateEmployeeClassModel employeeDetails = CreateEmployeeClassModel(
@@ -105,6 +112,7 @@ class StaffManagementController extends GetxController {
           district: district,
           state: state,
           alMobileNo: alMobileNo,
+          staffImage:staffImage ,
           whatsAppNo: whatsAppNo);
       await firebase
           .collection('InActive')
@@ -115,6 +123,10 @@ class StaffManagementController extends GetxController {
       }).then((value) {
         showToast(msg: "DeActivated Successfully");
         Navigator.pop(context);
+          Navigator.pop(context);
+
+
+          
       });
     } catch (e) {}
   }
@@ -154,6 +166,28 @@ class StaffManagementController extends GetxController {
         .update({'index': index}).then((value) {
       showToast(msg: "Changed Successfully");
       Navigator.pop(context);
+    });
+  }
+
+  Future<void> uploadImage(Uint8List imagepath, String storagePath) async {
+        final String uid = const Uuid().v1();
+    isUploading(true);
+
+    final ref = _storage
+        .ref()
+        .child('StaffMangement')
+        .child('Images')
+        .child('${uid}image.jpg');
+    final uploadTask = ref.putData(imagepath);
+
+    await uploadTask.whenComplete(() async {
+      final String downloadURL = await ref.getDownloadURL();
+      staffImageUrl = downloadURL;
+
+      isUploading(false);
+
+      showToast(msg: 'Image Uploaded Successfully');
+      log("Getx Valuee --->>.$staffImageUrl");
     });
   }
 }

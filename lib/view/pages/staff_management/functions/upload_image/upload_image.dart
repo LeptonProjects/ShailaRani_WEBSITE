@@ -1,19 +1,23 @@
 import 'dart:developer';
-import 'dart:html';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:shaila_rani_website/core/utils/image_picker.dart';
 // import 'package:get/get.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/controller/employee_controller.dart';
 // import 'package:shaila_rani_website/view/pages/staff_management/controller/employee_controller.dart';
 import 'package:shaila_rani_website/view/widgets/back_button/back_button_widget.dart';
+import 'package:shaila_rani_website/view/widgets/blue_Container_widget/blue_Container_widget.dart';
 
-uploadImageForStaff(BuildContext context) {
+uploadImageForStaff(BuildContext context, String docid) {
+  final ImagePickerClass imagePicker = ImagePickerClass(picker: ImagePicker());
   // File? imagePath;
-  // StaffManagementController staffManagementController =
-  //   Get.put(StaffManagementController());
+  StaffManagementController staffManagementController =
+      Get.put(StaffManagementController());
 
   return showDialog(
     context: context,
@@ -42,34 +46,109 @@ uploadImageForStaff(BuildContext context) {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CircleAvatar(
-                      radius: 80,
-                      child: IconButton(
-                          onPressed: () async {
-                            ppickImage();
-                            // final input =
-                            //     querySelector('#imageInput') as InputElement;
-                            // input.click();
+                    Obx(() {
+                      if (staffManagementController.imagePath.value == null) {
+                        return CircleAvatar(
+                          radius: 80,
+                          child: IconButton(
+                              onPressed: () async {
+                                try {
+                                  staffManagementController.imagePath.value =
+                                      await imagePicker.pickImageGallery();
+                                } catch (e) {
+                                  print(e);
+                                }
+                                // final input =
+                                //     querySelector('#imageInput') as InputElement;
+                                // input.click();
+                              },
+                              icon: const Icon(Icons.camera_alt_outlined)),
+                        );
+                      } else {
+                        return Column(
+                          children: [
+                            CircleAvatar(
+                              radius: 80,
+                              backgroundImage: MemoryImage(
+                                  staffManagementController.imagePath.value!),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: GestureDetector(
+                                onTap: () async {
+                                  try {
+                                    staffManagementController.imagePath.value =
+                                        await imagePicker.pickImageGallery();
+
+                                    log("Image pathhhh ---->>> ${staffManagementController.imagePath.value}");
+                                  } catch (e) {
+                                    print(e);
+                                  }
+                                },
+                                child: BlueContainerWidget(
+                                  title: "Change Image",
+                                  fontSize: 12,
+                                  color: themeColorBlue,
+                                  width: 100,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            )
+                          ],
+                        );
+                      }
+                    }),
+                    Obx(() {
+                      if (staffManagementController.imagePath.value == null) {
+                        return const Text('');
+                      } else {
+                        return GestureDetector(
+                          onTap: () async {
+                            staffManagementController
+                                .uploadImage(
+                                    staffManagementController.imagePath.value!,
+                                    'staffImage')
+                                .then((value) async {
+                              await FirebaseFirestore.instance
+                                  .collection('StaffManagement')
+                                  .doc('StaffManagement')
+                                  .collection('Active')
+                                  .doc(docid)
+                                  .update({
+                                'staffImage':
+                                    staffManagementController.staffImageUrl
+                              }).then((value) {
+                                staffManagementController.imagePath = Rxn();
+                                Navigator.pop(context);
+                                Navigator.pop(context);
+                              });
+                            });
                           },
-                          icon: const Icon(Icons.camera_alt_outlined)),
-                    ),
-                    GestureDetector(
-                      onTap: () async {},
-                      child: Container(
-                        height: 32,
-                        width: 150,
-                        decoration: const BoxDecoration(
-                          color: themeColorBlue,
-                        ),
-                        child: Center(
-                          child: GooglePoppinsWidgets(
-                              text: 'U P L O A D',
-                              color: cWhite,
-                              fontsize: 12,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
+                          child: Obx(() {
+                            if (staffManagementController.isUploading.value) {
+                              return const CircularProgressIndicator(
+                                color: themeColorBlue,
+                              );
+                            } else {
+                              return Container(
+                                height: 32,
+                                width: 150,
+                                decoration: const BoxDecoration(
+                                  color: themeColorBlue,
+                                ),
+                                child: Center(
+                                  child: GooglePoppinsWidgets(
+                                      text: 'U P L O A D',
+                                      color: cWhite,
+                                      fontsize: 12,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              );
+                            }
+                          }),
+                        );
+                      }
+                    }),
                   ],
                 ),
               )
@@ -79,29 +158,4 @@ uploadImageForStaff(BuildContext context) {
       );
     },
   );
-}
-
-Future<void> ppickImage() async {
-  StaffManagementController staffManagementController = Get.put(StaffManagementController());
-  final FileUploadInputElement input = FileUploadInputElement();
-  input.accept = 'image/*'; // Allow only image files
-  input.click();
-
-  input.onChange.listen((e) {
-    final files = input.files;
-    if (files!.length == 1) {
-      final file = files[0];
-      final reader = FileReader();
-      reader.onLoad.listen((e) {
-        var result = reader.result;
-        // Process the selected image. 'result' contains the image data.
-
-        print('Selected image: $result');
-        result =  staffManagementController.imagePath;
-
-        log("Image path in obx ${staffManagementController.imagePath}");
-      });
-      reader.readAsArrayBuffer(file);
-    }
-  });
 }

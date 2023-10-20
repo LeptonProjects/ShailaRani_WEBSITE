@@ -17,6 +17,7 @@ class CreateEmployeeClassModel {
   String district;
   String state;
   int? index;
+  String? staffImage;
   CreateEmployeeClassModel({
     required this.employeeName,
     required this.employeeID,
@@ -33,6 +34,7 @@ class CreateEmployeeClassModel {
     required this.district,
     required this.state,
     required this.index,
+    this.staffImage,
   });
 
 
@@ -53,6 +55,7 @@ class CreateEmployeeClassModel {
     String? district,
     String? state,
     int? index,
+    String? staffImage,
   }) {
     return CreateEmployeeClassModel(
       employeeName: employeeName ?? this.employeeName,
@@ -70,6 +73,7 @@ class CreateEmployeeClassModel {
       district: district ?? this.district,
       state: state ?? this.state,
       index: index ?? this.index,
+      staffImage: staffImage ?? this.staffImage,
     );
   }
 
@@ -89,7 +93,8 @@ class CreateEmployeeClassModel {
       'city': city,
       'district': district,
       'state': state,
-      'index': index??0,
+      'index': index,
+      'staffImage': staffImage??'',
     };
   }
 
@@ -109,7 +114,8 @@ class CreateEmployeeClassModel {
       city: map['city'] as String,
       district: map['district'] as String,
       state: map['state'] as String,
-      index: map['index'] != null ? map['index'] as int : 0,
+      index: map['index'] != null ? map['index'] as int : null,
+      staffImage: map['staffImage'] != null ? map['staffImage'] as String : '',
     );
   }
 
@@ -119,7 +125,7 @@ class CreateEmployeeClassModel {
 
   @override
   String toString() {
-    return 'CreateEmployeeClassModel(employeeName: $employeeName, employeeID: $employeeID, mobileNo: $mobileNo, whatsAppNo: $whatsAppNo, emailID: $emailID, gender: $gender, dob: $dob, joiningDate: $joiningDate, assignRole: $assignRole, alMobileNo: $alMobileNo, address: $address, city: $city, district: $district, state: $state, index: $index)';
+    return 'CreateEmployeeClassModel(employeeName: $employeeName, employeeID: $employeeID, mobileNo: $mobileNo, whatsAppNo: $whatsAppNo, emailID: $emailID, gender: $gender, dob: $dob, joiningDate: $joiningDate, assignRole: $assignRole, alMobileNo: $alMobileNo, address: $address, city: $city, district: $district, state: $state, index: $index, staffImage: $staffImage)';
   }
 
   @override
@@ -141,7 +147,8 @@ class CreateEmployeeClassModel {
       other.city == city &&
       other.district == district &&
       other.state == state &&
-      other.index == index;
+      other.index == index &&
+      other.staffImage == staffImage;
   }
 
   @override
@@ -160,6 +167,7 @@ class CreateEmployeeClassModel {
       city.hashCode ^
       district.hashCode ^
       state.hashCode ^
-      index.hashCode;
+      index.hashCode ^
+      staffImage.hashCode;
   }
 }

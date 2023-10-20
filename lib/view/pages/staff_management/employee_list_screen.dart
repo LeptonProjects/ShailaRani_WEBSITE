@@ -39,7 +39,11 @@ class ListOFStaffScreen extends StatelessWidget {
                       final data = CreateEmployeeClassModel.fromMap(
                           snapshot.data!.docs[index].data());
                       return GestureDetector(
-                        onTap: () => detailsShowingFunction(
+                        onTap: () =>
+                        
+                         detailsShowingFunction(
+                          collectionName:DropdownListActive.activeValue,
+                          imageUrl: data.staffImage??'https://cdn.pixabay.com/photo/2016/08/31/11/54/icon-1633249_640.png',
                             context: context,
                             employeeName: data.employeeName,
                             employeeID: data.employeeID,
