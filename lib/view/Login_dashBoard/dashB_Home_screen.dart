@@ -5,6 +5,8 @@ import 'package:shaila_rani_website/view/Login_dashBoard/side_menuBar/widget/cos
 import 'package:shaila_rani_website/view/pages/staff_management/staff_screen.dart';
 import 'package:sidebar_drawer/sidebar_drawer.dart';
 
+import '../../features/video_management/presentation/pages/video_management_home_screen.dart';
+
 // ignore: must_be_immutable
 class DashBoardHomeScreen extends StatefulWidget {
   const DashBoardHomeScreen({super.key});
@@ -52,11 +54,7 @@ List<Widget> pages = [
       child: Text(sideMenu[1]),
     ),
   ),
-  Container(
-    child: Center(
-      child: Text(sideMenu[2]),
-    ),
-  ),
+  const VideoManageMentHomeScreen(),
   Container(
     child: Center(
       child: Text(sideMenu[3]),
