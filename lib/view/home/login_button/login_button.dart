@@ -1,9 +1,16 @@
+// ignore_for_file: invalid_return_type_for_catch_error
 
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shaila_rani_website/view/Login_dashBoard/login_dashBoard.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
+import 'package:shaila_rani_website/view/constant/const.dart';
 import 'package:shaila_rani_website/view/fonts/google_monstre.dart';
-
+import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
+import 'package:shaila_rani_website/view/widgets/back_button/back_button_widget.dart';
+import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textformFiledContainer.dart';
 
 class LoginButton extends StatelessWidget {
   const LoginButton({
@@ -20,9 +27,7 @@ class LoginButton extends StatelessWidget {
         //  color: cBlue,
         child: InkWell(
             onTap: () {
-         Navigator.push(context, MaterialPageRoute(builder: (context) {
-           return const LoginDashBoard();
-         },));
+              loginshowDilogueBox(context);
             },
             child: Container(
                 height: 25,
@@ -43,4 +48,116 @@ class LoginButton extends StatelessWidget {
       ),
     );
   }
+}
+
+loginshowDilogueBox(BuildContext context) {
+  return showDialog(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+      TextEditingController emailController = TextEditingController();
+      TextEditingController passwordController = TextEditingController();
+      return Form(
+        key: formKey,
+        child: AlertDialog(
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GooglePoppinsWidgets(
+                  text: 'LOGIN   TO     A D M I N P A N E L',
+                  fontsize: 13,
+                  fontWeight: FontWeight.w600),
+              const Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: BackButtonContainerWidget(),
+              ),
+            ],
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                SizedBox(
+                  height: 250,
+                  width: 350,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextFormFiledContainerWidget(
+                        controller: emailController,
+                        hintText: 'Enter your email',
+                        title: 'EMAIL ID',
+                        width: 250,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Please enter your email';
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
+                      TextFormFiledContainerWidget(
+                        controller: passwordController,
+                        hintText: 'Enter your password',
+                        title: 'PASSWORD',
+                        width: 250,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Please enter your password';
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 80, top: 20),
+                        child: GestureDetector(
+                          onTap: () {
+                            if (formKey.currentState!.validate()) {
+                              try {
+                                FirebaseAuth.instance
+                                    .signInWithEmailAndPassword(
+                                        email: emailController.text.trim(),
+                                        password:
+                                            passwordController.text.trim())
+                                    .catchError((d) {
+                                  return showToast(msg: 'Invalid');
+                                }).then((value) => Navigator.push(context,
+                                            MaterialPageRoute(
+                                          builder: (context) {
+                                            return const LoginDashBoard();
+                                          },
+                                        )));
+                              } catch (e) {
+                                log(e.toString());
+                              }
+                            }
+                          },
+                          child: Container(
+                            height: 30,
+                            width: 150,
+                            decoration: const BoxDecoration(
+                              color: themeColorBlue,
+                            ),
+                            child: Center(
+                              child: GooglePoppinsWidgets(
+                                  text: 'LOGIN',
+                                  color: cWhite,
+                                  fontsize: 12,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      );
+    },
+  );
 }

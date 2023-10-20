@@ -1,15 +1,21 @@
 // ignore_for_file: must_be_immutable
 
+import 'dart:developer';
+
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
+import 'package:shaila_rani_website/view/Login_dashBoard/login_dashBoard.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
+import 'package:shaila_rani_website/view/constant/const.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
-import 'package:shaila_rani_website/view/pages/staff_management/create_employee/create_employee.dart';
-import 'package:shaila_rani_website/view/pages/staff_management/create_employee/details_employee_show.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/employee_list_screen.dart';
+import 'package:shaila_rani_website/view/pages/staff_management/functions/arrange_priority/arrange_priority.dart';
+import 'package:shaila_rani_website/view/pages/staff_management/functions/create_employee/create_employee.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/widget/headerText_widget.dart';
+
 class StaffHomeScreen extends StatelessWidget {
-  const StaffHomeScreen({super.key});
+
+   const StaffHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +43,7 @@ class StaffHomeScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 20, top: 10),
                       child: GestureDetector(
-                        onTap: () { 
-                          createEmployee(context);
-                        // detailsShowingFunction(context);
-                        },
+                        onTap: () => createEmployee(context),
                         child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
@@ -59,7 +62,28 @@ class StaffHomeScreen extends StatelessWidget {
                     )
                   ],
                 ),
-             
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: GestureDetector(
+                    onTap: (){
+                      arrangeStaffPriority(context);
+                    },
+                    child: Container(
+                      height: 30,
+                      width: 150,
+                      decoration: const BoxDecoration(
+                        color: themeColorBlue,
+                      ),
+                      child: Center(
+                        child: GooglePoppinsWidgets(
+                            text: 'Arrange Priority',
+                            color: cWhite,
+                            fontsize: 12,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -103,8 +127,17 @@ class EmployeeListHeaderWidget extends StatelessWidget {
                     height: 40,
                     width: 200,
                     child: DropdownSearch(
-                      selectedItem: 'Active',
-                      items: const ['Active', 'In Active/Checked-out'],
+                      onChanged: (value) async {
+                        DropdownListActive.activeValue = value ?? 'Active';
+                        log(DropdownListActive.activeValue);
+                        Navigator.pushReplacement(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const LoginDashBoard();
+                          },
+                        ));
+                      },
+                      selectedItem: DropdownListActive.activeValue,
+                      items: const ['Active', 'InActive'],
                     )),
               ),
             ],
@@ -124,24 +157,24 @@ class EmployeeListHeaderWidget extends StatelessWidget {
                   ),
                 ),
                 HeaderRowTextWidget(
-                  title: employeeSecTe[5],
+                  title: clientSecTe[5],
                 ),
                 HeaderRowTextWidget(
-                  title: employeeSecTe[0],
+                  title: clientSecTe[0],
                 ),
                 HeaderRowTextWidget(
-                  title: employeeSecTe[1],
+                  title: clientSecTe[1],
                 ),
                 HeaderRowTextWidget(
-                  title: employeeSecTe[2],
+                  title: clientSecTe[2],
                 ),
                 HeaderRowTextWidget(
-                  title: employeeSecTe[3],
+                  title: clientSecTe[3],
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: HeaderRowTextWidget(
-                    title: employeeSecTe[4],
+                    title: clientSecTe[4],
                   ),
                 )
               ],
@@ -153,7 +186,7 @@ class EmployeeListHeaderWidget extends StatelessWidget {
   }
 }
 
-List<String> employeeSecTe = [
+List<String> clientSecTe = [
   'Employee Name',
   'Assigned Roles',
   'Mobile No',

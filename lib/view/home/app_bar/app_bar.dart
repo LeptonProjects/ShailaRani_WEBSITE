@@ -82,22 +82,7 @@ class ResponsiveMobileAppBar extends StatelessWidget {
                       ),
                     ],
                   ),
-                  // Column(
-                  //   children: [
 
-                  //     GooglePoppinsWidgets(
-                  //       text: "Shaila Rani Association",
-                  //       fontsize: screenWidth / 90,
-                  //       color: cWhite,
-                  //       fontWeight: FontWeight.w600,
-                  //     ),
-                  //     GooglePoppinsWidgets(
-                  //       text: "Lawyers, Mediators & Family Counsellors",
-                  //       fontsize: screenWidth / 100,
-                  //       color: cWhite,
-                  //       fontWeight: FontWeight.w600,
-                  //     ),
-                  //   ],
                   // ),
                 ],
               ),
@@ -111,7 +96,9 @@ class ResponsiveMobileAppBar extends StatelessWidget {
                     child: Expanded(
                       child: Row(
                         children: [
-                          const LoginButton(),
+                          ResponsiveWebSite.isDesktop(context)
+                              ? const LoginButton()
+                              : const Text(''),
                           ListView(
                               shrinkWrap: true,
                               scrollDirection: Axis.horizontal,
@@ -143,18 +130,20 @@ class ResponsiveMobileAppBar extends StatelessWidget {
                   ),
                   // SocaiMedaAtAppbar(),
 
-                  Visibility(
-                    visible: maxWidthValue < 430,
-                    child: const Row(
-                      children: [
-                        LoginButton(),
-                        // Icon(
-                        //   Icons.more_vert,
-                        //   color: Colors.white,
-                        // ),
-                      ],
-                    ),
-                  )
+                  // Visibility(
+                  //   visible: maxWidthValue < 430,
+                  //   child: Row(
+                  //     children: [
+                  //       ResponsiveWebSite.isDesktop(context)
+                  //           ? const LoginButton()
+                  //           : const Text('')
+                  //       // Icon(
+                  //       //   Icons.more_vert,
+                  //       //   color: Colors.white,
+                  //       // ),
+                  //     ],
+                  //   ),
+                  // )
                 ],
               ),
             ],

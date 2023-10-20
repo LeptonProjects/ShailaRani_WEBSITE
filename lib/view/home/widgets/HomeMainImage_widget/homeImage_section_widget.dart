@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
+import 'package:shaila_rani_website/view/home/widgets/HomeMainImage_widget/drop_down_list.dart';
 import 'package:shaila_rani_website/view/home/widgets/hover_mouse/hover_text.dart';
 import 'package:shaila_rani_website/view/widgets/responsive/responsive.dart';
 
@@ -22,8 +23,7 @@ class HomeMainImageScreenWidget extends StatelessWidget {
             image: AssetImage('assests/images/home_image_new.jpg'),
             fit: BoxFit.cover),
       ),
-      child:
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
           padding: const EdgeInsets.only(right: 20),
           child: Row(
@@ -42,19 +42,22 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                   ),
                 );
               }),
-              OnHoverTextForHeader(builder: (isHoverd) {
-                final colorr = isHoverd
-                    ? const Color.fromARGB(255, 192, 145, 128)
-                    : cWhite;
-                return SizedBox(
-                  height: 40,
-                  width: 80,
-                  child: Center(
-                    child: GooglePoppinsWidgets(
-                        text: "About", fontsize: 12, color: colorr),
-                  ),
-                );
-              }),
+              ResponsiveWebSite.isDesktop(context)
+                  ? const ServicesDropDownList()
+                  : GestureDetector(
+                    onTap: () {
+                      serivesdropDownList(context);
+                    },
+                    child: SizedBox(
+                        height: 40,
+                        width: 80,
+                        child: Center(
+                          child: GooglePoppinsWidgets(
+                              text: "Services", fontsize: 12, color: cWhite),
+                        ),
+                      ),
+                  ), // >>>>>>>>>>>>>>>>>> Services DropDown List
+
               OnHoverTextForHeader(builder: (isHoverd) {
                 final colorr = isHoverd
                     ? const Color.fromARGB(255, 192, 145, 128)
@@ -93,8 +96,7 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                           height: 45,
                           width: 150,
                           decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Colors.brown.shade400)),
+                              border: Border.all(color: Colors.brown.shade400)),
                           child: Center(
                             child: GooglePoppinsWidgets(
                               text: "Get Appoinment",
@@ -120,10 +122,8 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
-                      height:
-                          ResponsiveWebSite.isMobile(context) ? 300 : 500,
-                      width:
-                          ResponsiveWebSite.isMobile(context) ? 300 : 500,
+                      height: ResponsiveWebSite.isMobile(context) ? 300 : 500,
+                      width: ResponsiveWebSite.isMobile(context) ? 300 : 500,
                       child: Center(
                         child: Image.asset(
                           'assests/images/advo_logo_new.png',
@@ -138,12 +138,10 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          height: ResponsiveWebSite.isTablet(context)
-                              ? 300
-                              : 500,
-                          width: ResponsiveWebSite.isTablet(context)
-                              ? 300
-                              : 500,
+                          height:
+                              ResponsiveWebSite.isTablet(context) ? 300 : 500,
+                          width:
+                              ResponsiveWebSite.isTablet(context) ? 300 : 500,
                           child: Center(
                             child: Image.asset(
                               'assests/images/advo_logo_new.png',
@@ -157,12 +155,8 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 70, left: 200),
                       child: SizedBox(
                         // color: Colors.red,
-                        height: ResponsiveWebSite.isMobile(context)
-                            ? 200
-                            : 260,
-                        width: ResponsiveWebSite.isMobile(context)
-                            ? 200
-                            : 300,
+                        height: ResponsiveWebSite.isMobile(context) ? 200 : 260,
+                        width: ResponsiveWebSite.isMobile(context) ? 200 : 300,
                         child: Padding(
                           padding: const EdgeInsets.only(top: 0),
                           child: Image.asset(
@@ -199,9 +193,8 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                       "Defending  Your  Rights,\n   Upholding  Your  trust",
                       style: GoogleFonts.castoroTitling(
                           color: const Color(0xFFCE8F2E),
-                          fontSize: ResponsiveWebSite.isMobile(context)
-                              ? 20
-                              : 30),
+                          fontSize:
+                              ResponsiveWebSite.isMobile(context) ? 20 : 30),
                     ),
                   ],
                 ),
@@ -218,8 +211,7 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                       height: 45,
                       width: 150,
                       decoration: BoxDecoration(
-                          border:
-                              Border.all(color: Colors.brown.shade400)),
+                          border: Border.all(color: Colors.brown.shade400)),
                       child: Center(
                         child: GooglePoppinsWidgets(
                           text: "Get Appoinment",

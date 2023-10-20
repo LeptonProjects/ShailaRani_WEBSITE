@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
+import 'package:shaila_rani_website/view/home/widgets/shaila_rani_ReadMore_widger/read_more-screen.dart';
 import 'package:shaila_rani_website/view/widgets/responsive/responsive.dart';
 
 class ShailaRaniReadMoreContainerWidget extends StatelessWidget {
@@ -33,7 +34,7 @@ class ShailaRaniReadMoreContainerWidget extends StatelessWidget {
                     ? 60
                     : 200,
             child: Image.asset(
-              'assests/images/shai_solo.png',
+              'assests/images/shai_solo_rotate.png',
               fit:ResponsiveWebSite.isMobile(context)?BoxFit.fitHeight: BoxFit.fitWidth,
             ),
           ),
@@ -56,17 +57,22 @@ class ShailaRaniReadMoreContainerWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                height:ResponsiveWebSite.isMobile(context)?20: 35,
-                width: ResponsiveWebSite.isTablet(context) ? 100 : 150,
-                decoration: BoxDecoration(
-                    border: Border.all(width: 2, color: Colors.yellow)),
-                child: Center(
-                    child: GooglePoppinsWidgets(
-                  text: 'Read More...',
-                  fontsize:ResponsiveWebSite.isMobile(context)?10:12,
-                  color: cWhite,
-                )),
+              GestureDetector(
+                onTap: () {
+                readmoreScreenPage(context);
+                },
+                child: Container(
+                  height:ResponsiveWebSite.isMobile(context)?20: 35,
+                  width: ResponsiveWebSite.isTablet(context) ? 100 : 150,
+                  decoration: BoxDecoration(
+                      border: Border.all(width: 2, color: Colors.yellow)),
+                  child: Center(
+                      child: GooglePoppinsWidgets(
+                    text: 'Read More...',
+                    fontsize:ResponsiveWebSite.isMobile(context)?10:12,
+                    color: cWhite,
+                  )),
+                ),
               )
             ],
           ),

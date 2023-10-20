@@ -82,7 +82,7 @@ class OurTeamContainerWidget extends StatelessWidget {
                         ),
                         SizedBox(
                             height:
-                                ResponsiveWebSite.isTablet(context) ? 280 :600 ,
+                                ResponsiveWebSite.isTablet(context) ? 280 : 600,
                             width:
                                 ResponsiveWebSite.isTablet(context) ? 450 : 600,
                             child: Image.asset(
@@ -95,7 +95,7 @@ class OurTeamContainerWidget extends StatelessWidget {
           ),
           SizedBox(
               // color: Colors.black,
-              height: 500,
+              height: ResponsiveWebSite.isMobile(context)?500:350,
               // width: 600,
               child: ResponsiveWebSite.isDesktop(context)
                   ? ListView.separated(
@@ -113,11 +113,13 @@ class OurTeamContainerWidget extends StatelessWidget {
                                 persionPhotos[index],
                                 fit: BoxFit.cover,
                               ),
-                              GooglePoppinsWidgets(
-                                text: "",
-                                fontsize: 15,
-                                fontWeight: FontWeight.bold,
-                              )
+                                                             Text(
+                                      personNameList[index],
+                                      style: const TextStyle(
+                                          color: cWhite,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                    GooglePoppinsWidgets(text: personOccu[index], fontsize: 10,color: cWhite,fontWeight: FontWeight.w200,)
                             ],
                           ),
                         );
@@ -147,11 +149,13 @@ class OurTeamContainerWidget extends StatelessWidget {
                                       persionPhotos[index],
                                       fit: BoxFit.cover,
                                     ),
-                                    GooglePoppinsWidgets(
-                                      text: "",
-                                      fontsize: 15,
-                                      fontWeight: FontWeight.bold,
-                                    )
+                                    Text(
+                                      personNameList[index],
+                                      style: const TextStyle(
+                                          color: cWhite,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                    GooglePoppinsWidgets(text: personOccu[index], fontsize: 10,color: cWhite,fontWeight: FontWeight.w200,)
                                   ],
                                 ),
                               )),
@@ -161,3 +165,16 @@ class OurTeamContainerWidget extends StatelessWidget {
     );
   }
 }
+
+List<String> personNameList = [
+  'Adv Ambily Byju',
+  'Adv Rekha C T',
+  'Dr Divya G G',
+  'Jasna Khan',
+];
+List<String> personOccu = [
+  'Advocate',
+  'Advocate',
+  'Operations Manager',
+  'Client Consultant',
+];

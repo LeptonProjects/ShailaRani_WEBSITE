@@ -4,7 +4,7 @@ import 'package:shaila_rani_website/view/home/app_bar/app_bar.dart';
 import 'package:shaila_rani_website/view/home/footer/footer.dart';
 import 'package:shaila_rani_website/view/home/footer/widgets/copyright_widget.dart';
 import 'package:shaila_rani_website/view/home/widgets/HomeMainImage_widget/homeImage_section_widget.dart';
-import 'package:shaila_rani_website/view/home/widgets/details_contact_container_widget/contact_details_widget.dart';
+import 'package:shaila_rani_website/view/home/widgets/details_contact_container_widget/details_contact_container.dart';
 import 'package:shaila_rani_website/view/home/widgets/our_practices_widget/our_pratices_widget.dart';
 import 'package:shaila_rani_website/view/home/widgets/our_team_container_widget/our_Team_container.dart';
 import 'package:shaila_rani_website/view/home/widgets/shaila_rani_ReadMore_widger/shaila_rani_ReadMore.dart';
@@ -24,10 +24,12 @@ class HomeScreen extends StatelessWidget {
           child: ResponsiveMobileAppBar()),
       body: ListView(
         children: [
-          HomeMainImageScreenWidget(screenSize: screenSize),  /// Main Image Screen Section >>>>>>>>>>>>>>>
+          HomeMainImageScreenWidget(screenSize: screenSize),
+
+          /// Main Image Screen Section >>>>>>>>>>>>>>>
 
           const ShailaRaniReadMoreContainerWidget(), // Read More Section >>>>>>>>>
-          ContactAndDeatilsContainerWidget(screenSize: screenSize),
+          const ContactAndDeatilsWidget(),
           const OurPracticesContainerWidget(),
           OurTeamContainerWidget(sscrollcontroller: sscrollcontroller),
 
