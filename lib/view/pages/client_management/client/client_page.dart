@@ -1,20 +1,22 @@
+import 'package:flutter/material.dart';
+
 // ignore_for_file: must_be_immutable
 
 import 'package:dropdown_search/dropdown_search.dart';
-import 'package:flutter/material.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
-import 'package:shaila_rani_website/view/pages/staff_management/create_employee/create_employee.dart';
-import 'package:shaila_rani_website/view/pages/staff_management/create_employee/details_employee_show.dart';
-import 'package:shaila_rani_website/view/pages/staff_management/employee_list_screen.dart';
+import 'package:shaila_rani_website/view/pages/client_management/client_list_screen.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/widget/headerText_widget.dart';
-class StaffHomeScreen extends StatelessWidget {
-  const StaffHomeScreen({super.key});
+import 'client_create.dart';
+
+
+class ClientDetailsScreen extends StatelessWidget {
+  const ClientDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 850,
+      height: 750,
       color: cGrey.withOpacity(0.1),
       child: Column(
         children: [
@@ -29,7 +31,7 @@ class StaffHomeScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 20, left: 20),
                       child: GooglePoppinsWidgets(
-                          text: 'EMPLOYEES DETAILS',
+                          text: 'CLIENT DETAILS',
                           fontsize: 14,
                           fontWeight: FontWeight.bold),
                     ),
@@ -37,9 +39,10 @@ class StaffHomeScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 20, top: 10),
                       child: GestureDetector(
-                        onTap: () { 
-                          createEmployee(context);
-                        // detailsShowingFunction(context);
+                        onTap: () async{
+                         await 
+                          clientDetails(context);
+                       
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -49,7 +52,7 @@ class StaffHomeScreen extends StatelessWidget {
                           width: 140,
                           child: Center(
                             child: GooglePoppinsWidgets(
-                              text: 'Create Employee',
+                              text: 'Client Details',
                               fontsize: 12,
                               color: cWhite,
                             ),
@@ -68,10 +71,10 @@ class StaffHomeScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 20),
               child: Container(
                 color: cWhite,
-                child: const Column(
+                child:   const Column(
                   children: [
-                    EmployeeListHeaderWidget(), // DropDown --- Active List / In Active
-                    ListOFStaffScreen()
+                     ClientsListHeaderWidget(),
+                       ListOFClientScreen()
                   ],
                 ),
               ),
@@ -83,8 +86,8 @@ class StaffHomeScreen extends StatelessWidget {
   }
 }
 
-class EmployeeListHeaderWidget extends StatelessWidget {
-  const EmployeeListHeaderWidget({
+class ClientsListHeaderWidget extends StatelessWidget {
+  const ClientsListHeaderWidget({
     super.key,
   });
 
@@ -124,24 +127,24 @@ class EmployeeListHeaderWidget extends StatelessWidget {
                   ),
                 ),
                 HeaderRowTextWidget(
-                  title: employeeSecTe[5],
+                  title: clientSecTe[0],
                 ),
                 HeaderRowTextWidget(
-                  title: employeeSecTe[0],
+                  title: clientSecTe[1],
                 ),
                 HeaderRowTextWidget(
-                  title: employeeSecTe[1],
+                  title: clientSecTe[2],
                 ),
                 HeaderRowTextWidget(
-                  title: employeeSecTe[2],
+                  title: clientSecTe[3],
                 ),
                 HeaderRowTextWidget(
-                  title: employeeSecTe[3],
+                  title: clientSecTe[4],
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: HeaderRowTextWidget(
-                    title: employeeSecTe[4],
+                    title: clientSecTe[5],
                   ),
                 )
               ],
@@ -153,11 +156,13 @@ class EmployeeListHeaderWidget extends StatelessWidget {
   }
 }
 
-List<String> employeeSecTe = [
-  'Employee Name',
-  'Assigned Roles',
+List<String> clientSecTe = [
+  
+  'Client Name',
+  'Type of case',
   'Mobile No',
   'Email Id',
-  'Date of Joining',
-  'Employee ID',
+  'Date of Marriage',
+  'Case No.'
+  // 'Em',
 ];

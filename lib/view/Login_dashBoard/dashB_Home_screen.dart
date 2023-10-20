@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/Login_dashBoard/side_menuBar/is_desktop.dart';
 import 'package:shaila_rani_website/view/Login_dashBoard/side_menuBar/widget/costecDujologo.dart';
+import 'package:shaila_rani_website/view/pages/client_management/client/client_page.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/staff_screen.dart';
 import 'package:sidebar_drawer/sidebar_drawer.dart';
 
@@ -47,11 +48,12 @@ class _DashBoardHomeScreenState extends State<DashBoardHomeScreen> {
 
 List<Widget> pages = [
  const StaffHomeScreen(),
-  Container(
-    child: Center(
-      child: Text(sideMenu[1]),
-    ),
-  ),
+ const ClientDetailsScreen(),
+  // Container(
+  //   child: Center(
+  //     child: Text(sideMenu[1]),
+  //   ),
+  // ),
   Container(
     child: Center(
       child: Text(sideMenu[2]),
