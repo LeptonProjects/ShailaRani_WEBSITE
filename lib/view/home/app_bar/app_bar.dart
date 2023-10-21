@@ -27,6 +27,7 @@ Future<void> _launchFacebookUrl() async {
   }
 }
 
+
 Future<void> _launchTwitterUrl() async {
   if (!await launchUrl(_twitterUrl)) {
     throw 'Could not launch $_twitterUrl';

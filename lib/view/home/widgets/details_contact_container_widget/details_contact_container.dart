@@ -3,6 +3,7 @@ import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/fonts/google_monstre.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/widgets/responsive/responsive.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactAndDeatilsWidget extends StatelessWidget {
   const ContactAndDeatilsWidget({super.key});
@@ -95,10 +96,15 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                   style: TextStyle(color: cWhite),
                                 ),
                               ),
-                              Image.asset(
-                                "assests/images/whatsApp_image-removebg-preview.png",
-                                height: screenSize.width / 15,
-                                width: screenSize.width / 10,
+                              GestureDetector(
+                                onTap: () {
+                                  
+                                },
+                                child: Image.asset(
+                                  "assests/images/whatsApp_image-removebg-preview.png",
+                                  height: screenSize.width / 15,
+                                  width: screenSize.width / 10,
+                                ),
                               ),
                             ],
                           ),
@@ -121,7 +127,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 20, left: 20),
                         child: GooglePoppinsWidgets(
-                          text: 'Our Office Address',
+                          text: 'Our Offices',
                           fontsize: 20,
                           color: cWhite,
                           fontWeight: FontWeight.w700,
@@ -141,7 +147,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   GooglePoppinsWidgets(
-                                    text: 'TRIVANDRUM OFFICE',
+                                    text: 'TRIVANDRUM ',
                                     fontsize: 12,
                                     color: cWhite,
                                     fontWeight: FontWeight.w500,
@@ -165,7 +171,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   GooglePoppinsWidgets(
-                                    text: 'ERNAKULAM OFFICE',
+                                    text: 'ERNAKULAM ',
                                     fontsize: 12,
                                     color: cWhite,
                                     fontWeight: FontWeight.w500,
@@ -197,7 +203,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   GooglePoppinsWidgets(
-                                    text: 'BANGALORE OFFICE',
+                                    text: 'BANGALORE ',
                                     fontsize: 12,
                                     color: cWhite,
                                     fontWeight: FontWeight.w500,
@@ -221,7 +227,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   GooglePoppinsWidgets(
-                                    text: 'CHENNAI OFFICE',
+                                    text: 'CHENNAI ',
                                     fontsize: 12,
                                     color: cWhite,
                                     fontWeight: FontWeight.w500,
@@ -327,10 +333,17 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                       style: TextStyle(color: cWhite),
                                     ),
                                   ),
-                                  Image.asset(
-                                    "assests/images/whatsApp_image-removebg-preview.png",
-                                    height: 70,
-                                    width: 150,
+                                  GestureDetector(
+                                    onTap: () =>_launchWhatsAppUrl(),
+                                    child: SizedBox(
+                                         height: 70,
+                                        width: 150,
+                                      child: Image.asset(
+                                        "assests/images/whatsApp_image-removebg-preview.png",
+                                        height: 70,
+                                        width: 150,
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -558,10 +571,15 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                           style: TextStyle(color: cWhite),
                                         ),
                                       ),
-                                      Image.asset(
-                                        "assests/images/whatsApp_image-removebg-preview.png",
-                                        height: screenSize.width / 15,
-                                        width: screenSize.width / 10,
+                                      GestureDetector(
+                                        onTap: () {
+                                          _launchWhatsAppUrl();
+                                        },
+                                        child: Image.asset(
+                                          "assests/images/whatsApp_image-removebg-preview.png",
+                                          height: screenSize.width / 15,
+                                          width: screenSize.width / 10,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -709,4 +727,12 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                 ),
     );
   }
+}
+  final Uri _whatsAppUrl = Uri.parse("https://wa.me/8089262564/?text=${Uri.parse('Hai')}");
+
+Future<void> _launchWhatsAppUrl() async {
+  if (!await launchUrl(_whatsAppUrl)) {
+    throw 'Could not launch $_whatsAppUrl';
+  }
+
 }

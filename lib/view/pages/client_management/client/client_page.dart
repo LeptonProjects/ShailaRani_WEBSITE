@@ -8,7 +8,7 @@ import 'package:shaila_rani_website/view/controller/dashboard_Controllers.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/pages/client_management/client_list_screen.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/widget/headerText_widget.dart';
-import '../../../Login_dashBoard/login_dashBoard.dart';
+
 import 'client_create.dart';
 
 class ClientDetailsScreen extends StatelessWidget {

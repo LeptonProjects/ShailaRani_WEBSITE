@@ -1,7 +1,6 @@
 // ignore_for_file: invalid_return_type_for_catch_error
 
 import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shaila_rani_website/view/Login_dashBoard/login_dashBoard.dart';
@@ -10,6 +9,7 @@ import 'package:shaila_rani_website/view/constant/const.dart';
 import 'package:shaila_rani_website/view/fonts/google_monstre.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/widgets/back_button/back_button_widget.dart';
+import 'package:shaila_rani_website/view/widgets/forget_password/forget_password.dart';
 import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textformFiledContainer.dart';
 
 class LoginButton extends StatelessWidget {
@@ -150,6 +150,18 @@ loginshowDilogueBox(BuildContext context) {
                           ),
                         ),
                       ),
+                      Row(
+                        children: [
+                          const Spacer(),
+                          GestureDetector(
+                            onTap: ()async {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                return const ForgotPasswordScreen();
+                              },));
+                                              },
+                            child: GooglePoppinsWidgets(text: "ForgetPassword ?", fontsize: 11)),
+                        ],
+                      )
                     ],
                   ),
                 )
@@ -161,3 +173,4 @@ loginshowDilogueBox(BuildContext context) {
     },
   );
 }
+
