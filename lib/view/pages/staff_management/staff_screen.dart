@@ -4,9 +4,10 @@ import 'dart:developer';
 
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shaila_rani_website/view/Login_dashBoard/login_dashBoard.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
-import 'package:shaila_rani_website/view/constant/const.dart';
+import 'package:shaila_rani_website/view/controller/dashboard_Controllers.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/employee_list_screen.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/functions/arrange_priority/arrange_priority.dart';
@@ -14,8 +15,9 @@ import 'package:shaila_rani_website/view/pages/staff_management/functions/create
 import 'package:shaila_rani_website/view/pages/staff_management/widget/headerText_widget.dart';
 
 class StaffHomeScreen extends StatelessWidget {
+  DashBoardControllers dashBoardControllers = Get.put(DashBoardControllers());
 
-   const StaffHomeScreen({super.key});
+    StaffHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -92,10 +94,10 @@ class StaffHomeScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 20),
               child: Container(
                 color: cWhite,
-                child: const Column(
+                child:  Column(
                   children: [
                     EmployeeListHeaderWidget(), // DropDown --- Active List / In Active
-                    ListOFStaffScreen()
+                    const ListOFStaffScreen()
                   ],
                 ),
               ),
@@ -108,7 +110,8 @@ class StaffHomeScreen extends StatelessWidget {
 }
 
 class EmployeeListHeaderWidget extends StatelessWidget {
-  const EmployeeListHeaderWidget({
+  DashBoardControllers dashBoardControllers = Get.put(DashBoardControllers());
+   EmployeeListHeaderWidget({
     super.key,
   });
 
@@ -128,15 +131,15 @@ class EmployeeListHeaderWidget extends StatelessWidget {
                     width: 200,
                     child: DropdownSearch(
                       onChanged: (value) async {
-                        DropdownListActive.activeValue = value ?? 'Active';
-                        log(DropdownListActive.activeValue);
-                        Navigator.pushReplacement(context, MaterialPageRoute(
-                          builder: (context) {
-                            return const LoginDashBoard();
-                          },
-                        ));
+                         dashBoardControllers.staffActiveORInActiveValue.value=value!;
+                        log('Getx Controller ${Get.find<DashBoardControllers>().staffActiveORInActiveValue.value}');
+                        // Navigator.pushReplacement(context, MaterialPageRoute(
+                        //   builder: (context) {
+                        //     return const LoginDashBoard();
+                        //   },
+                        // ));
                       },
-                      selectedItem: DropdownListActive.activeValue,
+                      selectedItem: dashBoardControllers.staffActiveORInActiveValue.value,
                       items: const ['Active', 'InActive'],
                     )),
               ),
