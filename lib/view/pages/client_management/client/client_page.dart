@@ -1,18 +1,15 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
-
 // ignore_for_file: must_be_immutable
-
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:get/get.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
-import 'package:shaila_rani_website/view/constant/const.dart';
+import 'package:shaila_rani_website/view/controller/dashboard_Controllers.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/pages/client_management/client_list_screen.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/widget/headerText_widget.dart';
 import '../../../Login_dashBoard/login_dashBoard.dart';
 import 'client_create.dart';
-
 
 class ClientDetailsScreen extends StatelessWidget {
   const ClientDetailsScreen({super.key});
@@ -43,10 +40,8 @@ class ClientDetailsScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 20, top: 10),
                       child: GestureDetector(
-                        onTap: () async{
-                         await 
-                          clientDetails(context);
-                       
+                        onTap: () async {
+                          await clientDetails(context);
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -66,7 +61,6 @@ class ClientDetailsScreen extends StatelessWidget {
                     )
                   ],
                 ),
-             
               ],
             ),
           ),
@@ -75,11 +69,8 @@ class ClientDetailsScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 20),
               child: Container(
                 color: cWhite,
-                child:   const Column(
-                  children: [
-                     ClientsListHeaderWidget(),
-                       ListOFClientScreen()
-                  ],
+                child: Column(
+                  children: [ClientsListHeaderWidget(), ListOFClientScreen()],
                 ),
               ),
             ),
@@ -91,7 +82,8 @@ class ClientDetailsScreen extends StatelessWidget {
 }
 
 class ClientsListHeaderWidget extends StatelessWidget {
-  const ClientsListHeaderWidget({
+  DashBoardControllers dashBoardControllers = Get.put(DashBoardControllers());
+  ClientsListHeaderWidget({
     super.key,
   });
 
@@ -111,21 +103,17 @@ class ClientsListHeaderWidget extends StatelessWidget {
                     width: 200,
                     child: DropdownSearch(
                       onChanged: (value) async {
-                        DropdownListCases.caseValue = value ?? 'Cases';
-                        log(DropdownListCases.caseValue);
-                        Navigator.pushReplacement(context, MaterialPageRoute(
-                          builder: (context) {
-                            return const LoginDashBoard();
-                          },
-                        )
-                        );
+                        dashBoardControllers
+                            .clientCasesORClosedCaseValue.value = value!;
+                        log('Getx Controller ${Get.find<DashBoardControllers>().clientCasesORClosedCaseValue.value}');
                       },
-                      selectedItem: DropdownListCases.caseValue,
+                      selectedItem: dashBoardControllers
+                          .clientCasesORClosedCaseValue.value,
                       items: const ['Cases', 'Closed Cases'],
                     )),
               ),
             ],
-          ),  //
+          ), //
           Container(
             height: 45,
             decoration: BoxDecoration(
@@ -171,7 +159,6 @@ class ClientsListHeaderWidget extends StatelessWidget {
 }
 
 List<String> clientSecTe = [
-  
   'Client Name',
   'Type of case',
   'Mobile No',

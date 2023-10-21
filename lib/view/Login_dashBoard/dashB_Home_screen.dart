@@ -23,16 +23,14 @@ class _DashBoardHomeScreenState extends State<DashBoardHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SidebarDrawer(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              AppBar(
-                backgroundColor: cWhite,
-                leading: const DrawerIcon(),
-              ),
-              pages[selectedIndex]
-            ],
-          ),
+        body: ListView(
+          children: [
+            AppBar(
+              backgroundColor: cWhite,
+              leading: const DrawerIcon(),
+            ),
+            pages[selectedIndex]
+          ],
         ),
         drawer: ListView(children: [
           const CostechDujoLogoWidget(),
@@ -52,29 +50,11 @@ class _DashBoardHomeScreenState extends State<DashBoardHomeScreen> {
 
 List<Widget> pages = [
   StaffHomeScreen(),
-  Container(
-    child: Center(
-      child: Text(sideMenu[1]),
-    ),
-  ),
+  const ClientDetailsScreen(),
   const VideoManageMentHomeScreen(),
- const StaffHomeScreen(),
- const ClientDetailsScreen(),
-  // Container(
-  //   child: Center(
-  //     child: Text(sideMenu[1]),
-  //   ),
-  // ),
-  Container(
-    child: Center(
-      child: Text(sideMenu[2]),
-    ),
-  ),
   Container(
     child: Center(
       child: Text(sideMenu[3]),
     ),
   ),
-
-
 ];
