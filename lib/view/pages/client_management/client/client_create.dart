@@ -23,7 +23,7 @@ import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textform
      String selectgender = '';
      String selectstate= '';
   TextEditingController clientNameController = TextEditingController();
-  // TextEditingController employeeIDController = TextEditingController();
+  TextEditingController caseNoController = TextEditingController();
   TextEditingController mobileNoController = TextEditingController();
   TextEditingController whatsAppNoController = TextEditingController();
   TextEditingController emailIDController = TextEditingController();
@@ -362,7 +362,7 @@ import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textform
                                         formatedate;
                                   },
                                   hintText: "📅 Select Date",
-                                  title: "Entered Date",
+                                  title: "Commencement Date",
                                   validator: checkFieldDateIsValid,
                                   width: 300);
                             } else {
@@ -375,7 +375,7 @@ import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textform
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     GooglePoppinsWidgets(
-                                        text: 'Entered Date', fontsize: 12),
+                                        text: 'Commencement Date', fontsize: 12),
                                     Container(
                                         decoration: BoxDecoration(
                                             border: Border.all(
@@ -451,8 +451,9 @@ import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textform
                       
                             clientController.addclientDetailsToSever(
                                 clientName: clientNameController.text.trim(),
-                                
+                                caseNo: caseNoController.text.trim(),
                                 mobileNo: mobileNoController.text.trim(),
+                                whatsAppNo:  whatsAppNoController.text.trim(),
                                  emailID: emailIDController.text.trim(),
                                  gender: selectgender,
                                  dob: clientController
@@ -496,6 +497,13 @@ import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textform
                           ),
                         ),
                       ),
+                      TextFormFiledContainerWidget(
+                          
+                              controller: caseNoController,
+                              hintText: "Enter Case Number",
+                              title: "Case No.",
+                              validator: checkFieldEmpty,
+                              width: 300),
                     ],
                   ),
                 )
