@@ -1,12 +1,16 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 // ignore_for_file: must_be_immutable
 
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
+import 'package:shaila_rani_website/view/constant/const.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/pages/client_management/client_list_screen.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/widget/headerText_widget.dart';
+import '../../../Login_dashBoard/login_dashBoard.dart';
 import 'client_create.dart';
 
 
@@ -106,12 +110,22 @@ class ClientsListHeaderWidget extends StatelessWidget {
                     height: 40,
                     width: 200,
                     child: DropdownSearch(
-                      selectedItem: 'Cases',
+                      onChanged: (value) async {
+                        DropdownListCases.caseValue = value ?? 'Cases';
+                        log(DropdownListCases.caseValue);
+                        Navigator.pushReplacement(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const LoginDashBoard();
+                          },
+                        )
+                        );
+                      },
+                      selectedItem: DropdownListCases.caseValue,
                       items: const ['Cases', 'Closed Cases'],
                     )),
               ),
             ],
-          ), //
+          ),  //
           Container(
             height: 45,
             decoration: BoxDecoration(

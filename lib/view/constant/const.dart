@@ -18,3 +18,6 @@ void showToast({required String msg}) {
 class DropdownListActive{
   static  String activeValue = 'Active';
 }
+class DropdownListCases{
+  static  String caseValue= 'Cases';
+}

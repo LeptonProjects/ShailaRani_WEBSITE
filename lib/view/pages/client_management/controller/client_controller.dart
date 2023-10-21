@@ -84,7 +84,7 @@ class ClientManagementController extends GetxController {
     } catch (e) {}
   }
 
-  Future<void> deActivateThisPerson({
+  Future<void> deActivateThisClient({
     required String clientName,
   // required String employeeID,
   required String mobileNo,
@@ -180,3 +180,4 @@ class ClientManagementController extends GetxController {
     });
   }
 }
+

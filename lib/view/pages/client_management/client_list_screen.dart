@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/constant/const.dart';
-import 'package:shaila_rani_website/view/pages/client_management/client/details_client_show.dart';
+
 import 'package:shaila_rani_website/view/pages/client_management/client/onClick/Client_OnClick.dart';
 import 'package:shaila_rani_website/view/pages/client_management/model/create_client_model.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/widget/list_dataContainer.dart';
@@ -21,7 +20,7 @@ class ListOFClientScreen extends StatelessWidget {
         stream: FirebaseFirestore.instance
             .collection('ClientManagement')
             .doc('ClientManagement')
-            .collection(DropdownListActive.activeValue)
+            .collection(DropdownListCases.caseValue)
             .orderBy('clientName', descending: false)
             .snapshots(),
         builder: (context, snapshot) {

@@ -5,8 +5,6 @@ import 'package:get/get.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/pages/client_management/controller/client_controller.dart';
-import 'package:shaila_rani_website/view/pages/staff_management/controller/employee_controller.dart';
-import 'package:shaila_rani_website/view/pages/staff_management/functions/upload_image/upload_image.dart';
 import 'package:shaila_rani_website/view/widgets/back_button/back_button_widget.dart';
 import 'package:shaila_rani_website/view/widgets/blue_Container_widget/blue_Container_widget.dart';
 
@@ -135,12 +133,12 @@ clientDetailsShowingFunction({
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                ShowDetailStaffContainerWidget(
+                                ShowDetailClientContainerWidget(
                                     height: 48,
                                     width: 300,
                                     title: 'D O B',
                                     content: dob),
-                                ShowDetailStaffContainerWidget(
+                                ShowDetailClientContainerWidget(
                                     height: 48,
                                     width: 300,
                                     title: 'Marriage Date',
@@ -150,12 +148,12 @@ clientDetailsShowingFunction({
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                ShowDetailStaffContainerWidget(
+                                ShowDetailClientContainerWidget(
                                     height: 48,
                                     width: 300,
                                     title: 'Email',
                                     content: emailID),
-                                ShowDetailStaffContainerWidget(
+                                ShowDetailClientContainerWidget(
                                     height: 48,
                                     width: 300,
                                     title: 'Mobile No',
@@ -165,12 +163,12 @@ clientDetailsShowingFunction({
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                ShowDetailStaffContainerWidget(
+                                ShowDetailClientContainerWidget(
                                     height: 48,
                                     width: 300,
                                     title: 'WhatsApp No',
                                     content: whatsAppNo),
-                                ShowDetailStaffContainerWidget(
+                               ShowDetailClientContainerWidget(
                                     height: 48,
                                     width: 300,
                                     title: 'Occupation',
@@ -180,12 +178,12 @@ clientDetailsShowingFunction({
                              Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                ShowDetailStaffContainerWidget(
+                               ShowDetailClientContainerWidget(
                                     height: 48,
                                     width: 300,
                                     title: 'Marriage Type',
                                     content: marriageDate),
-                                ShowDetailStaffContainerWidget(
+                                ShowDetailClientContainerWidget(
                                     height: 48,
                                     width: 300,
                                     title: 'No. of Children',
@@ -195,12 +193,12 @@ clientDetailsShowingFunction({
                              Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                ShowDetailStaffContainerWidget(
+                                ShowDetailClientContainerWidget(
                                     height: 48,
                                     width: 300,
                                     title:  "Seperation Date",
                                     content: seperationDate),
-                                ShowDetailStaffContainerWidget(
+                                ShowDetailClientContainerWidget(
                                     height: 48,
                                     width: 300,
                                     title: "Entered date",
@@ -210,12 +208,12 @@ clientDetailsShowingFunction({
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                ShowDetailStaffContainerWidget(
+                                ShowDetailClientContainerWidget(
                                     height: 100,
                                     width: 400,
                                     title: 'Address',
                                     content: address),
-                                ShowDetailStaffContainerWidget(
+                                ShowDetailClientContainerWidget(
                                     height: 48,
                                     width: 300,
                                     title: 'Opposite Advocate',
@@ -225,12 +223,12 @@ clientDetailsShowingFunction({
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                ShowDetailStaffContainerWidget(
+                                ShowDetailClientContainerWidget(
                                     height: 100,
                                     width: 400,
                                     title: 'Discription',
                                     content: casediscription),
-                                ShowDetailStaffContainerWidget(
+                                ShowDetailClientContainerWidget(
                                     height: 48,
                                     width: 300,
                                     title: 'State',
@@ -239,7 +237,7 @@ clientDetailsShowingFunction({
                             ),
                               Row(
                                 children: [
-                                  ShowDetailStaffContainerWidget(
+                                  ShowDetailClientContainerWidget(
                                         height: 48,
                                         width: 300,
                                         title: "Enter By",
@@ -281,7 +279,7 @@ clientDetailsShowingFunction({
                   padding: const EdgeInsets.only(left: 10),
                   child: GestureDetector(
                     onTap: () {
-                      clientManagementController.deActivateThisPerson(
+                      clientManagementController.deActivateThisClient(
                       context: context,
                      clientName:clientName,
          
@@ -324,12 +322,12 @@ clientDetailsShowingFunction({
   );
 }
 
-class ShowDetailStaffContainerWidget extends StatelessWidget {
+class ShowDetailClientContainerWidget extends StatelessWidget {
   String title;
   String content;
   double height;
   double width;
-  ShowDetailStaffContainerWidget({
+  ShowDetailClientContainerWidget({
     required this.title,
     required this.content,
     required this.height,

@@ -8,9 +8,11 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
+import 'package:shaila_rani_website/view/constant/const.dart';
 import 'package:shaila_rani_website/view/constant/constant.validate.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/pages/client_management/controller/client_controller.dart';
+import 'package:shaila_rani_website/view/pages/client_management/model/create_client_model.dart';
 import 'package:shaila_rani_website/view/widgets/back_button/back_button_widget.dart';
 import 'package:shaila_rani_website/view/widgets/select_DateWidget/select_Date_widget.dart';
 import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textformFiledContainer.dart';
@@ -151,6 +153,7 @@ import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textform
                                   },
                                   hintText: "📅 Select Date",
                                   title: "D O B",
+                                  validator: checkFieldDateIsValid,
                                   width: 300);
                             } else {
                               return SizedBox(
@@ -204,6 +207,7 @@ import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textform
                                   },
                                   hintText: "📅 Select Date",
                                   title: "Date of Marriage",
+                                  validator: checkFieldDateIsValid,
                                   width: 300);
                             } else {
                               return SizedBox(
@@ -223,6 +227,7 @@ import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textform
                                                 width: 1)),
                                         height: 35,
                                         width: 300,
+                                        
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: GooglePoppinsWidgets(
@@ -271,6 +276,7 @@ import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textform
                               controller: oppositeadvocateController,
                               title: "Opposite Advocate",
                               hintText: "Opposite Advocate Name",
+                              validator: checkFieldEmpty,
                               width: 300),
                         ],
                       ),
@@ -303,6 +309,7 @@ import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textform
                                   },
                                   hintText: "📅 Select Date",
                                   title: "Seperation Date",
+                                  validator: checkFieldDateIsValid,
                                   width: 300);
                             } else {
                               return SizedBox(
@@ -356,6 +363,7 @@ import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textform
                                   },
                                   hintText: "📅 Select Date",
                                   title: "Entered Date",
+                                  validator: checkFieldDateIsValid,
                                   width: 300);
                             } else {
                               return SizedBox(
@@ -432,10 +440,15 @@ import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textform
                           ),SizedBox(height: 10,),
                       Center(
                         child: GestureDetector(
-                          onTap: () async { 
-                      if (_formKey.currentState!.validate()) {
-                        final client
-                      }
+                          onTap: () async {
+                              if (_formKey.currentState!.validate()) {
+                                if (selectstate == '') {
+                                  return showToast(msg: 'Please select State');
+                                } else if (selectgender == '') {
+                                  return showToast(msg: 'Please select Gender');
+                                } else {
+                                  
+                      
                             clientController.addclientDetailsToSever(
                                 clientName: clientNameController.text.trim(),
                                 
@@ -464,6 +477,8 @@ import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textform
                                       clientController.enteredSelectedDate.value='';
                                       clientController.seperationSelectedDate.value='';
                                     });
+                          }
+                              }
                           },
                           child: Container(
                             height: 40,
