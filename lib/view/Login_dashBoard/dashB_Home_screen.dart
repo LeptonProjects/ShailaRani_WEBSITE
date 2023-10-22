@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shaila_rani_website/view/Login_dashBoard/side_menuBar/widget/article_screen.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/Login_dashBoard/side_menuBar/is_desktop.dart';
 import 'package:shaila_rani_website/view/Login_dashBoard/side_menuBar/widget/costecDujologo.dart';
@@ -46,7 +47,7 @@ class _DashBoardHomeScreenState extends State<DashBoardHomeScreen> {
 }
 
 List<Widget> pages = [
- const StaffHomeScreen(),
+  const StaffHomeScreen(),
   Container(
     child: Center(
       child: Text(sideMenu[1]),
@@ -57,11 +58,5 @@ List<Widget> pages = [
       child: Text(sideMenu[2]),
     ),
   ),
-  Container(
-    child: Center(
-      child: Text(sideMenu[3]),
-    ),
-  ),
-
-
+  ArticleScreen(),
 ];

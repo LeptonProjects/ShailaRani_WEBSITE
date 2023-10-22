@@ -64,7 +64,6 @@ class SideBarMenuItemsWidget extends StatelessWidget {
                 contentPadding: const EdgeInsets.only(
                   left: 10,
                 ),
-
                 onTap: () {
                   onTap.call(index);
                 },

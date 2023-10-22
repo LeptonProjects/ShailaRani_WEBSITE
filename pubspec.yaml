@@ -53,6 +53,7 @@ dependencies:
   get: 
   url_launcher:
   sidebar_drawer: ^0.0.1+2
+  file_picker: 
 dev_dependencies:
   flutter_test:
     sdk: flutter
