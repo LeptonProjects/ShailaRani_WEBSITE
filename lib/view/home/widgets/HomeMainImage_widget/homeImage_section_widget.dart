@@ -3,12 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/home/widgets/HomeMainImage_widget/drop_down_list.dart';
+import 'package:shaila_rani_website/view/home/widgets/about_dilog_BOX/about_dilog_box.dart';
+import 'package:shaila_rani_website/view/home/widgets/details_contact_container_widget/details_contact_container.dart';
 import 'package:shaila_rani_website/view/home/widgets/hover_mouse/hover_text.dart';
 import 'package:shaila_rani_website/view/widgets/responsive/responsive.dart';
 
 class HomeMainImageScreenWidget extends StatelessWidget {
-  final GlobalKey _containerKey = GlobalKey();
-   HomeMainImageScreenWidget({
+  const HomeMainImageScreenWidget({
     super.key,
     required this.screenSize,
   });
@@ -43,6 +44,24 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                   ),
                 );
               }),
+              OnHoverTextForHeader(builder: (isHoverd) {
+                final colorr = isHoverd
+                    ? const Color.fromARGB(255, 192, 145, 128)
+                    : cWhite;
+                return GestureDetector(
+                  onTap: () {
+                showAboutPage(context);
+                  },
+                  child: SizedBox(
+                    height: 40,
+                    width: 80,
+                    child: Center(
+                      child: GooglePoppinsWidgets(
+                          text: "About", fontsize: 12, color: colorr),
+                    ),
+                  ),
+                );
+              }),
               ResponsiveWebSite.isDesktop(context)
                   ? const ServicesDropDownList()
                   : GestureDetector(
@@ -59,28 +78,6 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                       ),
                     ), // >>>>>>>>>>>>>>>>>> Services DropDown List
 
-              OnHoverTextForHeader(builder: (isHoverd) {
-                final colorr = isHoverd
-                    ? const Color.fromARGB(255, 192, 145, 128)
-                    : cWhite;
-                return GestureDetector(
-                  onTap: () {
-                    Scrollable.ensureVisible(
-                      _containerKey.currentContext!,
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeInOut,
-                    );
-                  },
-                  child: SizedBox(
-                    height: 40,
-                    width: 80,
-                    child: Center(
-                      child: GooglePoppinsWidgets(
-                          text: "Videos", fontsize: 12, color: colorr),
-                    ),
-                  ),
-                );
-              }),
               OnHoverTextForHeader(builder: (isHoverd) {
                 final colorr = isHoverd
                     ? const Color.fromARGB(255, 192, 145, 128)
@@ -102,17 +99,20 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                         final colorr = isHoverd
                             ? const Color.fromARGB(255, 192, 145, 128)
                             : cWhite;
-                        return Container(
-                          height: 45,
-                          width: 150,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.brown.shade400)),
-                          child: Center(
-                            child: GooglePoppinsWidgets(
-                              text: "Get Appoinment",
-                              fontsize: 14,
-                              color: colorr,
-                              fontWeight: FontWeight.w400,
+                        return GestureDetector(
+                          onTap: () => launchWhatsAppUrl(),
+                          child: Container(
+                            height: 45,
+                            width: 150,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.brown.shade400)),
+                            child: Center(
+                              child: GooglePoppinsWidgets(
+                                text: "Get Appoinment",
+                                fontsize: 14,
+                                color: colorr,
+                                fontWeight: FontWeight.w400,
+                              ),
                             ),
                           ),
                         );
@@ -217,17 +217,20 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                     final colorr = isHoverd
                         ? const Color.fromARGB(255, 192, 145, 128)
                         : cWhite;
-                    return Container(
-                      height: 45,
-                      width: 150,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.brown.shade400)),
-                      child: Center(
-                        child: GooglePoppinsWidgets(
-                          text: "Get Appoinment",
-                          fontsize: 14,
-                          color: colorr,
-                          fontWeight: FontWeight.w400,
+                    return GestureDetector(
+                      onTap: () => launchWhatsAppUrl(),
+                      child: Container(
+                        height: 45,
+                        width: 150,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.brown.shade400)),
+                        child: Center(
+                          child: GooglePoppinsWidgets(
+                            text: "Get Appoinment",
+                            fontsize: 14,
+                            color: colorr,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
                     );

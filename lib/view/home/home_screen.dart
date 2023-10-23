@@ -32,8 +32,14 @@ class HomeScreen extends StatelessWidget {
           const ShailaRaniReadMoreContainerWidget(), // Read More Section >>>>>>>>>
           const ContactAndDeatilsWidget(),
           const OurPracticesContainerWidget(),
-          OurTeamContainerWidget(sscrollcontroller: sscrollcontroller),
-          VideoSectionContainer(sscrollcontroller: sscrollcontroller),
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: VideoSectionContainer(sscrollcontroller: sscrollcontroller),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: OurTeamContainerWidget(sscrollcontroller: sscrollcontroller),
+          ),
 
           const Divider(
             height: 01,

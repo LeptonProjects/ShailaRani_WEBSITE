@@ -41,10 +41,10 @@ class VideoSectionContainer extends StatelessWidget {
                                         width: 200,
                                         child: Center(
                                           child: GestureDetector(
-                                            onTap: () => launchUrl(
-                                                Uri.parse(state.videos[0].url)),
-                                            child: Image.network(
-                                              state.videos[0].thumbnailurl,
+                                            onTap: () => launchUrl(Uri.parse(
+                                                'https://www.youtube.com/@AdvShailaRani')),
+                                            child: Image.asset(
+                                                 'assests/images/you_tube_png.png',
                                               fit: BoxFit.fill,
                                             ),
                                           ),
@@ -80,8 +80,8 @@ class VideoSectionContainer extends StatelessWidget {
                                                 onTap: () => launchUrl(
                                                     Uri.parse(
                                                         state.videos[0].url)),
-                                                child: Image.network(
-                                                  state.videos[0].thumbnailurl,
+                                                child: Image.asset(
+                                                  'assests/images/you_tube_png.png',
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
@@ -118,11 +118,11 @@ class VideoSectionContainer extends StatelessWidget {
                                         height: 400,
                                         width: 150,
                                         child: GestureDetector(
-                                          onTap: () => launchUrl(
-                                              Uri.parse(state.videos[0].url)),
+                                          onTap: () => launchUrl(Uri.parse(
+                                              'https://www.youtube.com/@AdvShailaRani')),
                                           child: Center(
-                                            child: Image.network(
-                                              state.videos[0].thumbnailurl,
+                                            child: Image.asset(
+                                              'assests/images/you_tube_png.png',
                                               fit: BoxFit.cover,
                                             ),
                                           ),
@@ -139,18 +139,22 @@ class VideoSectionContainer extends StatelessWidget {
                                   Expanded(
                                     child: Padding(
                                       padding: const EdgeInsets.only(left: 20),
-                                      child: SizedBox(
-                                        // color: Colors.amber,
-                                        height:
-                                            ResponsiveWebSite.isTablet(context)
-                                                ? 280
-                                                : 600,
-                                        // width:  ResponsiveWebSite.isTablet(context)
-                                        // ? 280
-                                        // : 1000,
-                                        child: Image.network(
-                                          'https://yt3.googleusercontent.com/EyPUsmFj4rk9BYwtSy0EACxupxD89a_zJR5vw7_fWiNqifvEKjPDWXNfqfivn6a5NL8ES3-LC4o=w2120-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
-                                          fit: BoxFit.fitHeight,
+                                      child: GestureDetector(
+                                        onTap: () => launchUrl(Uri.parse(
+                                            'https://www.youtube.com/@AdvShailaRani')),
+                                        child: SizedBox(
+                                          // color: Colors.amber,
+                                          height: ResponsiveWebSite.isTablet(
+                                                  context)
+                                              ? 280
+                                              : 600,
+                                          // width:  ResponsiveWebSite.isTablet(context)
+                                          // ? 280
+                                          // : 1000,
+                                          child: Image.network(
+                                            'https://yt3.googleusercontent.com/EyPUsmFj4rk9BYwtSy0EACxupxD89a_zJR5vw7_fWiNqifvEKjPDWXNfqfivn6a5NL8ES3-LC4o=w2120-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                                            fit: BoxFit.fitHeight,
+                                          ),
                                         ),
                                       ),
                                     ),

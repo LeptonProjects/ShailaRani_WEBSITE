@@ -23,6 +23,10 @@ class OurPracticesContainerWidget extends StatelessWidget {
               ),
             ),
           ),
+          
+        ),
+        const SizedBox(
+          height: 20,
         ),
         ResponsiveWebSite.isTablet(context)
             ? const Column(
@@ -234,6 +238,7 @@ class OurPracticesContainerWidget extends StatelessWidget {
                           ],
                         ),
                       ),
+                      SizedBox(height: 20,)
                     ],
                   )
       ],

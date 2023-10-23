@@ -44,16 +44,19 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                         padding: const EdgeInsets.only(
                           top: 100,
                         ),
-                        child: Container(
-                          height: 40,
-                          width: 200,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.amber)),
-                          child: Center(
-                            child: GoogleMonstserratWidgets(
-                                text: 'Fix Appoinment',
-                                fontsize: 12,
-                                color: cWhite),
+                        child: GestureDetector(
+                          onTap: () => launchWhatsAppUrl(),
+                          child: Container(
+                            height: 40,
+                            width: 200,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.amber)),
+                            child: Center(
+                              child: GoogleMonstserratWidgets(
+                                  text: 'Fix Appoinment',
+                                  fontsize: 12,
+                                  color: cWhite),
+                            ),
                           ),
                         ),
                       ),
@@ -86,7 +89,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                           child: Column(
                             children: [
                               const Text(
-                                '📞 +91 9633277604',
+                                '📞 +91 9562776043',
                                 style: TextStyle(color: cWhite),
                               ),
                               const Padding(
@@ -98,8 +101,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  _launchWhatsAppUrl();
-                                  
+                                  launchWhatsAppUrl();
                                 },
                                 child: Image.asset(
                                   "assests/images/whatsApp_image-removebg-preview.png",
@@ -276,16 +278,19 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                             padding: const EdgeInsets.only(
                               top: 20,
                             ),
-                            child: Container(
-                              height: 40,
-                              width: 200,
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.amber)),
-                              child: Center(
-                                child: GoogleMonstserratWidgets(
-                                    text: 'Fix Appoinment',
-                                    fontsize: 12,
-                                    color: cWhite),
+                            child: GestureDetector(
+                              onTap: () => launchWhatsAppUrl(),
+                              child: Container(
+                                height: 40,
+                                width: 200,
+                                decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.amber)),
+                                child: Center(
+                                  child: GoogleMonstserratWidgets(
+                                      text: 'Fix Appoinment',
+                                      fontsize: 12,
+                                      color: cWhite),
+                                ),
                               ),
                             ),
                           ),
@@ -324,7 +329,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                               child: Column(
                                 children: [
                                   const Text(
-                                    '📞 +91 9633277604',
+                                    '📞 +91 9562776043',
                                     style: TextStyle(color: cWhite),
                                   ),
                                   const Padding(
@@ -335,10 +340,10 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                     ),
                                   ),
                                   GestureDetector(
-                                    onTap: () =>_launchWhatsAppUrl(),
+                                    onTap: () => launchWhatsAppUrl(),
                                     child: SizedBox(
-                                         height: 70,
-                                        width: 150,
+                                      height: 70,
+                                      width: 150,
                                       child: Image.asset(
                                         "assests/images/whatsApp_image-removebg-preview.png",
                                         height: 70,
@@ -520,16 +525,19 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                 padding: const EdgeInsets.only(
                                   top: 100,
                                 ),
-                                child: Container(
-                                  height: 40,
-                                  width: 200,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.amber)),
-                                  child: Center(
-                                    child: GoogleMonstserratWidgets(
-                                        text: 'Fix Appoinment',
-                                        fontsize: 12,
-                                        color: cWhite),
+                                child: GestureDetector(
+                                  onTap: () => launchWhatsAppUrl(),
+                                  child: Container(
+                                    height: 40,
+                                    width: 200,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.amber)),
+                                    child: Center(
+                                      child: GoogleMonstserratWidgets(
+                                          text: 'Fix Appoinment',
+                                          fontsize: 12,
+                                          color: cWhite),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -562,7 +570,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                   child: Column(
                                     children: [
                                       const Text(
-                                        '📞 +91 9633277604',
+                                        '📞 +91 9562776043',
                                         style: TextStyle(color: cWhite),
                                       ),
                                       const Padding(
@@ -574,7 +582,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                       ),
                                       GestureDetector(
                                         onTap: () {
-                                          _launchWhatsAppUrl();
+                                          launchWhatsAppUrl();
                                         },
                                         child: Image.asset(
                                           "assests/images/whatsApp_image-removebg-preview.png",
@@ -589,10 +597,9 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                             ],
                           ),
                         ),
-                        
                       ],
                     ),
-                       SizedBox(
+                    SizedBox(
                       height: 380,
                       child: Column(
                         children: [
@@ -729,11 +736,12 @@ class ContactAndDeatilsWidget extends StatelessWidget {
     );
   }
 }
-  final Uri _whatsAppUrl = Uri.parse("https://wa.me/9633277604/?text=${Uri.parse('Would like to get an appoinment')}");
 
-Future<void> _launchWhatsAppUrl() async {
+final Uri _whatsAppUrl = Uri.parse(
+    "https://wa.me/9562776043/?text=${Uri.parse('Would like to get an appoinment')}");
+
+Future<void> launchWhatsAppUrl() async {
   if (!await launchUrl(_whatsAppUrl)) {
     throw 'Could not launch $_whatsAppUrl';
   }
-
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
-import 'package:shaila_rani_website/view/home/widgets/shaila_rani_ReadMore_widger/read_more-screen.dart';
+import 'package:shaila_rani_website/view/home/widgets/about_dilog_BOX/about_dilog_box.dart';
 import 'package:shaila_rani_website/view/widgets/responsive/responsive.dart';
 
 class ShailaRaniReadMoreContainerWidget extends StatelessWidget {
@@ -59,7 +59,7 @@ class ShailaRaniReadMoreContainerWidget extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                readmoreScreenPage(context);
+                showAboutPage(context);
                 },
                 child: Container(
                   height:ResponsiveWebSite.isMobile(context)?20: 35,
