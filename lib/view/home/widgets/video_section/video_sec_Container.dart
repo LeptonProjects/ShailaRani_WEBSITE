@@ -179,9 +179,10 @@ class VideoSectionContainer extends StatelessWidget {
                                   child: Column(
                                     children: [
                                       Expanded(
-                                        child: Image.network(
-                                          data.staffImage ?? '',
-                                          fit: BoxFit.cover,
+                                        child: Image.asset(
+                                          
+                                          'assests/images/you_tube_png.png',
+                                          fit: BoxFit.fitWidth,
                                         ),
                                       ),
                                       Padding(
@@ -233,9 +234,8 @@ class VideoSectionContainer extends StatelessWidget {
                                       Expanded(
                                         child: SizedBox(
                                           width: double.infinity,
-                                          child: Image.network(
-                                            data.staffImage ?? '',
-                                            fit: BoxFit.cover,
+                                          child: Image.asset(
+                                            'assests/images/you_tube_png.png',
                                           ),
                                         ),
                                       ),

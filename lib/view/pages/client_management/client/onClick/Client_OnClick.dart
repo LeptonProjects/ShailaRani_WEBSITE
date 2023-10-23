@@ -6,7 +6,6 @@ import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/pages/client_management/controller/client_controller.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/functions/upload_image/client%20_image.dart';
-import 'package:shaila_rani_website/view/pages/staff_management/functions/upload_image/upload_image.dart';
 import 'package:shaila_rani_website/view/widgets/back_button/back_button_widget.dart';
 import 'package:shaila_rani_website/view/widgets/blue_Container_widget/blue_Container_widget.dart';
 

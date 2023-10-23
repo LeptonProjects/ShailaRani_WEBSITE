@@ -358,68 +358,7 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                       //border: Border.all(width: 1,color: Colors.white,)
                     ),
                     child:
-                        //   ResponsiveWebSite.isTablet(context)?
-                        //   Column(
-                        //       // mainAxisAlignment: MainAxisAlignment.center,
-                        //       // crossAxisAlignment: CrossAxisAlignment.center,
-                        //       children: [
-                        //         Center(
-                        //           child: Text(
-                        //             "Emergency contacts",
-                        //             style: TextStyle(
-                        //                 fontSize: screenSize.width / 80, color: cWhite),
-                        //           ),
-                        //         ),
-                        //         SizedBox(
-                        //           height: screenSize.width / 100,//change 200
-                        //         ),
-                        //         Row(
-                        //           // mainAxisAlignment: MainAxisAlignment.center,
-                        //           children: [
-                        //             Icon(
-                        //               Icons.phone,
-                        //               size: screenSize.width / 95,
-                        //               color: Colors.blueGrey,
-                        //             ),
-                        //            Text(
-                        //               "+91-123456789",
-                        //               style: TextStyle(
-                        //                 color: cWhite,
-                        //                 fontSize: screenSize.width/80,
-                        //                 ),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //         Row(
-                        //           // mainAxisAlignment: MainAxisAlignment.start,
-                        //           children: [
-                        //             Icon(
-                        //               Icons.email,
-                        //               size: screenSize.width / 95,
-                        //               color: Colors.blueGrey,
-                        //             ),
-                        //            Text(
-                        //               "info@shailaraniassociates.com",
-                        //               style: TextStyle(
-                        //                 fontSize: screenSize.width/100,
-                        //                 color: Colors.white,
-                        //               ),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //         Column(
-                        //           children: [
-                        //             Image.asset(
-                        //               "assests/images/whatsApp_image-removebg-preview.png",
-                        //               height: screenSize.width / 15,
-                        //               width: screenSize.width / 10,
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       ],
-                        //     )
-              
-                        //  :
+                     
                         Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
