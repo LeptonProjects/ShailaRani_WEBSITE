@@ -98,6 +98,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                               ),
                               GestureDetector(
                                 onTap: () {
+                                  _launchWhatsAppUrl();
                                   
                                 },
                                 child: Image.asset(
@@ -728,7 +729,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
     );
   }
 }
-  final Uri _whatsAppUrl = Uri.parse("https://wa.me/8089262564/?text=${Uri.parse('Hai')}");
+  final Uri _whatsAppUrl = Uri.parse("https://wa.me/9633277604/?text=${Uri.parse('Would like to get an appoinment')}");
 
 Future<void> _launchWhatsAppUrl() async {
   if (!await launchUrl(_whatsAppUrl)) {

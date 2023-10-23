@@ -77,7 +77,7 @@ class ResponsiveMobileAppBar extends StatelessWidget {
                       Image.asset(
                         'assests/images/advo_logo_new.png',
                         fit: BoxFit.contain,
-                        color: Colors.white,
+                        // color: Colors.white,
                         height: ResponsiveWebSite.isMobile(context) ? 70 : 90,
                         width: 120,
                       ),
