@@ -7,7 +7,8 @@ import 'package:shaila_rani_website/view/home/widgets/hover_mouse/hover_text.dar
 import 'package:shaila_rani_website/view/widgets/responsive/responsive.dart';
 
 class HomeMainImageScreenWidget extends StatelessWidget {
-  const HomeMainImageScreenWidget({
+  final GlobalKey _containerKey = GlobalKey();
+   HomeMainImageScreenWidget({
     super.key,
     required this.screenSize,
   });
@@ -45,10 +46,10 @@ class HomeMainImageScreenWidget extends StatelessWidget {
               ResponsiveWebSite.isDesktop(context)
                   ? const ServicesDropDownList()
                   : GestureDetector(
-                    onTap: () {
-                      serivesdropDownList(context);
-                    },
-                    child: SizedBox(
+                      onTap: () {
+                        serivesdropDownList(context);
+                      },
+                      child: SizedBox(
                         height: 40,
                         width: 80,
                         child: Center(
@@ -56,18 +57,27 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                               text: "Services", fontsize: 12, color: cWhite),
                         ),
                       ),
-                  ), // >>>>>>>>>>>>>>>>>> Services DropDown List
+                    ), // >>>>>>>>>>>>>>>>>> Services DropDown List
 
               OnHoverTextForHeader(builder: (isHoverd) {
                 final colorr = isHoverd
                     ? const Color.fromARGB(255, 192, 145, 128)
                     : cWhite;
-                return SizedBox(
-                  height: 40,
-                  width: 80,
-                  child: Center(
-                    child: GooglePoppinsWidgets(
-                        text: "Videos", fontsize: 12, color: colorr),
+                return GestureDetector(
+                  onTap: () {
+                    Scrollable.ensureVisible(
+                      _containerKey.currentContext!,
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeInOut,
+                    );
+                  },
+                  child: SizedBox(
+                    height: 40,
+                    width: 80,
+                    child: Center(
+                      child: GooglePoppinsWidgets(
+                          text: "Videos", fontsize: 12, color: colorr),
+                    ),
                   ),
                 );
               }),

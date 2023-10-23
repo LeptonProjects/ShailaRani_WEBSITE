@@ -8,6 +8,7 @@ import 'package:shaila_rani_website/view/home/widgets/details_contact_container_
 import 'package:shaila_rani_website/view/home/widgets/our_practices_widget/our_pratices_widget.dart';
 import 'package:shaila_rani_website/view/home/widgets/our_team_container_widget/our_Team_container.dart';
 import 'package:shaila_rani_website/view/home/widgets/shaila_rani_ReadMore_widger/shaila_rani_ReadMore.dart';
+import 'package:shaila_rani_website/view/home/widgets/video_section/video_sec_Container.dart';
 
 class HomeScreen extends StatelessWidget {
   final ScrollController sscrollcontroller = ScrollController();
@@ -32,6 +33,7 @@ class HomeScreen extends StatelessWidget {
           const ContactAndDeatilsWidget(),
           const OurPracticesContainerWidget(),
           OurTeamContainerWidget(sscrollcontroller: sscrollcontroller),
+          VideoSectionContainer(sscrollcontroller: sscrollcontroller),
 
           const Divider(
             height: 01,
