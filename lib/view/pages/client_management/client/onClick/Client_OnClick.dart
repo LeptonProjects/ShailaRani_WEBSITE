@@ -5,13 +5,15 @@ import 'package:get/get.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/pages/client_management/controller/client_controller.dart';
+import 'package:shaila_rani_website/view/pages/staff_management/functions/upload_image/client%20_image.dart';
+import 'package:shaila_rani_website/view/pages/staff_management/functions/upload_image/upload_image.dart';
 import 'package:shaila_rani_website/view/widgets/back_button/back_button_widget.dart';
 import 'package:shaila_rani_website/view/widgets/blue_Container_widget/blue_Container_widget.dart';
 
 clientDetailsShowingFunction({
   required BuildContext context,
   required String clientName,
-  // required String employeeID,
+  required String caseNo,
   required String mobileNo,
   required String whatsAppNo,
   required String emailID,
@@ -201,7 +203,7 @@ clientDetailsShowingFunction({
                                 ShowDetailClientContainerWidget(
                                     height: 48,
                                     width: 300,
-                                    title: "Entered date",
+                                    title: "Commencement Date",
                                     content: enteredDate),
                               ],
                             ),
@@ -235,13 +237,18 @@ clientDetailsShowingFunction({
                                     content: state),
                               ],
                             ),
-                              Row(
+                              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   ShowDetailClientContainerWidget(
                                         height: 48,
                                         width: 300,
                                         title: "Enter By",
                                         content: enterBy),
+                                        ShowDetailClientContainerWidget(
+                                        height: 48,
+                                        width: 300,
+                                        title: "Case Number",
+                                        content: caseNo),
                                 ],
                               ),
                         //  
@@ -265,24 +272,29 @@ clientDetailsShowingFunction({
             child: Row(
               children: [
                 const Spacer(),
-                // GestureDetector(
-                //   onTap: () => uploadImageForStaff(context),
-                //   child: BlueContainerWidget(
-                //     title: 'Add Photo',
-                //     fontSize: 12,
-                //     color: themeColorBlue,
-                //     fontWeight: FontWeight.bold,
-                //     width: 120,
-                //   ),
-                // ),
+                GestureDetector(
+                  onTap: () => uploadImageForClient(context, caseNo),
+                  child: BlueContainerWidget(
+                    title: 'Add Photo',
+                    fontSize: 12,
+                    color: themeColorBlue,
+                    fontWeight: FontWeight.bold,
+                    width: 120,
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child: GestureDetector(
                     onTap: () {
+                       warningShowDilogueBox(
+                                context: context,
+                                title: "Alert",
+                                discripition:"Do you want to close this case.",
+                                onPressed:()=>
                       clientManagementController.deActivateThisClient(
                       context: context,
                      clientName:clientName,
-         
+         caseNo: caseNo,
           mobileNo: mobileNo,
           emailID: emailID,
           gender: gender,
@@ -299,10 +311,10 @@ clientDetailsShowingFunction({
           enteredDate:enteredDate,
           state: state,
           enterBy:enterBy,
-          whatsAppNo: whatsAppNo);
+          whatsAppNo: whatsAppNo));
                     },
                     child: BlueContainerWidget(
-                      title: 'DeActivate',
+                      title: 'Close Case',
                       fontSize: 12,
                       color: cred,
                       fontWeight: FontWeight.bold,

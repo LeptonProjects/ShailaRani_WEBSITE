@@ -50,6 +50,7 @@ class ListOFClientScreen extends StatelessWidget {
                             onTap: () => clientDetailsShowingFunction(
                               context: context,
                               clientName: data.clientName,
+                              caseNo: data.caseNo,
                               mobileNo: data.mobileNo,
                               whatsAppNo: data.whatsAppNo ?? '',
                               emailID: data.emailID,
@@ -100,7 +101,7 @@ class ListOFClientScreen extends StatelessWidget {
                                       height: 40,
                                       width: 200),
                                   ListDataContainerWidget(
-                                      text: data.marriageDate,
+                                      text: data.caseNo,
                                       height: 40,
                                       width: 100),
                                 ],
@@ -154,6 +155,7 @@ class ListOFClientScreen extends StatelessWidget {
                             onTap: () => clientDetailsShowingFunction(
                               context: context,
                               clientName: data.clientName,
+                              caseNo: data.caseNo,
                               mobileNo: data.mobileNo,
                               whatsAppNo: data.whatsAppNo ?? '',
                               emailID: data.emailID,

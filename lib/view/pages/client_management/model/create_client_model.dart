@@ -3,7 +3,7 @@ import 'dart:convert';
 
 class CreateClientClassModel {
   String clientName;
-  
+  String caseNo;
   String mobileNo;
   String? whatsAppNo;
   String emailID;
@@ -22,8 +22,10 @@ class CreateClientClassModel {
   String enterBy;
   String state;
   int? index;
+  String? clientImage;
   CreateClientClassModel({
     required this.clientName,
+    required this.caseNo,
     required this.mobileNo,
     this.whatsAppNo,
     required this.emailID,
@@ -42,11 +44,13 @@ class CreateClientClassModel {
     required this.enterBy,
     required this.state,
     this.index,
+    this.clientImage,
   });
   
 
   CreateClientClassModel copyWith({
     String? clientName,
+    String? caseNo,
     String? mobileNo,
     String? whatsAppNo,
     String? emailID,
@@ -65,9 +69,11 @@ class CreateClientClassModel {
     String? enterBy,
     String? state,
     int? index,
+    String? clientImage,
   }) {
     return CreateClientClassModel(
       clientName: clientName ?? this.clientName,
+      caseNo: caseNo ?? this.caseNo,
       mobileNo: mobileNo ?? this.mobileNo,
       whatsAppNo: whatsAppNo ?? this.whatsAppNo,
       emailID: emailID ?? this.emailID,
@@ -86,12 +92,14 @@ class CreateClientClassModel {
       enterBy: enterBy ?? this.enterBy,
       state: state ?? this.state,
       index: index ?? this.index,
+      clientImage: clientImage ?? this.clientImage,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientName': clientName,
+      'caseNo': caseNo,
       'mobileNo': mobileNo,
       'whatsAppNo': whatsAppNo,
       'emailID': emailID,
@@ -110,12 +118,14 @@ class CreateClientClassModel {
       'enterBy': enterBy,
       'state': state,
       'index': index,
+      'clientImage': clientImage,
     };
   }
 
   factory CreateClientClassModel.fromMap(Map<String, dynamic> map) {
     return CreateClientClassModel(
       clientName: map['clientName'] as String,
+      caseNo: map['caseNo'] as String,
       mobileNo: map['mobileNo'] as String,
       whatsAppNo: map['whatsAppNo'] != null ? map['whatsAppNo'] as String : null,
       emailID: map['emailID'] as String,
@@ -134,6 +144,7 @@ class CreateClientClassModel {
       enterBy: map['enterBy'] as String,
       state: map['state'] as String,
       index: map['index'] != null ? map['index'] as int : null,
+      clientImage: map['clientImage'] != null ? map['clientImage'] as String : null,
     );
   }
 
@@ -143,7 +154,7 @@ class CreateClientClassModel {
 
   @override
   String toString() {
-    return 'CreateClientClassModel(clientName: $clientName, mobileNo: $mobileNo, whatsAppNo: $whatsAppNo, emailID: $emailID, gender: $gender, dob: $dob, marriageDate: $marriageDate, typeofcase: $typeofcase, clientoccupation: $clientoccupation, address: $address, casediscription: $casediscription, oppositeadvocate: $oppositeadvocate, typeofMarriage: $typeofMarriage, noofChildren: $noofChildren, seperationDate: $seperationDate, enteredDate: $enteredDate, enterBy: $enterBy, state: $state, index: $index)';
+    return 'CreateClientClassModel(clientName: $clientName, caseNo: $caseNo, mobileNo: $mobileNo, whatsAppNo: $whatsAppNo, emailID: $emailID, gender: $gender, dob: $dob, marriageDate: $marriageDate, typeofcase: $typeofcase, clientoccupation: $clientoccupation, address: $address, casediscription: $casediscription, oppositeadvocate: $oppositeadvocate, typeofMarriage: $typeofMarriage, noofChildren: $noofChildren, seperationDate: $seperationDate, enteredDate: $enteredDate, enterBy: $enterBy, state: $state, index: $index, clientImage: $clientImage)';
   }
 
   @override
@@ -152,6 +163,7 @@ class CreateClientClassModel {
   
     return 
       other.clientName == clientName &&
+      other.caseNo == caseNo &&
       other.mobileNo == mobileNo &&
       other.whatsAppNo == whatsAppNo &&
       other.emailID == emailID &&
@@ -169,12 +181,14 @@ class CreateClientClassModel {
       other.enteredDate == enteredDate &&
       other.enterBy == enterBy &&
       other.state == state &&
-      other.index == index;
+      other.index == index &&
+      other.clientImage == clientImage;
   }
 
   @override
   int get hashCode {
     return clientName.hashCode ^
+      caseNo.hashCode ^
       mobileNo.hashCode ^
       whatsAppNo.hashCode ^
       emailID.hashCode ^
@@ -192,6 +206,7 @@ class CreateClientClassModel {
       enteredDate.hashCode ^
       enterBy.hashCode ^
       state.hashCode ^
-      index.hashCode;
+      index.hashCode ^
+      clientImage.hashCode;
   }
 }
