@@ -1,4 +1,6 @@
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class ResponsiveWebSite extends StatelessWidget {
@@ -38,5 +40,14 @@ class ResponsiveWebSite extends StatelessWidget {
         }
       },
     );
+  }
+}
+
+class ScaleSize {
+
+  static double textScaleFactor(BuildContext context, {required double maxTextScaleFactor }) {
+    final width = MediaQuery.of(context).size.width;
+    double val = (width / 1300) * maxTextScaleFactor;
+    return max(1, min(val, maxTextScaleFactor));
   }
 }

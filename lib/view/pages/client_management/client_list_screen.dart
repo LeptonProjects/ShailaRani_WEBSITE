@@ -3,28 +3,29 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/controller/dashboard_Controllers.dart';
-import 'package:shaila_rani_website/view/pages/staff_management/functions/clickOnStaffContainer/click_OnStaffContainer.dart';
-import 'package:shaila_rani_website/view/pages/staff_management/model/create_employee_model.dart';
+
+import 'package:shaila_rani_website/view/pages/client_management/client/onClick/Client_OnClick.dart';
+import 'package:shaila_rani_website/view/pages/client_management/model/create_client_model.dart';
 import 'package:shaila_rani_website/view/pages/staff_management/widget/list_dataContainer.dart';
 
-class ListOFStaffScreen extends StatelessWidget {
-  const ListOFStaffScreen({
+// ignore: must_be_immutable
+class ListOFClientScreen extends StatelessWidget {
+  DashBoardControllers dashBoardControllers = Get.put(DashBoardControllers());
+  ListOFClientScreen({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      if (Get.find<DashBoardControllers>().staffActiveORInActiveValue.value ==
-          "Active") {
+      if (dashBoardControllers.clientCasesORClosedCaseValue.value == 'Cases') {
         return StreamBuilder(
             stream: FirebaseFirestore.instance
-                .collection('StaffManagement')
-                .doc('StaffManagement')
-                .collection(Get.find<DashBoardControllers>()
-                    .staffActiveORInActiveValue
-                    .value)
-                .orderBy('employeeName', descending: false)
+                .collection('ClientManagement')
+                .doc('ClientManagement')
+                .collection(
+                    dashBoardControllers.clientCasesORClosedCaseValue.value)
+                .orderBy('clientName', descending: false)
                 .snapshots(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
@@ -32,40 +33,42 @@ class ListOFStaffScreen extends StatelessWidget {
                   return const Padding(
                     padding: EdgeInsets.only(top: 100),
                     child: Center(
-                      child: Text("No Employess found"),
+                      child: Text("No Clients found"),
                     ),
                   );
                 }
+
                 return Expanded(
                   child: Padding(
                     padding: const EdgeInsets.only(
                         left: 10, right: 10, top: 10, bottom: 10),
                     child: ListView.separated(
                         itemBuilder: (context, index) {
-                          final data = CreateEmployeeClassModel.fromMap(
+                          final data = CreateClientClassModel.fromMap(
                               snapshot.data!.docs[index].data());
                           return GestureDetector(
-                            onTap: () => detailsShowingFunction(
-                                collectionName: Get.find<DashBoardControllers>()
-                                    .staffActiveORInActiveValue
-                                    .value,
-                                imageUrl: data.staffImage ??
-                                    'https://cdn.pixabay.com/photo/2016/08/31/11/54/icon-1633249_640.png',
-                                context: context,
-                                employeeName: data.employeeName,
-                                employeeID: data.employeeID,
-                                mobileNo: data.mobileNo,
-                                whatsAppNo: data.whatsAppNo ?? '',
-                                emailID: data.emailID,
-                                gender: data.gender,
-                                dob: data.dob,
-                                joiningDate: data.joiningDate,
-                                assignRole: data.assignRole,
-                                alMobileNo: data.alMobileNo ?? '',
-                                address: data.address,
-                                city: data.city,
-                                district: data.district,
-                                state: data.state),
+                            onTap: () => clientDetailsShowingFunction(
+                              context: context,
+                              clientName: data.clientName,
+                              caseNo: data.caseNo,
+                              mobileNo: data.mobileNo,
+                              whatsAppNo: data.whatsAppNo ?? '',
+                              emailID: data.emailID,
+                              gender: data.gender,
+                              dob: data.dob,
+                              marriageDate: data.marriageDate,
+                              typeofcase: data.typeofcase,
+                              clientoccupation: data.clientoccupation,
+                              address: data.address,
+                              casediscription: data.casediscription,
+                              oppositeadvocate: data.oppositeadvocate,
+                              typeofMarriage: data.typeofMarriage,
+                              noofChildren: data.noofChildren ?? '',
+                              seperationDate: data.seperationDate,
+                              enteredDate: data.enteredDate,
+                              enterBy: data.enterBy,
+                              state: data.state,
+                            ),
                             child: Container(
                               decoration: BoxDecoration(
                                   border: Border.all(
@@ -81,15 +84,11 @@ class ListOFStaffScreen extends StatelessWidget {
                                       height: 40,
                                       width: 50),
                                   ListDataContainerWidget(
-                                      text: data.employeeID,
+                                      text: data.clientName,
                                       height: 40,
                                       width: 200),
                                   ListDataContainerWidget(
-                                      text: data.employeeName,
-                                      height: 40,
-                                      width: 200),
-                                  ListDataContainerWidget(
-                                    text: data.assignRole,
+                                    text: data.typeofcase,
                                     height: 40,
                                     width: 100,
                                   ),
@@ -102,7 +101,7 @@ class ListOFStaffScreen extends StatelessWidget {
                                       height: 40,
                                       width: 200),
                                   ListDataContainerWidget(
-                                      text: data.joiningDate,
+                                      text: data.caseNo,
                                       height: 40,
                                       width: 100),
                                 ],
@@ -127,12 +126,11 @@ class ListOFStaffScreen extends StatelessWidget {
       } else {
         return StreamBuilder(
             stream: FirebaseFirestore.instance
-                .collection('StaffManagement')
-                .doc('StaffManagement')
-                .collection(Get.find<DashBoardControllers>()
-                    .staffActiveORInActiveValue
-                    .value)
-                .orderBy('employeeName', descending: false)
+                .collection('ClientManagement')
+                .doc('ClientManagement')
+                .collection(
+                    dashBoardControllers.clientCasesORClosedCaseValue.value)
+                .orderBy('clientName', descending: false)
                 .snapshots(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
@@ -140,40 +138,42 @@ class ListOFStaffScreen extends StatelessWidget {
                   return const Padding(
                     padding: EdgeInsets.only(top: 100),
                     child: Center(
-                      child: Text("No Employess found"),
+                      child: Text("No Clients found"),
                     ),
                   );
                 }
+
                 return Expanded(
                   child: Padding(
                     padding: const EdgeInsets.only(
                         left: 10, right: 10, top: 10, bottom: 10),
                     child: ListView.separated(
                         itemBuilder: (context, index) {
-                          final data = CreateEmployeeClassModel.fromMap(
+                          final data = CreateClientClassModel.fromMap(
                               snapshot.data!.docs[index].data());
                           return GestureDetector(
-                            onTap: () => detailsShowingFunction(
-                                collectionName: Get.find<DashBoardControllers>()
-                                    .staffActiveORInActiveValue
-                                    .value,
-                                imageUrl: data.staffImage ??
-                                    'https://cdn.pixabay.com/photo/2016/08/31/11/54/icon-1633249_640.png',
-                                context: context,
-                                employeeName: data.employeeName,
-                                employeeID: data.employeeID,
-                                mobileNo: data.mobileNo,
-                                whatsAppNo: data.whatsAppNo ?? '',
-                                emailID: data.emailID,
-                                gender: data.gender,
-                                dob: data.dob,
-                                joiningDate: data.joiningDate,
-                                assignRole: data.assignRole,
-                                alMobileNo: data.alMobileNo ?? '',
-                                address: data.address,
-                                city: data.city,
-                                district: data.district,
-                                state: data.state),
+                            onTap: () => clientDetailsShowingFunction(
+                              context: context,
+                              clientName: data.clientName,
+                              caseNo: data.caseNo,
+                              mobileNo: data.mobileNo,
+                              whatsAppNo: data.whatsAppNo ?? '',
+                              emailID: data.emailID,
+                              gender: data.gender,
+                              dob: data.dob,
+                              marriageDate: data.marriageDate,
+                              typeofcase: data.typeofcase,
+                              clientoccupation: data.clientoccupation,
+                              address: data.address,
+                              casediscription: data.casediscription,
+                              oppositeadvocate: data.oppositeadvocate,
+                              typeofMarriage: data.typeofMarriage,
+                              noofChildren: data.noofChildren ?? '',
+                              seperationDate: data.seperationDate,
+                              enteredDate: data.enteredDate,
+                              enterBy: data.enterBy,
+                              state: data.state,
+                            ),
                             child: Container(
                               decoration: BoxDecoration(
                                   border: Border.all(
@@ -189,15 +189,11 @@ class ListOFStaffScreen extends StatelessWidget {
                                       height: 40,
                                       width: 50),
                                   ListDataContainerWidget(
-                                      text: data.employeeID,
+                                      text: data.clientName,
                                       height: 40,
                                       width: 200),
                                   ListDataContainerWidget(
-                                      text: data.employeeName,
-                                      height: 40,
-                                      width: 200),
-                                  ListDataContainerWidget(
-                                    text: data.assignRole,
+                                    text: data.typeofcase,
                                     height: 40,
                                     width: 100,
                                   ),
@@ -210,7 +206,7 @@ class ListOFStaffScreen extends StatelessWidget {
                                       height: 40,
                                       width: 200),
                                   ListDataContainerWidget(
-                                      text: data.joiningDate,
+                                      text: data.marriageDate,
                                       height: 40,
                                       width: 100),
                                 ],

@@ -16,6 +16,8 @@ class CreateEmployeeClassModel {
   String city;
   String district;
   String state;
+  int? index;
+  String? staffImage;
   CreateEmployeeClassModel({
     required this.employeeName,
     required this.employeeID,
@@ -31,6 +33,8 @@ class CreateEmployeeClassModel {
     required this.city,
     required this.district,
     required this.state,
+    required this.index,
+    this.staffImage,
   });
 
 
@@ -50,6 +54,8 @@ class CreateEmployeeClassModel {
     String? city,
     String? district,
     String? state,
+    int? index,
+    String? staffImage,
   }) {
     return CreateEmployeeClassModel(
       employeeName: employeeName ?? this.employeeName,
@@ -66,6 +72,8 @@ class CreateEmployeeClassModel {
       city: city ?? this.city,
       district: district ?? this.district,
       state: state ?? this.state,
+      index: index ?? this.index,
+      staffImage: staffImage ?? this.staffImage,
     );
   }
 
@@ -74,17 +82,19 @@ class CreateEmployeeClassModel {
       'employeeName': employeeName,
       'employeeID': employeeID,
       'mobileNo': mobileNo,
-      'whatsAppNo': whatsAppNo,
+      'whatsAppNo': whatsAppNo??'',
       'emailID': emailID,
       'gender': gender,
       'dob': dob,
       'joiningDate': joiningDate,
       'assignRole': assignRole,
-      'alMobileNo': alMobileNo,
+      'alMobileNo': alMobileNo??'',
       'address': address,
       'city': city,
       'district': district,
       'state': state,
+      'index': index,
+      'staffImage': staffImage??'',
     };
   }
 
@@ -93,17 +103,19 @@ class CreateEmployeeClassModel {
       employeeName: map['employeeName'] as String,
       employeeID: map['employeeID'] as String,
       mobileNo: map['mobileNo'] as String,
-      whatsAppNo: map['whatsAppNo'] != null ? map['whatsAppNo'] as String : null,
+      whatsAppNo: map['whatsAppNo'] != null ? map['whatsAppNo'] as String : '',
       emailID: map['emailID'] as String,
       gender: map['gender'] as String,
       dob: map['dob'] as String,
       joiningDate: map['joiningDate'] as String,
       assignRole: map['assignRole'] as String,
-      alMobileNo: map['alMobileNo'] != null ? map['alMobileNo'] as String : null,
+      alMobileNo: map['alMobileNo'] != null ? map['alMobileNo'] as String : '',
       address: map['address'] as String,
       city: map['city'] as String,
       district: map['district'] as String,
       state: map['state'] as String,
+      index: map['index'] != null ? map['index'] as int : null,
+      staffImage: map['staffImage'] != null ? map['staffImage'] as String : '',
     );
   }
 
@@ -113,7 +125,7 @@ class CreateEmployeeClassModel {
 
   @override
   String toString() {
-    return 'CreateEmployeeClassModel(employeeName: $employeeName, employeeID: $employeeID, mobileNo: $mobileNo, whatsAppNo: $whatsAppNo, emailID: $emailID, gender: $gender, dob: $dob, joiningDate: $joiningDate, assignRole: $assignRole, alMobileNo: $alMobileNo, address: $address, city: $city, district: $district, state: $state)';
+    return 'CreateEmployeeClassModel(employeeName: $employeeName, employeeID: $employeeID, mobileNo: $mobileNo, whatsAppNo: $whatsAppNo, emailID: $emailID, gender: $gender, dob: $dob, joiningDate: $joiningDate, assignRole: $assignRole, alMobileNo: $alMobileNo, address: $address, city: $city, district: $district, state: $state, index: $index, staffImage: $staffImage)';
   }
 
   @override
@@ -134,7 +146,9 @@ class CreateEmployeeClassModel {
       other.address == address &&
       other.city == city &&
       other.district == district &&
-      other.state == state;
+      other.state == state &&
+      other.index == index &&
+      other.staffImage == staffImage;
   }
 
   @override
@@ -152,6 +166,8 @@ class CreateEmployeeClassModel {
       address.hashCode ^
       city.hashCode ^
       district.hashCode ^
-      state.hashCode;
+      state.hashCode ^
+      index.hashCode ^
+      staffImage.hashCode;
   }
 }

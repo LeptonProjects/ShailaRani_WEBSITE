@@ -30,3 +30,36 @@ class BackButtonContainerWidget extends StatelessWidget {
     );
   }
 }
+
+warningShowDilogueBox(
+    {required BuildContext context,
+    required String title,
+    required String discripition,
+    required void Function()? onPressed}) {
+  return showDialog(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(title),
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: <Widget>[Text(discripition)],
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+            onPressed: onPressed,
+            child: const Text('ok'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text('cancel'),
+          ),
+        ],
+      );
+    },
+  );
+}
