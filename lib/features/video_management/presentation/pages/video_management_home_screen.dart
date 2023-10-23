@@ -36,6 +36,7 @@ class VideoManageMentHomeScreen extends StatelessWidget {
                           createVideoDialogue(
                             context: context,
                             video: VideoEntity.empty(),
+                            isEdit: false,
                           );
                         },
                         child: Container(

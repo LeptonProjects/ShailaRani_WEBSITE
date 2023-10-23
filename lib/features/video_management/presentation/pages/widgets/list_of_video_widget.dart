@@ -1,3 +1,4 @@
+import 'package:shaila_rani_website/features/video_management/presentation/bloc/video_creator/video_creator_bloc.dart';
 import 'package:shaila_rani_website/view/constant/const.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -36,6 +37,14 @@ class ListOfVideoWidget extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () => launchUrl(Uri.parse(state.videos[index].url)),
+                    onDoubleTap: () {
+                      context.read<VideoCreatorBloc>().add(InitialEvent());
+                      createVideoDialogue(
+                        context: context,
+                        video: state.videos[index],
+                        isEdit: true,
+                      );
+                    },
                     onLongPress: () => AppWidgets.showDeleteConfirmationDialog(
                       context,
                       () {

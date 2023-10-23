@@ -13,6 +13,7 @@ abstract class VideoFirebaseDataSource {
   Future<Unit> createVideo(VideoModel videoModel);
   Future<String> uploadImage(Uint8List image);
   Future<Unit> deleteVideo(String id);
+  Future<Unit> editVideo(VideoModel videoModel);
 }
 
 class VideoFirebaseDataSourceImpl implements VideoFirebaseDataSource {
@@ -84,6 +85,20 @@ class VideoFirebaseDataSourceImpl implements VideoFirebaseDataSource {
       return unit;
     } catch (e) {
       log(e.toString(), name: "$clsName deleteVideo");
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<Unit> editVideo(VideoModel videoModel) async {
+    try {
+      await firestore
+          .collection("VideoManagement")
+          .doc(videoModel.id)
+          .update(videoModel.toJson());
+      return unit;
+    } catch (e) {
+      log(e.toString(), name: "$clsName editVideo");
       throw ServerException();
     }
   }
