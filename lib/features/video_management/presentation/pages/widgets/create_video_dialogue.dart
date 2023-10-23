@@ -1,11 +1,13 @@
 import 'package:shaila_rani_website/core/utils/utils.dart';
 import 'package:shaila_rani_website/features/video_management/presentation/bloc/video_creator/video_creator_bloc.dart';
 
+import '../../../../../view/constant/const.dart';
 import 'video_widgets.dart';
 
 Future<void> createVideoDialogue({
   required BuildContext context,
   required VideoEntity video,
+  required bool isEdit,
 }) async {
   TextEditingController videoUrlController = TextEditingController();
   TextEditingController videoTitleController = TextEditingController();
@@ -13,14 +15,17 @@ Future<void> createVideoDialogue({
   TextEditingController videoDescriptionController = TextEditingController();
   TextEditingController videoDateController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  int? timeStamp;
+  int timeStamp = video.uploadedDate;
 
   videoUrlController.text = video.url;
   videoTitleController.text = video.title;
   videoSubTitleController.text = video.subtitle;
   videoDescriptionController.text = video.description;
-  videoDateController.text =
-      video.uploadedDate == -1 ? "" : ""; //todo timestamp convertor function
+  videoDateController.text = video.uploadedDate == -1
+      ? ""
+      : AppUtils.timeStampToDateString(
+          timeStamp: video.uploadedDate,
+        );
 
   return showDialog(
     context: context,
@@ -34,8 +39,17 @@ Future<void> createVideoDialogue({
             context.read<VideoManagerBloc>().add(VideoManagerFetchEvent());
             Navigator.pop(context);
           }
+          if (state is VideoEditSuccessState) {
+            Navigator.of(context).pop();
+            context.read<VideoManagerBloc>().add(VideoManagerFetchEvent());
+            showToast(msg: "Successfully Updated");
+          }
+          if (state is VideoManagerError) {
+            showToast(msg: "Something went wrong");
+          }
         },
         builder: (context, state) {
+          String createOrEdit = isEdit ? "Edit Video" : "Create Video";
           return AlertDialog(
             title: SizedBox(
               width: 500,
@@ -43,7 +57,7 @@ Future<void> createVideoDialogue({
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GooglePoppinsWidgets(
-                    text: 'Create Video',
+                    text: createOrEdit,
                     fontsize: 13,
                     fontWeight: FontWeight.w600,
                   ),
@@ -64,7 +78,27 @@ Future<void> createVideoDialogue({
                       key: formKey,
                       child: Column(
                         children: [
-                          if (state is! ImagePickerState)
+                          if (isEdit &&
+                              video.thumbnailurl.isNotEmpty &&
+                              state is! ImagePickerState)
+                            GestureDetector(
+                              onTap: () => context
+                                  .read<VideoCreatorBloc>()
+                                  .add(ImagePickerEvent()),
+                              child: CircleAvatar(
+                                radius: 30,
+                                child: ClipOval(
+                                  child: Image.network(
+                                    video.thumbnailurl,
+                                    width: 100,
+                                    height: 100,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          if (state is! ImagePickerState &&
+                              video.thumbnailurl.isEmpty)
                             TextButton(
                               onPressed: () {
                                 context
@@ -72,8 +106,8 @@ Future<void> createVideoDialogue({
                                     .add(ImagePickerEvent());
                               },
                               child: const Text("Add Thumbnail"),
-                            )
-                          else
+                            ),
+                          if (state is ImagePickerState)
                             GestureDetector(
                               onTap: () => context
                                   .read<VideoCreatorBloc>()
@@ -138,7 +172,8 @@ Future<void> createVideoDialogue({
                               timeStamp = await AppUtils.selectDate(context);
                               final String date =
                                   AppUtils.timeStampToDateString(
-                                      timeStamp: timeStamp ?? -1);
+                                timeStamp: timeStamp,
+                              );
                               videoDateController.text = date;
                             },
                             readOnly: true,
@@ -152,7 +187,9 @@ Future<void> createVideoDialogue({
                             ),
                             onPressed: () async {
                               if (formKey.currentState?.validate() ?? false) {
-                                String imageUrl = "";
+                                String imageUrl = video.thumbnailurl.isEmpty
+                                    ? ""
+                                    : video.thumbnailurl;
                                 //if image picked
                                 if (state is ImagePickerState) {
                                   final bloc = context.read<VideoCreatorBloc>()
@@ -169,25 +206,48 @@ Future<void> createVideoDialogue({
                                   });
                                 }
 
-                                VideoEntity videoEntity = VideoEntity(
-                                  url: videoUrlController.text,
-                                  title: videoTitleController.text,
-                                  subtitle: videoSubTitleController.text,
-                                  description: videoDescriptionController.text,
-                                  uploadedDate: timeStamp ?? -1,
-                                  thumbnailurl: imageUrl,
-                                  createdAt: -1,
-                                  id: "",
-                                );
-                                if (context.mounted) {
-                                  context.read<VideoCreatorBloc>().add(
-                                        VideoMangagerCreateEvent(
-                                            videoEntity: videoEntity),
-                                      );
+                                if (isEdit) {
+                                  VideoEntity videoEntity = VideoEntity(
+                                    url: videoUrlController.text,
+                                    title: videoTitleController.text,
+                                    subtitle: videoSubTitleController.text,
+                                    description:
+                                        videoDescriptionController.text,
+                                    uploadedDate: timeStamp,
+                                    thumbnailurl: imageUrl,
+                                    createdAt: video.createdAt,
+                                    id: video.id,
+                                  );
+                                  if (context.mounted) {
+                                    context.read<VideoCreatorBloc>().add(
+                                          VideoEditEvent(
+                                              videoEntity: videoEntity),
+                                        );
+                                  }
+                                } else {
+                                  VideoEntity videoEntity = VideoEntity(
+                                    url: videoUrlController.text,
+                                    title: videoTitleController.text,
+                                    subtitle: videoSubTitleController.text,
+                                    description:
+                                        videoDescriptionController.text,
+                                    uploadedDate: timeStamp,
+                                    thumbnailurl: imageUrl,
+                                    createdAt: -1,
+                                    id: "",
+                                  );
+                                  if (context.mounted) {
+                                    context.read<VideoCreatorBloc>().add(
+                                          VideoMangagerCreateEvent(
+                                              videoEntity: videoEntity),
+                                        );
+                                  }
                                 }
                               }
                             },
-                            child: const Text("Create Video"),
+                            child: isEdit
+                                ? const Text("Update Video")
+                                : const Text("Create Video"),
                           )
                         ],
                       ),

@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shaila_rani_website/features/video_management/data/datasources/local_data_source.dart';
 import 'package:shaila_rani_website/features/video_management/data/repository/video_repository_impl.dart';
+import 'package:shaila_rani_website/features/video_management/domain/usecases/edit_video_usecase.dart';
 import 'package:shaila_rani_website/features/video_management/domain/usecases/image_upload_usecase.dart';
 import 'package:shaila_rani_website/features/video_management/domain/usecases/pick_image_usecase.dart';
 import 'package:shaila_rani_website/features/video_management/presentation/bloc/video_creator/video_creator_bloc.dart';
@@ -27,10 +28,10 @@ Future<void> initGetIt() async {
   );
   sl.registerFactory<VideoCreatorBloc>(
     () => VideoCreatorBloc(
-      createVideoUseCase: sl(),
-      pickImageUseCase: sl(),
-      imageUploadUseCase: sl(),
-    ),
+        createVideoUseCase: sl(),
+        pickImageUseCase: sl(),
+        imageUploadUseCase: sl(),
+        editVideoUseCase: sl()),
   );
   //use cases
 
@@ -43,6 +44,8 @@ Future<void> initGetIt() async {
       () => ImageUploadUseCase(repo: sl()));
   sl.registerLazySingleton<DeleteVideoUseCase>(
       () => DeleteVideoUseCase(repo: sl()));
+  sl.registerLazySingleton<EditVideoUseCase>(
+      () => EditVideoUseCase(repo: sl()));
 
   //repository
 

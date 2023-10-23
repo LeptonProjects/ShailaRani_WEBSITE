@@ -68,4 +68,15 @@ class VideoRepositoryImpl implements VideoRepository {
       return left(ServerFailure());
     }
   }
+  
+  @override
+  Future<Either<Failure, Unit>> edit(VideoEntity videoEntity) async{
+  try {
+      final Unit data =
+          await dataSource.editVideo(VideoModel.fromDomain(videoEntity));
+      return right(data);
+    } on ServerException {
+      return left(ServerFailure());
+    }
+  }
 }

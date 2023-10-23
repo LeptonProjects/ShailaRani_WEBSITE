@@ -38,3 +38,5 @@ final class ImageUploadedFailureState extends VideoCreatorState {
 
   const ImageUploadedFailureState({required this.failure});
 }
+
+final class VideoEditSuccessState extends VideoCreatorState {}
