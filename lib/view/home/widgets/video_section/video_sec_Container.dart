@@ -170,7 +170,7 @@ class VideoSectionContainer extends StatelessWidget {
                     child: ResponsiveWebSite.isDesktop(context)
                         ? ListView.separated(
                             physics: const AlwaysScrollableScrollPhysics(),
-                            // shrinkWrap: true,
+                            shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
                             controller: sscrollcontroller,
                             itemBuilder: (context, index) {

@@ -5,6 +5,7 @@ import 'package:shaila_rani_website/features/video_management/presentation/bloc/
 import 'package:shaila_rani_website/features/video_management/presentation/pages/widgets/video_widgets.dart';
 import 'package:shaila_rani_website/injection_container.dart';
 import 'package:shaila_rani_website/view/home/main_screen.dart';
+import 'package:shaila_rani_website/view/widgets/scroll_on_web_widget.dart';
 import 'dart:html'as html;
 import 'firebase_options.dart';
 
@@ -35,10 +36,11 @@ class MyApp extends StatelessWidget {
         BlocProvider<VideoCreatorBloc>(
             create: (context) => sl<VideoCreatorBloc>()),
       ],
-      child: const MaterialApp(
+      child:  MaterialApp(
+        scrollBehavior:MyCustomScrollBehavior(),
         title: 'Adv Shaila Rani Associates',
         debugShowCheckedModeBanner: false,
-        home: MainScreen(),
+        home: const MainScreen(),
       ),
     );
   }
