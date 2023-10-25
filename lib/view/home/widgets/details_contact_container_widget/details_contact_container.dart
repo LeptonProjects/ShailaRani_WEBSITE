@@ -157,7 +157,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                   ),
                                   GooglePoppinsWidgets(
                                     text:
-                                        '5th Floor, Karimpanal Statue Avenue,Near\nSecretariat Trivandrum-01\n Call +91 9562377604',
+                                        '5th Floor, Karimpanal Statue Avenue,Near\nSecretariat Trivandrum-01\n Call 9562776043',
                                     fontsize: 11,
                                     color: cWhite,
                                     // fontWeight: FontWeight.w500,
@@ -398,7 +398,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                       ),
                                       GooglePoppinsWidgets(
                                         text:
-                                            '5th Floor, Karimpanal Statue Avenue,Near\nSecretariat Trivandrum-01\n Call +91 9562377604',
+                                            '5th Floor, Karimpanal Statue Avenue,Near\nSecretariat Trivandrum-01\n Call +91 9562776043',
                                         fontsize: 11,
                                         color: cWhite,
                                         // fontWeight: FontWeight.w500,
@@ -634,7 +634,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                       ),
                                       GooglePoppinsWidgets(
                                         text:
-                                            '5th Floor, Karimpanal Statue Avenue,Near\nSecretariat Trivandrum-01\n Call +91 9562377604',
+                                            '5th Floor, Karimpanal Statue Avenue,Near\nSecretariat Trivandrum-01\n Call +91 9562776043',
                                         fontsize: 11,
                                         color: cWhite,
                                         // fontWeight: FontWeight.w500,

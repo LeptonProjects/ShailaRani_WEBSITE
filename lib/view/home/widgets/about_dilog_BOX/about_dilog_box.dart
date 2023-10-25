@@ -1,4 +1,3 @@
-
 import 'package:shaila_rani_website/features/video_management/presentation/pages/widgets/video_widgets.dart';
 import 'package:shaila_rani_website/view/widgets/responsive/responsive.dart';
 
@@ -57,25 +56,25 @@ showAboutPage(BuildContext context) async {
                                       children: [
                                         Container(
                                           decoration: const BoxDecoration(
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Color.fromARGB(
-                                                    255, 148, 89, 144),
-                                                blurRadius: 8,
-                                                spreadRadius: 2,
-                                                offset: Offset(4, 4),
+                                              color: Colors.grey
+                                              // boxShadow: [
+                                              //   // BoxShadow(
+                                              //   //   color: Colors.grey,
+                                              //   //   blurRadius: 8,
+                                              //   //   spreadRadius: 2,
+                                              //   //   offset: Offset(4, 4),
+                                              //   // ),
+                                              // ],
+                                              // gradient: LinearGradient(
+                                              //     colors: [
+                                              //       Color.fromARGB(
+                                              //           255, 148, 89, 144),
+                                              //       Color.fromARGB(
+                                              //           255, 101, 43, 97)
+                                              //     ],
+                                              //     begin: Alignment.centerLeft,
+                                              //     end: Alignment.centerRight),
                                               ),
-                                            ],
-                                            gradient: LinearGradient(
-                                                colors: [
-                                                  Color.fromARGB(
-                                                      255, 148, 89, 144),
-                                                  Color.fromARGB(
-                                                      255, 101, 43, 97)
-                                                ],
-                                                begin: Alignment.centerLeft,
-                                                end: Alignment.centerRight),
-                                          ),
                                           height: 400,
                                           width: 300,
                                           child: SingleChildScrollView(
@@ -147,24 +146,25 @@ showAboutPage(BuildContext context) async {
                                         )),
                                         Container(
                                             decoration: const BoxDecoration(
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  color: Color.fromARGB(
-                                                      255, 148, 89, 144),
-                                                  blurRadius: 8,
-                                                  spreadRadius: 2,
-                                                  offset: Offset(4, 4),
-                                                ),
-                                              ],
-                                              gradient: LinearGradient(
-                                                  colors: [
-                                                    Color.fromARGB(
-                                                        255, 148, 89, 144),
-                                                    Color.fromARGB(
-                                                        255, 101, 43, 97)
-                                                  ],
-                                                  begin: Alignment.centerLeft,
-                                                  end: Alignment.centerRight),
+                                              color: Colors.grey,
+                                              // boxShadow: [
+                                              //   BoxShadow(
+                                              //     color: Color.fromARGB(
+                                              //         255, 148, 89, 144),
+                                              //     blurRadius: 8,
+                                              //     spreadRadius: 2,
+                                              //     offset: Offset(4, 4),
+                                              //   ),
+                                              // ],
+                                              // gradient: LinearGradient(
+                                              //     colors: [
+                                              //       Color.fromARGB(
+                                              //           255, 148, 89, 144),
+                                              //       Color.fromARGB(
+                                              //           255, 101, 43, 97)
+                                              //     ],
+                                              //     begin: Alignment.centerLeft,
+                                              //     end: Alignment.centerRight),
                                             ),
                                             height: 400,
                                             width: 300,
@@ -295,21 +295,7 @@ showAboutPage(BuildContext context) async {
                             ),
                             Container(
                               decoration: const BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Color.fromARGB(255, 148, 89, 144),
-                                    blurRadius: 8,
-                                    spreadRadius: 2,
-                                    offset: Offset(4, 4),
-                                  ),
-                                ],
-                                gradient: LinearGradient(
-                                    colors: [
-                                      Color.fromARGB(255, 148, 89, 144),
-                                      Color.fromARGB(255, 101, 43, 97)
-                                    ],
-                                    begin: Alignment.centerLeft,
-                                    end: Alignment.centerRight),
+                                   color: Colors.grey
                               ),
                               height: 1200,
                               width: double.infinity,
@@ -360,21 +346,7 @@ showAboutPage(BuildContext context) async {
                             ),
                             Container(
                                 decoration: const BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Color.fromARGB(255, 148, 89, 144),
-                                      blurRadius: 8,
-                                      spreadRadius: 2,
-                                      offset: Offset(4, 4),
-                                    ),
-                                  ],
-                                  gradient: LinearGradient(
-                                      colors: [
-                                        Color.fromARGB(255, 148, 89, 144),
-                                        Color.fromARGB(255, 101, 43, 97)
-                                      ],
-                                      begin: Alignment.centerLeft,
-                                      end: Alignment.centerRight),
+                   color: Colors.grey
                                 ),
                                 height: 650,
                                 width: double.infinity,

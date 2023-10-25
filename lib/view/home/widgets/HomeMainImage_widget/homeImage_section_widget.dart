@@ -50,7 +50,7 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                     : cWhite;
                 return GestureDetector(
                   onTap: () {
-                showAboutPage(context);
+                    showAboutPage(context);
                   },
                   child: SizedBox(
                     height: 40,
@@ -62,21 +62,36 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                   ),
                 );
               }),
-              ResponsiveWebSite.isDesktop(context)
-                  ? const ServicesDropDownList()
-                  : GestureDetector(
-                      onTap: () {
-                        serivesdropDownList(context);
-                      },
-                      child: SizedBox(
-                        height: 40,
-                        width: 80,
-                        child: Center(
-                          child: GooglePoppinsWidgets(
-                              text: "Services", fontsize: 12, color: cWhite),
-                        ),
-                      ),
-                    ), // >>>>>>>>>>>>>>>>>> Services DropDown List
+              DropdownButton(
+                // dropdownColor: Colors.co,
+                hint: GooglePoppinsWidgets(
+                    text: "Services", fontsize: 12, color: cWhite),
+
+                style: GoogleFonts.poppins(color: Colors.black),
+                underline: const Text(''),
+                items: sevicesList.map((String item) {
+                  return DropdownMenuItem<String>(
+                    value: item,
+                    child: Text(item),
+                  );
+                }).toList(),
+                onChanged: (value) {},
+              ),
+              // ResponsiveWebSite.isDesktop(context)
+              //     ? const ServicesDropDownList()
+              //     : GestureDetector(
+              //         onTap: () {
+              //           serivesdropDownList(context);
+              //         },
+              //         child: SizedBox(
+              //           height: 40,
+              //           width: 80,
+              //           child: Center(
+              //             child: GooglePoppinsWidgets(
+              //                 text: "Services", fontsize: 12, color: cWhite),
+              //           ),
+              //         ),
+              //       ), // >>>>>>>>>>>>>>>>>> Services DropDown List
 
               OnHoverTextForHeader(builder: (isHoverd) {
                 final colorr = isHoverd
@@ -105,7 +120,8 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                             height: 45,
                             width: 150,
                             decoration: BoxDecoration(
-                                border: Border.all(color: Colors.brown.shade400)),
+                                border:
+                                    Border.all(color: Colors.brown.shade400)),
                             child: Center(
                               child: GooglePoppinsWidgets(
                                 text: "Get Appoinment",

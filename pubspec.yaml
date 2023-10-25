@@ -59,6 +59,7 @@ dependencies:
   google_fonts: null
   image_picker: ^1.0.4
   file_picker: ^6.0.0
+  multiselect_nested: ^1.1.0
   intl: null
   whatsapp:
   sidebar_drawer: ^0.0.1+2

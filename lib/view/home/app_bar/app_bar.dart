@@ -280,7 +280,7 @@ class MobNumber01 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      '📞 +91 9633277604    ',
+      '📞 +91 9562776043    ',
       style: GoogleFonts.poppins(
           color: cWhite,
           //Color(0xFF17BDB5),
