@@ -62,21 +62,37 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                   ),
                 );
               }),
-              DropdownButton(
-                // dropdownColor: Colors.co,
-                hint: GooglePoppinsWidgets(
-                    text: "Services", fontsize: 12, color: cWhite),
+            
+      ResponsiveWebSite.isDesktop(context)?const ServicesDropDownList():
+                 GestureDetector(
+                  onTap: () {
+                    serivesdropDownList(context);
+                  },
+                  child: SizedBox(
+                    height: 40,
+                    width: 80,
+                    child: Center(
+                      child: GooglePoppinsWidgets(
+                          text: "Services", fontsize: 12, color: cWhite),
+                    ),
+                  ),
+                ),
+         
+              // DropdownButton(
+              //   // dropdownColor: Colors.co,
+              //   hint: GooglePoppinsWidgets(
+              //       text: "Services", fontsize: 12, color: cWhite),
 
-                style: GoogleFonts.poppins(color: Colors.black),
-                underline: const Text(''),
-                items: sevicesList.map((String item) {
-                  return DropdownMenuItem<String>(
-                    value: item,
-                    child: Text(item),
-                  );
-                }).toList(),
-                onChanged: (value) {},
-              ),
+              //   style: GoogleFonts.poppins(color: Colors.black),
+              //   underline: const Text(''),
+              //   items: sevicesList.map((String item) {
+              //     return DropdownMenuItem<String>(
+              //       value: item,
+              //       child: Text(item),
+              //     );
+              //   }).toList(),
+              //   onChanged: (value) {},
+              // ),
               OnHoverTextForHeader(builder: (isHoverd) {
                 final colorr = isHoverd
                     ? const Color.fromARGB(255, 192, 145, 128)
