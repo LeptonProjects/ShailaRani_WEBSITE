@@ -1,10 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shaila_rani_website/features/video_management/presentation/bloc/video_creator/video_creator_bloc.dart';
-import 'package:shaila_rani_website/features/video_management/presentation/bloc/video_manager/video_manager_bloc.dart';
 import 'package:shaila_rani_website/features/video_management/presentation/pages/widgets/video_widgets.dart';
 import 'package:shaila_rani_website/injection_container.dart';
 import 'package:shaila_rani_website/view/Login_dashBoard/login_dashBoard.dart';
+import 'package:shaila_rani_website/view/home/home_screen.dart';
+import 'package:shaila_rani_website/view/home/main_screen.dart';
 import 'dart:html'as html;
 import 'firebase_options.dart';
 
@@ -33,10 +34,10 @@ class MyApp extends StatelessWidget {
         BlocProvider<VideoCreatorBloc>(
             create: (context) => sl<VideoCreatorBloc>()),
       ],
-      child: const MaterialApp(
+      child:  MaterialApp(
         title: 'Adv Shaila Rani Associates',
         debugShowCheckedModeBanner: false,
-        home: LoginDashBoard(),
+        home: MainScreen  (),
       ),
     );
   }

@@ -58,8 +58,11 @@ dependencies:
   get_it: ^7.6.4
   google_fonts: null
   image_picker: ^1.0.4
+  file_picker: ^6.0.0
+  open_app_file: ^4.0.2
+  path_provider: ^2.1.1
   intl: null
-  sidebar_drawer: ^0.0.1+2
+  sidebar_drawer:
 dev_dependencies:
   flutter_test:
     sdk: flutter

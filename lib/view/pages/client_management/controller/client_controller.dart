@@ -1,7 +1,8 @@
 import 'dart:developer';
+import 'dart:js';
 import 'dart:typed_data';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,19 +10,21 @@ import 'package:shaila_rani_website/view/constant/const.dart';
 import 'package:shaila_rani_website/view/pages/client_management/model/create_client_model.dart';
 import 'package:uuid/uuid.dart';
 
-
-
-
 class ClientManagementController extends GetxController {
    final FirebaseStorage _cstorage = FirebaseStorage.instance;
+    final FirebaseStorage _fstorage = FirebaseStorage.instance;
  String clientImageUrl = '';
+ String clientFilep='';
+//  String followUpDate='';
   var isUploading = false.obs;
   // For Selected Date
   RxString dobSelectedDate =''.obs;
-   RxString marriageSelectedDate =''.obs;
-    RxString enteredSelectedDate =''.obs;
-   RxString seperationSelectedDate =''.obs;
+  RxString marriageSelectedDate =''.obs;
+  RxString enteredSelectedDate =''.obs;
+  RxString seperationSelectedDate =''.obs;
+  RxString followUpDateSelectedDate =''.obs;
   Rxn<Uint8List>  imagePath = Rxn();
+  Rxn<Uint8List>  filePath = Rxn();
   final firebase = FirebaseFirestore.instance
       .collection('ClientManagement')
       .doc('ClientManagement');
@@ -45,8 +48,7 @@ class ClientManagementController extends GetxController {
     required String enteredDate,
     required String enterBy,
    required String  clientoccupation,
-    String? whatsAppNo,
-    
+    String? whatsAppNo, 
     required BuildContext context,
   }) async {
     CreateClientClassModel clientDetails = CreateClientClassModel(
@@ -92,8 +94,8 @@ class ClientManagementController extends GetxController {
   }
 
   Future<void> deActivateThisClient({
-    required String clientName,
-   required String caseNo,
+  required String clientName,
+  required String caseNo,
   required String mobileNo,
   required String whatsAppNo,
   required String emailID,
@@ -111,12 +113,13 @@ class ClientManagementController extends GetxController {
   required String enteredDate,
   required String enterBy,
   String? clientImage,
+  String? clientFile,
   required String state,
-
-    required BuildContext context,
+  String? followUpDate,
+  required BuildContext context,
   }) async {
     try {
-      CreateClientClassModel employeeDetails = CreateClientClassModel(
+      CreateClientClassModel clientDetails = CreateClientClassModel(
           index: 0,
           clientName:clientName,
          caseNo: caseNo,
@@ -136,18 +139,21 @@ class ClientManagementController extends GetxController {
           enteredDate:enteredDate,
           state: state,
           enterBy:enterBy,
+          followUpDate: followUpDate,
           clientImage:clientImage,
+          clientFile:clientFile,
           whatsAppNo: whatsAppNo);
       await firebase
           .collection('Closed Cases')
           .doc(caseNo)
-          .set(employeeDetails.toMap())
+          .set(clientDetails.toMap())
           .then((value) async {
         await firebase.collection('Cases').doc(caseNo).delete();
       }).then((value) {
         showToast(msg: "Closed Successfully");
         Navigator.pop(context);
       });
+    // ignore: empty_catches
     } catch (e) {}
   }
 
@@ -194,7 +200,7 @@ class ClientManagementController extends GetxController {
 
     final ref = _cstorage
         .ref()
-        .child('StaffMangement')
+        .child('clientMangement')
         .child('Images')
         .child('${uid}image.jpg');
     final uploadTask = ref.putData(imagepath);
@@ -209,60 +215,76 @@ class ClientManagementController extends GetxController {
       log("Getx Valuee --->>.$clientImageUrl");
     });
   }
+  Future<void> uploadFile(Uint8List filepath, String storagePath) async {
+        final String uid =  const Uuid().v1();
+    isUploading(true);
+
+    final ref = _fstorage
+        .ref()
+        .child('clientManagement')
+        .child('File')
+        .child('$uid.pdf');
+    final uploadTask = ref.putData(filepath);
+
+    await uploadTask.whenComplete(() async {
+      final String downloadURL = await ref.getDownloadURL();
+      clientFilep = downloadURL;
+
+      isUploading(false);
+
+      showToast(msg: 'File Uploaded Successfully');
+      log("Getx Value --->>.$clientFilep");
+    });
+  }
+pickFileFunction({required String format}) async {
+  final String uid = const Uuid().v1();
+  FirebaseStorage storage = FirebaseStorage.instance;
+  FilePickerResult? result = await FilePicker.platform.pickFiles(
+    type: FileType.custom,
+    allowedExtensions: ['jpg', 'pdf', 'doc'],
+  );
+  if (result != null) {
+    final ref = storage
+    .ref()
+    .child('ImageBucket')
+    .child('Files')
+    .child("$uid.$format");
+    ref.putData(result.files.first.bytes!)
+    .whenComplete(() async {
+      final String downloadUrl = await ref.getDownloadURL();
+      // ignore: avoid_print
+      print("Download url From FireBase $downloadUrl");
+    });
+
+    // ignore: avoid_print
+    print("message ${result.files.first.bytes}");
+  } else {
+    // User canceled the picker
+  }
+}
+addFollowUpDateToFirebase()async {
+final firebase = FirebaseFirestore.instance;
+const caseNo="caseNo";
+await firebase
+      .collection('ClientManagement')
+      .doc('ClientManagement')
+      .collection("Cases")
+      .doc(caseNo)
+      //.collection('followUpDate')
+      .set({'followUpDate':followUpDateSelectedDate.value});
 }
 
-//  Future<void> updateClientDetailsToServer({
-//   required String clientName,
-//   required String mobileNo,
-//   required String whatsAppNo,
-//   required String emailID,
-//   required String gender,
-//   required String dob,
-//   required String marriageDate,
-//   required String typeofcase,
-//   required String clientoccupation,
-//   required String address,
-//   required String casediscription,
-//   required String oppositeadvocate,
-//   required String typeofMarriage,
-//   required String noofChildren,
-//   required String seperationDate,
-//   required String enteredDate,
-//   required String enterBy,
-//   required String state,
-// }) async {
-//   final updateData = {
-//     'clientName': clientName,
-//     'mobileNo': mobileNo,
-//     'whatsAppNo': whatsAppNo,
-//     'emailID': emailID,
-//     'gender': gender,
-//     'dob': dob,
-//     'marriageDate': marriageDate,
-//     'typeofcase': typeofcase,
-//     'clientoccupation': clientoccupation,
-//     'address': address,
-//     'casediscription': casediscription,
-//     'oppositeadvocate': oppositeadvocate,
-//     'typeofMarriage': typeofMarriage,
-//     'noofChildren': noofChildren,
-//     'seperationDate': seperationDate,
-//     'enteredDate': enteredDate,
-//     'state': state,
-//     'enterBy': enterBy,
-//   };
-
-//   try {
-    
-//     await FirebaseFirestore.instance
-//     .collection('ClientManagement')
-//         .doc('ClientManagement')
-//         .collection('Cases')
-//         .doc(mobileNo)
-//         .update(updateData);
-
-//     showToast(msg: 'Updated');
-//   } catch (e) {
-//     print('Error: $e');
-//   }
-// }
+  // addFollowUpDateToFirebase()async {
+  //   final firebase =  FirebaseFirestore.instance;
+  //   await firebase
+  //   .collection('ClientManagement')
+  //   .doc('clientManagement')
+  //   .set(clientDetails.toMap())
+  //         .then((value) async {
+  //       await firebase.collection('Cases').doc(caseNo).add({'followUpDate':followUpDateSelectedDate.value});
+  //     }).then((value) {
+  //       showToast(msg: "Added Successfully");
+  //       Navigator.pop(context as BuildContext);
+  //   });
+  // }
+}

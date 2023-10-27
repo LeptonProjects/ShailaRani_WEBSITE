@@ -261,7 +261,7 @@ class MobNumber02 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      '✉️ info@shailaraniassociates.com',
+      '✉️ info@advshailaraniassociates.com',
       style: GoogleFonts.poppins(
           // themeColorBlue,
           color: cWhite,

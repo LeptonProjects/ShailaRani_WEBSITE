@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:shaila_rani_website/view/Login_dashBoard/login_dashBoard.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/constant/const.dart';
+import 'package:shaila_rani_website/view/constant/constant.validate.dart';
 import 'package:shaila_rani_website/view/fonts/google_monstre.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/widgets/back_button/back_button_widget.dart';
@@ -89,26 +90,14 @@ loginshowDilogueBox(BuildContext context) {
                         hintText: 'Enter your email',
                         title: 'EMAIL ID',
                         width: 250,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter your email';
-                          } else {
-                            return null;
-                          }
-                        },
+                        validator: checkFieldEmailIsValid,
                       ),
                       TextFormFiledContainerWidget(
                         controller: passwordController,
                         hintText: 'Enter your password',
                         title: 'PASSWORD',
                         width: 250,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter your password';
-                          } else {
-                            return null;
-                          }
-                        },
+                        validator: checkFieldPasswordIsValid,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 80, top: 20),
@@ -121,15 +110,20 @@ loginshowDilogueBox(BuildContext context) {
                                         email: emailController.text.trim(),
                                         password:
                                             passwordController.text.trim())
-                                    .catchError((d) {
-                                  return showToast(msg: 'Invalid');
-                                }).then((value) => Navigator.push(context,
+                                    .then((value) => Navigator.push(context,
                                             MaterialPageRoute(
                                           builder: (context) {
                                             return const LoginDashBoard();
                                           },
-                                        )));
+                                        ))).catchError((d){
+                                          return showToast(msg: 'Invalid');
+                                        });
+                                //     .catchError((d) {
+                                //   return showToast(msg: 'Invalid');
+                                // });
                               } catch (e) {
+                                print("-------------------object");
+                               showToast(msg: e.toString());
                                 log(e.toString());
                               }
                             }

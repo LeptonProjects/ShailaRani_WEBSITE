@@ -5,12 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shaila_rani_website/core/utils/image_picker.dart';
-// import 'package:get/get.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/pages/client_management/controller/client_controller.dart';
-import 'package:shaila_rani_website/view/pages/staff_management/controller/employee_controller.dart';
-// import 'package:shaila_rani_website/view/pages/staff_management/controller/employee_controller.dart';
 import 'package:shaila_rani_website/view/widgets/back_button/back_button_widget.dart';
 import 'package:shaila_rani_website/view/widgets/blue_Container_widget/blue_Container_widget.dart';
 
@@ -53,6 +50,10 @@ uploadImageForClient(BuildContext context, String docid) {
                           radius: 80,
                           child: IconButton(
                               onPressed: () async {
+//                            await FilePicker.platform.pickFiles(
+//   type: FileType.custom,
+//   allowedExtensions: ['jpg', 'pdf', 'doc'],
+// );
                                 try {
                                   clientManagementController.imagePath.value =
                                       await imagePicker.pickImageGallery();

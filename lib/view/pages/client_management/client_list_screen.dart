@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
-import 'package:shaila_rani_website/view/constant/const.dart';
 import 'package:shaila_rani_website/view/controller/dashboard_Controllers.dart';
 
 import 'package:shaila_rani_website/view/pages/client_management/client/onClick/Client_OnClick.dart';
@@ -50,6 +49,8 @@ class ListOFClientScreen extends StatelessWidget {
                           return GestureDetector(
                             onTap: () => clientDetailsShowingFunction(
                               context: context,
+                              followUpDate: data.followUpDate??'',
+                               cImageUrl: data.clientImage ??'https://cdn.pixabay.com/photo/2016/08/31/11/54/icon-1633249_640.png',
                               clientName: data.clientName,
                               caseNo: data.caseNo,
                               mobileNo: data.mobileNo,
@@ -83,7 +84,11 @@ class ListOFClientScreen extends StatelessWidget {
                                   ListDataContainerWidget(
                                       text: '${index + 1}',
                                       height: 40,
-                                      width: 50),
+                                      width: 200),
+                                       ListDataContainerWidget(
+                                      text: data.caseNo,
+                                      height: 40,
+                                      width: 200),
                                   ListDataContainerWidget(
                                       text: data.clientName,
                                       height: 40,
@@ -91,7 +96,7 @@ class ListOFClientScreen extends StatelessWidget {
                                   ListDataContainerWidget(
                                     text: data.typeofcase,
                                     height: 40,
-                                    width: 100,
+                                    width: 200,
                                   ),
                                   ListDataContainerWidget(
                                       text: data.mobileNo,
@@ -101,10 +106,7 @@ class ListOFClientScreen extends StatelessWidget {
                                       text: data.emailID,
                                       height: 40,
                                       width: 200),
-                                  ListDataContainerWidget(
-                                      text: data.caseNo,
-                                      height: 40,
-                                      width: 100),
+                                 
                                 ],
                               ),
                             ),
@@ -155,6 +157,9 @@ class ListOFClientScreen extends StatelessWidget {
                           return GestureDetector(
                             onTap: () => clientDetailsShowingFunction(
                               context: context,
+                              followUpDate: data.followUpDate??'',
+                               cImageUrl: data.clientImage ??
+                                    'https://cdn.pixabay.com/photo/2016/08/31/11/54/icon-1633249_640.png',
                               clientName: data.clientName,
                               caseNo: data.caseNo,
                               mobileNo: data.mobileNo,

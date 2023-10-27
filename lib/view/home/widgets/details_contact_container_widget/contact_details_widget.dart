@@ -117,7 +117,7 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                             color: Colors.blueGrey,
                           ),
                           const Text(
-                            "info@shailaraniassociates.com",
+                            "info@advshailaraniassociates.com",
                             style: TextStyle(
                               fontSize: 13,
                               color: Colors.white,
@@ -399,7 +399,7 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                         //               color: Colors.blueGrey,
                         //             ),
                         //            Text(
-                        //               "info@shailaraniassociates.com",
+                        //               "info@advshailaraniassociates.com",
                         //               style: TextStyle(
                         //                 fontSize: screenSize.width/100,
                         //                 color: Colors.white,
@@ -461,7 +461,7 @@ class ContactAndDeatilsContainerWidget extends StatelessWidget {
                                 color: Colors.blueGrey,
                               ),
                                Text(
-                                "info@shailaraniassociates.com",
+                                "info@advshailaraniassociates.com",
                                 style: TextStyle(
                                   fontSize: ResponsiveWebSite.isMobile(context)?9:screenSize.width/75,
                                   color: Colors.white,

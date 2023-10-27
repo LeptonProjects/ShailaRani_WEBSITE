@@ -6,9 +6,8 @@ import 'package:get/get.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/controller/dashboard_Controllers.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
+import 'package:shaila_rani_website/view/pages/client_management/client/headerText_widget.dart';
 import 'package:shaila_rani_website/view/pages/client_management/client_list_screen.dart';
-import 'package:shaila_rani_website/view/pages/staff_management/widget/headerText_widget.dart';
-import '../../../Login_dashBoard/login_dashBoard.dart';
 import 'client_create.dart';
 
 class ClientDetailsScreen extends StatelessWidget {
@@ -123,26 +122,29 @@ class ClientsListHeaderWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: HeaderRowTextWidget(
+                  padding: const EdgeInsets.only(left: 90),
+                  child: HeaderRowTextWidgetClient(
                     title: 'No',
                   ),
                 ),
-                HeaderRowTextWidget(
+                HeaderRowTextWidgetClient(
                   title: clientSecTe[0],
                 ),
-                HeaderRowTextWidget(
+                HeaderRowTextWidgetClient(
                   title: clientSecTe[1],
                 ),
-                HeaderRowTextWidget(
+                HeaderRowTextWidgetClient(
                   title: clientSecTe[2],
                 ),
-                HeaderRowTextWidget(
+                HeaderRowTextWidgetClient(
                   title: clientSecTe[3],
                 ),
-                HeaderRowTextWidget(
+                Padding(
+                padding: const EdgeInsets.only(right: 30),
+                child: HeaderRowTextWidgetClient(
                   title: clientSecTe[4],
                 ),
+              )
                 // Padding(
                 //   padding: const EdgeInsets.only(right: 10),
                 //   child: HeaderRowTextWidget(
@@ -159,11 +161,10 @@ class ClientsListHeaderWidget extends StatelessWidget {
 }
 
 List<String> clientSecTe = [
+  'Case Number',
   'Client Name',
   'Type of case',
-  'Mobile No',
-  'Email Id',
+  'Mobile Number',
+  'Client Email Id',
   // 'Date of Marriage',
-   'Case Number'
-  // 'Em',
 ];

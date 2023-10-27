@@ -23,6 +23,8 @@ class CreateClientClassModel {
   String state;
   int? index;
   String? clientImage;
+  String? clientFile;
+  String? followUpDate;
   CreateClientClassModel({
     required this.clientName,
     required this.caseNo,
@@ -45,6 +47,8 @@ class CreateClientClassModel {
     required this.state,
     this.index,
     this.clientImage,
+    this.clientFile,
+    this.followUpDate,
   });
   
 
@@ -70,6 +74,8 @@ class CreateClientClassModel {
     String? state,
     int? index,
     String? clientImage,
+    String? clientFile,
+    String? followUpDate,
   }) {
     return CreateClientClassModel(
       clientName: clientName ?? this.clientName,
@@ -93,6 +99,8 @@ class CreateClientClassModel {
       state: state ?? this.state,
       index: index ?? this.index,
       clientImage: clientImage ?? this.clientImage,
+      clientFile: clientFile ?? this.clientFile,
+      followUpDate: followUpDate ?? this.followUpDate,
     );
   }
 
@@ -119,6 +127,8 @@ class CreateClientClassModel {
       'state': state,
       'index': index,
       'clientImage': clientImage,
+      'clientFile': clientFile,
+      'followUpDate': followUpDate,
     };
   }
 
@@ -145,6 +155,8 @@ class CreateClientClassModel {
       state: map['state'] as String,
       index: map['index'] != null ? map['index'] as int : null,
       clientImage: map['clientImage'] != null ? map['clientImage'] as String : null,
+      clientFile: map['clientFile'] != null ? map['clientFile'] as String : null,
+      followUpDate: map['followUpDate'] != null ? map['followUpDate'] as String : null,
     );
   }
 
@@ -154,7 +166,7 @@ class CreateClientClassModel {
 
   @override
   String toString() {
-    return 'CreateClientClassModel(clientName: $clientName, caseNo: $caseNo, mobileNo: $mobileNo, whatsAppNo: $whatsAppNo, emailID: $emailID, gender: $gender, dob: $dob, marriageDate: $marriageDate, typeofcase: $typeofcase, clientoccupation: $clientoccupation, address: $address, casediscription: $casediscription, oppositeadvocate: $oppositeadvocate, typeofMarriage: $typeofMarriage, noofChildren: $noofChildren, seperationDate: $seperationDate, enteredDate: $enteredDate, enterBy: $enterBy, state: $state, index: $index, clientImage: $clientImage)';
+    return 'CreateClientClassModel(clientName: $clientName, caseNo: $caseNo, mobileNo: $mobileNo, whatsAppNo: $whatsAppNo, emailID: $emailID, gender: $gender, dob: $dob, marriageDate: $marriageDate, typeofcase: $typeofcase, clientoccupation: $clientoccupation, address: $address, casediscription: $casediscription, oppositeadvocate: $oppositeadvocate, typeofMarriage: $typeofMarriage, noofChildren: $noofChildren, seperationDate: $seperationDate, enteredDate: $enteredDate, enterBy: $enterBy, state: $state, index: $index, clientImage: $clientImage, clientFile: $clientFile, followUpDate: $followUpDate)';
   }
 
   @override
@@ -182,7 +194,9 @@ class CreateClientClassModel {
       other.enterBy == enterBy &&
       other.state == state &&
       other.index == index &&
-      other.clientImage == clientImage;
+      other.clientImage == clientImage &&
+      other.clientFile == clientFile &&
+      other.followUpDate == followUpDate;
   }
 
   @override
@@ -207,6 +221,8 @@ class CreateClientClassModel {
       enterBy.hashCode ^
       state.hashCode ^
       index.hashCode ^
-      clientImage.hashCode;
+      clientImage.hashCode ^
+      clientFile.hashCode ^
+      followUpDate.hashCode;
   }
 }

@@ -99,7 +99,7 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                               border: Border.all(color: Colors.brown.shade400)),
                           child: Center(
                             child: GooglePoppinsWidgets(
-                              text: "Get Appoinment",
+                              text: "Get Appointment",
                               fontsize: 14,
                               color: colorr,
                               fontWeight: FontWeight.w400,
@@ -214,7 +214,7 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                           border: Border.all(color: Colors.brown.shade400)),
                       child: Center(
                         child: GooglePoppinsWidgets(
-                          text: "Get Appoinment",
+                          text: "Get Appointment",
                           fontsize: 14,
                           color: colorr,
                           fontWeight: FontWeight.w400,

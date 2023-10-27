@@ -2,13 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:shaila_rani_website/view/colors/colors.dart';
 import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
+import 'package:shaila_rani_website/view/pages/client_management/client/Function/upload_image/client%20_image.dart';
+import 'package:shaila_rani_website/view/pages/client_management/client/Function/upload_image/upload_file.dart';
 import 'package:shaila_rani_website/view/pages/client_management/controller/client_controller.dart';
-import 'package:shaila_rani_website/view/pages/staff_management/functions/upload_image/client%20_image.dart';
-import 'package:shaila_rani_website/view/pages/staff_management/functions/upload_image/upload_image.dart';
 import 'package:shaila_rani_website/view/widgets/back_button/back_button_widget.dart';
 import 'package:shaila_rani_website/view/widgets/blue_Container_widget/blue_Container_widget.dart';
+import 'package:shaila_rani_website/view/widgets/select_DateWidget/select_Date_widget.dart';
+import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textformFiledContainer.dart';
 
 clientDetailsShowingFunction({
   required BuildContext context,
@@ -31,6 +34,8 @@ clientDetailsShowingFunction({
   required String enteredDate,
   required String enterBy,
   required String state,
+  required String cImageUrl,
+  required String followUpDate,
 }) {
   ClientManagementController clientManagementController =
       Get.put(ClientManagementController());
@@ -55,7 +60,7 @@ clientDetailsShowingFunction({
           child: ListBody(
             children: [
               SizedBox(
-                height: 700,
+                height: 800,
                 width: 800,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,10 +70,10 @@ clientDetailsShowingFunction({
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            // const CircleAvatar(
-                            //   radius: 79,
-                             
-                            // ),
+                               CircleAvatar(
+                              radius: 80,
+                              backgroundImage: NetworkImage(cImageUrl),
+                            ),
                             Padding(
                               padding: const EdgeInsets.only(left: 100),
                               child: SizedBox(
@@ -128,7 +133,7 @@ clientDetailsShowingFunction({
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: SizedBox(
-                        height: 500,
+                        height: 600,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -228,7 +233,7 @@ clientDetailsShowingFunction({
                                 ShowDetailClientContainerWidget(
                                     height: 100,
                                     width: 400,
-                                    title: 'Discription',
+                                    title: 'Description',
                                     content: casediscription),
                                 ShowDetailClientContainerWidget(
                                     height: 48,
@@ -249,9 +254,70 @@ clientDetailsShowingFunction({
                                         width: 300,
                                         title: "Case Number",
                                         content: caseNo),
+                                      
                                 ],
                               ),
-                        //  
+                              // SizedBox(height: 15,),
+                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                             ShowDetailClientContainerWidget(
+                                        height: 48,
+                                        width: 300,
+                                        title: "Follow Up Date",
+                                        content: followUpDate),
+                                  Obx(() {
+                            if (clientManagementController.followUpDateSelectedDate.value == '') {
+                              return TextFormFiledContainerWidget(
+                                  onTap: () async {
+                                    selectDateFunction(context);
+                                    String formatedate = DateFormat('yyyy-MMM-dd')
+                                        .format(await selectDateFunction(context)
+                                            .whenComplete(
+                                                () => Navigator.pop(context)));
+      
+                                    clientManagementController.followUpDateSelectedDate.value =
+                                        formatedate;
+                                  },
+                                  hintText: "📅 Select Date",
+                                  title: "Follow Up Date",
+                                  // validator: checkFieldDateIsValid,
+                                  width: 300);
+                            } else {
+                              return SizedBox(
+                                height: 60,
+                                width: 300,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    GooglePoppinsWidgets(
+                                        text: 'Follow Up Date', fontsize: 12),
+                                    Container(
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: cBlack.withOpacity(0.4),
+                                                width: 1)),
+                                        height: 35,
+                                        width: 300,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: GooglePoppinsWidgets(
+                                              text: clientManagementController
+                                                  .followUpDateSelectedDate.value
+                                                  .toString(),
+                                              fontsize: 12),
+                                        )
+                                        ),
+                                      
+                                  ],
+                                ),
+                              );
+                            }
+                           }
+                          ),
+                         ],),
                           ],
                         ),
                       ),
@@ -271,7 +337,33 @@ clientDetailsShowingFunction({
             padding: const EdgeInsets.only(right: 20),
             child: Row(
               children: [
+                
+                 GestureDetector(
+                  onTap:
+                  () {
+                     clientManagementController. addFollowUpDateToFirebase( );
+                    },
+                  onDoubleTap:
+                  () =>  clientManagementController.followUpDateSelectedDate.value='',
+                  child: BlueContainerWidget(
+                    title: 'Add Details',
+                    fontSize: 12,
+                    color: themeColorBlue,
+                    fontWeight: FontWeight.bold,
+                    width: 120,
+                  ),
+                ),
                 const Spacer(),
+                 GestureDetector(
+                  onTap: () => uploadFileForClient(context, caseNo),
+                  child: BlueContainerWidget(
+                    title: 'Add Document',
+                    fontSize: 12,
+                    color: themeColorBlue,
+                    fontWeight: FontWeight.bold,
+                    width: 120,
+                  ),
+                ),const SizedBox(width: 10,),
                 GestureDetector(
                   onTap: () => uploadImageForClient(context, caseNo),
                   child: BlueContainerWidget(
@@ -290,28 +382,31 @@ clientDetailsShowingFunction({
                                 context: context,
                                 title: "Alert",
                                 discripition:"Do you want to close this case.",
-                                onPressed:()=>
+                      onPressed:()=>
                       clientManagementController.deActivateThisClient(
                       context: context,
-                     clientName:clientName,
-         caseNo: caseNo,
-          mobileNo: mobileNo,
-          emailID: emailID,
-          gender: gender,
-          dob: dob,
-          marriageDate: marriageDate,
-          typeofcase: typeofcase,
-          address: address,
-          casediscription: casediscription,
-          clientoccupation:clientoccupation,
-          oppositeadvocate: oppositeadvocate,
-          typeofMarriage:typeofMarriage,
-          noofChildren:noofChildren,
-          seperationDate:seperationDate,
-          enteredDate:enteredDate,
-          state: state,
-          enterBy:enterBy,
-          whatsAppNo: whatsAppNo));
+                      clientName:clientName,
+                      clientImage: cImageUrl,
+                      followUpDate: followUpDate,
+                      caseNo: caseNo,
+                      mobileNo: mobileNo,
+                      emailID: emailID,
+                      gender: gender,
+                      dob: dob,
+                      marriageDate: marriageDate,
+                      typeofcase: typeofcase,
+                      address: address,
+                      casediscription: casediscription,
+                      clientoccupation:clientoccupation,
+                      oppositeadvocate: oppositeadvocate,
+                      typeofMarriage:typeofMarriage,
+                      noofChildren:noofChildren,
+                      seperationDate:seperationDate,
+                      enteredDate:enteredDate,
+                      state: state,
+                      enterBy:enterBy,
+                      whatsAppNo: whatsAppNo)
+                     );
                     },
                     child: BlueContainerWidget(
                       title: 'Close Case',
@@ -325,9 +420,7 @@ clientDetailsShowingFunction({
               ],
             ),
           ),
-          const SizedBox(
-            height: 15,
-          ),
+          const SizedBox( height: 15,),
         ],
       );
     },
