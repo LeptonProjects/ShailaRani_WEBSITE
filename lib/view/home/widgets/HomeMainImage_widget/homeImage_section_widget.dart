@@ -77,22 +77,6 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                 }).toList(),
                 onChanged: (value) {},
               ),
-              // ResponsiveWebSite.isDesktop(context)
-              //     ? const ServicesDropDownList()
-              //     : GestureDetector(
-              //         onTap: () {
-              //           serivesdropDownList(context);
-              //         },
-              //         child: SizedBox(
-              //           height: 40,
-              //           width: 80,
-              //           child: Center(
-              //             child: GooglePoppinsWidgets(
-              //                 text: "Services", fontsize: 12, color: cWhite),
-              //           ),
-              //         ),
-              //       ), // >>>>>>>>>>>>>>>>>> Services DropDown List
-
               OnHoverTextForHeader(builder: (isHoverd) {
                 final colorr = isHoverd
                     ? const Color.fromARGB(255, 192, 145, 128)
@@ -124,7 +108,7 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                                     Border.all(color: Colors.brown.shade400)),
                             child: Center(
                               child: GooglePoppinsWidgets(
-                                text: "Get Appoinment",
+                                text: "Get Appointment",
                                 fontsize: 14,
                                 color: colorr,
                                 fontWeight: FontWeight.w400,
@@ -242,7 +226,7 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                             border: Border.all(color: Colors.brown.shade400)),
                         child: Center(
                           child: GooglePoppinsWidgets(
-                            text: "Get Appoinment",
+                            text: "Get Appointment",
                             fontsize: 14,
                             color: colorr,
                             fontWeight: FontWeight.w400,

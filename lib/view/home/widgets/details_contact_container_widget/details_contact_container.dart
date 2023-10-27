@@ -53,7 +53,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                 border: Border.all(color: Colors.amber)),
                             child: Center(
                               child: GoogleMonstserratWidgets(
-                                  text: 'Fix Appoinment',
+                                  text: 'Fix Appointment',
                                   fontsize: 12,
                                   color: cWhite),
                             ),
@@ -287,7 +287,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                     border: Border.all(color: Colors.amber)),
                                 child: Center(
                                   child: GoogleMonstserratWidgets(
-                                      text: 'Fix Appoinment',
+                                      text: 'Fix Appointment',
                                       fontsize: 12,
                                       color: cWhite),
                                 ),
@@ -534,7 +534,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                         border: Border.all(color: Colors.amber)),
                                     child: Center(
                                       child: GoogleMonstserratWidgets(
-                                          text: 'Fix Appoinment',
+                                          text: 'Fix Appointment',
                                           fontsize: 12,
                                           color: cWhite),
                                     ),
@@ -738,7 +738,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
 }
 
 final Uri _whatsAppUrl = Uri.parse(
-    "https://wa.me/9562776043/?text=${Uri.parse('Would like to get an appoinment')}");
+    "https://wa.me/9562776043/?text=${Uri.parse('Would like to get an Appointment')}");
 
 Future<void> launchWhatsAppUrl() async {
   if (!await launchUrl(_whatsAppUrl)) {

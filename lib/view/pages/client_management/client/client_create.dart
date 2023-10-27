@@ -280,15 +280,15 @@ import 'package:shaila_rani_website/view/widgets/textformFiledContainer/textform
                         ],
                       ),
                       Row(
-                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [ TextFormFiledContainerWidget(
-                             controller: typeofMarriageController,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [ TextFormFiledContainerWidget(
+                            controller: typeofMarriageController,
                             title: "Type of Marriage",
                             hintText: "Enter Type of Marriage",
                             width: 300,
                             validator: checkFieldEmpty,),
                         TextFormFiledContainerWidget(
-                             controller: noofChildrenController,
+                            controller: noofChildrenController,
                             title: "Number of Children",
                             hintText: "Enter No. of Children",
                             width: 300,
