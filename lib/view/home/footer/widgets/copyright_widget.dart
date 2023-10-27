@@ -18,11 +18,24 @@ class CopyRightWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          GooglePoppinsWidgets(
-            text: '©2023. Adv. Shaila Rani Associates. All Rights Reserved',
-            fontsize: ResponsiveWebSite.isMobile(context) ? 8 : 15,
-            fontWeight: FontWeight.w500,
-            color: cWhite,
+          Column(
+            children: [
+              GooglePoppinsWidgets(
+                text: '©2023. Adv. Shaila Rani Associates. All Rights Reserved',
+                fontsize: ResponsiveWebSite.isMobile(context) ? 8 : 15,
+                fontWeight: FontWeight.w500,
+                color: cWhite,
+              ),
+                   Padding(
+                     padding: const EdgeInsets.only(top: 03),
+                     child: GooglePoppinsWidgets(
+                                   text: 'Powered  by Lepton Communications',
+                                   fontsize: ResponsiveWebSite.isMobile(context) ? 7 : 11,
+                                   fontWeight: FontWeight.w300,
+                                   color: cWhite,
+                                 ),
+                   ),
+            ],
           )
         ],
       ),

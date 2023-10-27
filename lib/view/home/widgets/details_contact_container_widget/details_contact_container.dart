@@ -95,7 +95,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                               const Padding(
                                 padding: EdgeInsets.only(top: 10),
                                 child: Text(
-                                  '✉️ info@shailaraniassociates.com',
+                                  '✉️ info@advshailaraniassociates.com',
                                   style: TextStyle(color: cWhite),
                                 ),
                               ),
@@ -335,7 +335,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                   const Padding(
                                     padding: EdgeInsets.only(top: 10),
                                     child: Text(
-                                      '✉️ info@shailaraniassociates.com',
+                                      '✉️ info@advshailaraniassociates.com',
                                       style: TextStyle(color: cWhite),
                                     ),
                                   ),
@@ -576,7 +576,7 @@ class ContactAndDeatilsWidget extends StatelessWidget {
                                       const Padding(
                                         padding: EdgeInsets.only(top: 10),
                                         child: Text(
-                                          '✉️ info@shailaraniassociates.com',
+                                          '✉️ info@advshailaraniassociates.com',
                                           style: TextStyle(color: cWhite),
                                         ),
                                       ),
