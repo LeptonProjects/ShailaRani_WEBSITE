@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:joy_dropdowns/joy_dropdowns.dart';
 import 'package:shaila_rani_website/features/video_management/presentation/pages/widgets/video_widgets.dart';
-import 'package:shaila_rani_website/view/colors/colors.dart';
-import 'package:shaila_rani_website/view/fonts/google_poppins.dart';
 import 'package:shaila_rani_website/view/home/widgets/hover_mouse/hover_text.dart';
 import 'package:shaila_rani_website/view/widgets/responsive/responsive.dart';
 
@@ -111,6 +108,7 @@ serivesdropDownList(BuildContext context) {
     barrierDismissible: false, // user must tap button!
     builder: (BuildContext context) {
       return AlertDialog(
+        
         backgroundColor: cBlack,
         title: Row(
           children: [
@@ -145,74 +143,76 @@ serivesdropDownList(BuildContext context) {
           ],
         ),
         content: ResponsiveWebSite.isMobile(context)
-            ? Column(
-                children: [
-                  Container(
-                    height: 400,
-                    width: 400,
-                    decoration: const BoxDecoration(
-                      color: Colors.black,
-                    ),
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: sevicesList.length,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          title: GooglePoppinsWidgets(
-                            text: "•  ${sevicesList[index]}",
-                            fontsize: 12,
-                            fontWeight: FontWeight.w200,
-                            color: cWhite,
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: SizedBox(
-                      height: 200,
+            ? SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      height: 400,
                       width: 400,
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            Center(
-                              child: GooglePoppinsWidgets(
-                                  text: "Counselling",
-                                  fontsize: 12,
+                      decoration: const BoxDecoration(
+                        color: Colors.black,
+                      ),
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: sevicesList.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            title: GooglePoppinsWidgets(
+                              text: "•  ${sevicesList[index]}",
+                              fontsize: 12,
+                              fontWeight: FontWeight.w200,
+                              color: cWhite,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: SizedBox(
+                        height: 200,
+                        width: 400,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              Center(
+                                child: GooglePoppinsWidgets(
+                                    text: "Counselling",
+                                    fontsize: 12,
+                                    color: cWhite,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 03),
+                                child: Container(
+                                  height: 0.5,
+                                  width: 20,
                                   color: cWhite,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 03),
-                              child: Container(
-                                height: 0.5,
-                                width: 20,
-                                color: cWhite,
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: counsellingList.length,
-                                itemBuilder: (context, index) {
-                                  return ListTile(
-                                    title: GooglePoppinsWidgets(
-                                      text: "•   ${counsellingList[index]}",
-                                      fontsize: 10,
-                                      fontWeight: FontWeight.w200,
-                                      color: cWhite,
-                                    ),
-                                  );
-                                },
+                              SizedBox(
+                                child: ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: counsellingList.length,
+                                  itemBuilder: (context, index) {
+                                    return ListTile(
+                                      title: GooglePoppinsWidgets(
+                                        text: "•   ${counsellingList[index]}",
+                                        fontsize: 10,
+                                        fontWeight: FontWeight.w200,
+                                        color: cWhite,
+                                      ),
+                                    );
+                                  },
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               )
             : Row(
                 children: [

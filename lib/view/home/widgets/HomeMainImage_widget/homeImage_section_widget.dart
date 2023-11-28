@@ -62,22 +62,23 @@ class HomeMainImageScreenWidget extends StatelessWidget {
                   ),
                 );
               }),
-            
-      ResponsiveWebSite.isDesktop(context)?const ServicesDropDownList():
-                 GestureDetector(
-                  onTap: () {
-                    serivesdropDownList(context);
-                  },
-                  child: SizedBox(
-                    height: 40,
-                    width: 80,
-                    child: Center(
-                      child: GooglePoppinsWidgets(
-                          text: "Services", fontsize: 12, color: cWhite),
+
+              ResponsiveWebSite.isDesktop(context)
+                  ? const ServicesDropDownList()
+                  : GestureDetector(
+                      onTap: () {
+                        serivesdropDownList(context);
+                      },
+                      child: SizedBox(
+                        height: 40,
+                        width: 80,
+                        child: Center(
+                          child: GooglePoppinsWidgets(
+                              text: "Services", fontsize: 12, color: cWhite),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-         
+
               // DropdownButton(
               //   // dropdownColor: Colors.co,
               //   hint: GooglePoppinsWidgets(
@@ -93,21 +94,21 @@ class HomeMainImageScreenWidget extends StatelessWidget {
               //   }).toList(),
               //   onChanged: (value) {},
               // ),
-              OnHoverTextForHeader(builder: (isHoverd) {
-                final colorr = isHoverd
-                    ? const Color.fromARGB(255, 192, 145, 128)
-                    : cWhite;
-                return SizedBox(
-                  height: 40,
-                  width: 80,
-                  child: Center(
-                    child: GooglePoppinsWidgets(
-                        text: "Contact", fontsize: 12, color: colorr),
-                  ),
-                );
-              }),
+              // OnHoverTextForHeader(builder: (isHoverd) {
+              //   final colorr = isHoverd
+              //       ? const Color.fromARGB(255, 192, 145, 128)
+              //       : cWhite;
+              //   return SizedBox(
+              //     height: 40,
+              //     width: 80,
+              //     child: Center(
+              //       child: GooglePoppinsWidgets(
+              //           text: "Contact", fontsize: 12, color: colorr),
+              //     ),
+              //   );
+              // }),
               Padding(
-                padding: const EdgeInsets.only(top: 02),
+                padding: const EdgeInsets.only(top: 02, left: 20),
                 child: ResponsiveWebSite.isMobile(context)
                     ? const Text("")
                     : OnHoverTextForHeader(builder: (isHoverd) {

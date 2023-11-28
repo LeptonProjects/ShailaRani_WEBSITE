@@ -15,7 +15,7 @@ const String _description = "Any schools from Kerala can register on\n"
     "with student login,  parent login, teacher login";
 
 final Uri _faceBookUrl = Uri.parse('https://facebook.com/AdvocateShailaRani/');
-final Uri _twitterUrl = Uri.parse('https://twitter.com/LeptonDujo');
+final Uri _twitterUrl = Uri.parse('https://twitter.com/advshailarani');
 final Uri _instaUrl =
     Uri.parse('https://www.instagram.com/adv.shailarani/?hl=en');
 final Uri _utubeUrl = Uri.parse('https://www.youtube.com/c/AdvShailaRani');
@@ -26,7 +26,6 @@ Future<void> _launchFacebookUrl() async {
     throw 'Could not launch $_faceBookUrl';
   }
 }
-
 
 Future<void> _launchTwitterUrl() async {
   if (!await launchUrl(_twitterUrl)) {
@@ -346,7 +345,7 @@ List<SocailMediaModel> socailMediaList = <SocailMediaModel>[
         //Color(0xFF17BDB5),
       )),
       imageString: 'assests/images/twitt.png',
-      tilteFunExecution: _launchInstaUrl),
+      tilteFunExecution: _launchTwitterUrl),
   SocailMediaModel(
       // title: StringConst.Youtube,
       assetImage: (Image.asset(
